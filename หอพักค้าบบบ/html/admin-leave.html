@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>คำขอเลิกเช่า</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <script type="module" src="../js/theme.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏢 OWNER PANEL
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="admin-dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-bookings.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                คำขอจองห้อง
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="admin-leave.html">
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
+                คำขอเลิกเช่า
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-tenants.html">
+                <i class="fa-solid fa-users"></i>
+                ผู้เช่าทั้งหมด
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-rooms.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                แจ้งซ่อม
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-payments.html">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                การชำระเงิน
+            </a>
+        </li>
+<li>
+    <a href="admin-profile.html">
+        <i class="fa-solid fa-user-gear"></i>
+        โปรไฟล์
+    </a>
+</li>
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ออกจากระบบ
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>คำขอเลิกเช่า</h2>
+
+            <p id="adminName">
+                กำลังโหลด...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= CARDS ================= -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-file-circle-question"></i>
+
+            <h3>คำขอทั้งหมด</h3>
+
+            <h1 id="totalLeave">
+                0
+            </h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3>รออนุมัติ</h3>
+
+            <h1 id="pendingLeave">
+                0
+            </h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>อนุมัติแล้ว</h3>
+
+            <h1 id="approvedLeave">
+                0
+            </h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            <h3>ปฏิเสธ</h3>
+
+            <h1 id="rejectedLeave">
+                0
+            </h1>
+
+        </div>
+
+    </div>
+
+    <!-- ================= LIST ================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-list"></i>
+
+            รายการคำขอเลิกเช่า
+
+        </h2>
+
+        <div
+            id="leaveContainer"
+
+            style="
+                display:grid;
+                grid-template-columns:repeat(auto-fit,minmax(420px,1fr));
+                gap:20px;
+                margin-top:20px;
+            ">
+
+            <!-- JS Render -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="../js/admin-leave.js"></script>
+<script type="module" src="../js/admin-dashboard.js"></script>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/owner-notification.js"></script>
+</body>
+
+</html>

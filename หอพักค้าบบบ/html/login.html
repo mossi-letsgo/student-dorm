@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body class="login-page">
+
+<div class="login-box">
+
+    <h2>เข้าสู่ระบบ</h2>
+
+    <p class="subtitle">
+        Student Dormitory Management System
+    </p>
+
+    <div class="input-group">
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="example@gmail.com"
+        >
+
+    </div>
+
+    <div class="input-group">
+
+        <label>รหัสผ่าน</label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="********"
+        >
+
+    </div>
+
+    <button
+        class="login-btn"
+        id="loginBtn">
+
+        เข้าสู่ระบบ
+
+    </button>
+
+    <!-- เส้นคั่น -->
+    <div style="text-align:center;margin:20px 0;color:#888;">
+        ───── หรือ ─────
+    </div>
+
+    <!-- Google Login -->
+    <button
+        class="google-btn"
+        id="googleLoginBtn">
+
+        <i class="fa-brands fa-google"></i>
+        เข้าสู่ระบบด้วย Google
+
+    </button>
+
+    <div class="bottom-text">
+
+        ยังไม่มีบัญชี ?
+
+        <a href="register.html">
+
+            สมัครสมาชิก
+
+        </a>
+
+    </div>
+
+</div>
+
+<script type="module" src="../js/login.js"></script>
+<script type="module" src="../js/theme.js"></script>
+
+</body>
+</html>

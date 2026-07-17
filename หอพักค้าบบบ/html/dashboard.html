@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ระบบหอพักนักศึกษา</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <script type="module" src="../js/theme.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏢 Dormitory
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                หน้าหลัก
+            </a>
+        </li>
+
+        <li>
+            <a href="rooms.html">
+                <i class="fa-solid fa-bed"></i>
+                ห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="booking.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                จองห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                แจ้งซ่อม
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                โปรไฟล์
+            </a>
+        </li>
+
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ออกจากระบบ
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- Main -->
+
+<div class="main">
+
+    <!-- Topbar -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>Dashboard</h2>
+
+            <p id="userName">
+                กำลังโหลดข้อมูล...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-bed"></i>
+
+            <h3>ห้องของฉัน</h3>
+
+            <h1 id="myRoom">-</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <h3>ค่าเช่า</h3>
+
+            <h1 id="myRent">0 บาท</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h3>แจ้งซ่อม</h3>
+
+            <h1 id="myRepair">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>สถานะ</h3>
+
+            <h1 id="roomStatus">-</h1>
+
+        </div>
+
+    </div>
+
+    <!-- Notification -->
+
+    <div class="welcome notification-section">
+
+        <h2>
+
+            <i class="fa-solid fa-bell"></i>
+
+            การแจ้งเตือน
+
+        </h2>
+
+        <div id="notificationContainer">
+
+            <div class="notification-item">
+
+                <i class="fa-solid fa-spinner"></i>
+
+                <p>กำลังโหลดการแจ้งเตือน...</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Welcome -->
+
+    <div class="welcome">
+
+        <h2 id="welcomeTitle">
+
+            ยินดีต้อนรับเข้าสู่ระบบหอพักนักศึกษา
+
+        </h2>
+
+        <p id="welcomeText">
+
+            ระบบนี้สามารถใช้ในการจองห้องพัก แจ้งซ่อม
+            ตรวจสอบข้อมูลห้องพัก
+            และจัดการข้อมูลส่วนตัวของนักศึกษา
+
+        </p>
+
+    </div>
+
+    <!-- News -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-bullhorn"></i>
+
+            ข่าวประชาสัมพันธ์
+
+        </h2>
+
+        <div id="newsContainer">
+
+            <p>
+
+                ยังไม่มีข่าวประชาสัมพันธ์
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+
+ <script type="module" src="../js/theme.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+
+<script type="module" src="../js/user-guard.js"></script>
+
+</body>
+</html>

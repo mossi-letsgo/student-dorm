@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>จัดการแจ้งซ่อม</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏢 OWNER PANEL
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="admin-dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-bookings.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                คำขอจองห้อง
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-leave.html">
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
+                คำขอเลิกเช่า
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-tenants.html">
+                <i class="fa-solid fa-users"></i>
+                ผู้เช่าทั้งหมด
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-rooms.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="admin-repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                แจ้งซ่อม
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-payments.html">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                การชำระเงิน
+            </a>
+        </li>
+<li>
+    <a href="admin-profile.html">
+        <i class="fa-solid fa-user-gear"></i>
+        โปรไฟล์
+    </a>
+</li>
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ออกจากระบบ
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+    <!-- ================= MAIN ================= -->
+
+  <div class="main">
+
+    <!-- ================= TOPBAR ================= -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>จัดการแจ้งซ่อม</h2>
+
+            <p id="adminName">
+                Loading...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= SUMMARY ================= -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h3>รายการทั้งหมด</h3>
+
+            <h1 id="totalRepair">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-hourglass-half"></i>
+
+            <h3>รอดำเนินการ</h3>
+
+            <h1 id="pendingRepair">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-hammer"></i>
+
+            <h3>กำลังซ่อม</h3>
+
+            <h1 id="repairingRepair">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>ซ่อมเสร็จ</h3>
+
+            <h1 id="completedRepair">0</h1>
+
+        </div>
+
+    </div>
+    <!-- ================= REPAIR LIST ================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-list-check"></i>
+
+            รายการแจ้งซ่อม
+
+        </h2>
+
+        <br>
+
+        <div id="repairContainer">
+
+            กำลังโหลด...
+
+        </div>
+
+    </div>
+
+</div>
+    <script type="module" src="../js/admin-repair.js"></script>
+    <script type="module" src="../js/theme.js"></script>
+    <script type="module" src="../js/admin-dashboard.js"></script>
+    <script type="module" src="../js/owner-notification.js"></script>
+
+</body>
+
+</html>
