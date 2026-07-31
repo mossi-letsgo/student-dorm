@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>โปรไฟล์เจ้าของหอ</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏢 OWNER PANEL
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="admin-dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-bookings.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                คำขอจองห้อง
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-leave.html">
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
+                คำขอเลิกเช่า
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-tenants.html">
+                <i class="fa-solid fa-users"></i>
+                ผู้เช่าทั้งหมด
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-rooms.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                แจ้งซ่อม
+            </a>
+        </li>
+
+        <li>
+            <a href="admin-payments.html">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                การชำระเงิน
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="admin-profile.html">
+                <i class="fa-solid fa-user"></i>
+                โปรไฟล์
+            </a>
+        </li>
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ออกจากระบบ
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>โปรไฟล์เจ้าของหอ</h2>
+
+            <p id="adminName">
+                กำลังโหลดข้อมูล...
+            </p>
+
+        </div>
+
+    </div>
+
+<div class="profile-header">
+
+    <img
+        id="profileImage"
+        class="profile-image"
+        src="../images/default-avatar.png"
+    >
+
+    <input
+        type="file"
+        id="profileFile"
+        accept="image/*"
+        hidden
+    >
+
+    <button
+        class="btn"
+        id="uploadBtn">
+
+        <i class="fa-solid fa-camera"></i>
+
+        เปลี่ยนรูปโปรไฟล์
+
+    </button>
+
+</div>
+    <!-- ================= PROFILE ================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-user-gear"></i>
+
+            ข้อมูลส่วนตัว
+
+        </h2>
+
+        <div class="profile-box">
+
+            <div class="input-group">
+
+                <label>ชื่อ - นามสกุล</label>
+
+                <input
+                    type="text"
+                    id="fullname"
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    disabled
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>ชื่อหอพัก</label>
+
+                <input
+                    type="text"
+                    id="dormName"
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>เบอร์โทร</label>
+
+                <input
+                    type="text"
+                    id="phone"
+                >
+
+            </div>
+
+            <div class="input-group">
+
+                <label>ที่อยู่</label>
+
+                <textarea
+                    id="address"
+                    rows="4"
+                ></textarea>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>สีธีมระบบ</label>
+
+                <input
+                    type="color"
+                    id="themeColor"
+                    value="#b30000"
+                >
+
+            </div>
+
+            <button
+                class="btn"
+                id="saveBtn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                บันทึกข้อมูล
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="../js/admin-profile.js"></script>
+<script type="module" src="../js/admin-dashboard.js"></script>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/owner-notification.js"></script>
+</body>
+</html>

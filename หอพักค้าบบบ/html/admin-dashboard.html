@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Owner Dashboard | ระบบหอพักนักศึกษา</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <script type="module" src="../js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+            🏢 OWNER PANEL
+        </div>
+
+        <ul>
+
+            <li class="active">
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-bookings.html">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    คำขอจองห้อง
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-leave.html">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i>
+                    คำขอเลิกเช่า
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-tenants.html">
+                    <i class="fa-solid fa-users"></i>
+                    ผู้เช่าทั้งหมด
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-rooms.html">
+                    <i class="fa-solid fa-bed"></i>
+                    จัดการห้องพัก
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-repair.html">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    แจ้งซ่อม
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-payments.html">
+                    <i class="fa-solid fa-money-bill-wave"></i>
+                    การชำระเงิน
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-profile.html">
+                    <i class="fa-solid fa-user-gear"></i>
+                    โปรไฟล์
+                </a>
+            </li>
+
+            <li>
+                <a href="#" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    ออกจากระบบ
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>Owner Dashboard</h2>
+
+                <p id="adminName">
+                    กำลังโหลดข้อมูล...
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= CARDS ================= -->
+
+        <div class="cards">
+
+            <div class="card">
+
+                <i class="fa-solid fa-users"></i>
+
+                <h3>ผู้เช่าทั้งหมด</h3>
+
+                <h1 id="totalUser">0</h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <h3>ห้องทั้งหมด</h3>
+
+                <h1 id="totalRooms">0</h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <h3>แจ้งซ่อม</h3>
+
+                <h1 id="totalRepairs">0</h1>
+
+            </div>
+
+            <div class="card">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <h3>รายได้รวม</h3>
+
+                <h1 id="totalIncome">0 บาท</h1>
+
+            </div>
+
+        </div>
+
+        <!-- ================= ข้อมูลระบบ ================= -->
+
+        <div class="welcome">
+
+            <h2>
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                ข้อมูลระบบ
+
+            </h2>
+
+            <div id="contentBox">
+
+                กำลังโหลดข้อมูล...
+
+            </div>
+
+        </div>
+
+        <!-- ================= แจ้งเตือน ================= -->
+
+        <div class="welcome notification-section">
+
+            <h2>
+
+                <i class="fa-solid fa-bell"></i>
+
+                การแจ้งเตือน
+
+            </h2>
+
+            <div id="notificationContainer">
+
+                <div class="notification-item">
+
+                    <i class="fa-solid fa-spinner"></i>
+
+                    <p>กำลังโหลดแจ้งเตือน...</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="../js/admin-dashboard.js"></script>
+    <script type="module" src="../js/theme.js"></script>
+    <script type="module" src="../js/owner-notification.js"></script>
+</body>
+
+</html>

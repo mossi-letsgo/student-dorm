@@ -1,0 +1,115 @@
+import { auth, db } from "./firebase-config.js";
+
+import {
+    createUserWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    doc,
+    setDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import { loadTheme } from "../js/theme.js";
+
+await loadTheme();
+
+const registerBtn = document.getElementById("registerBtn");
+
+registerBtn.addEventListener("click", async () => {
+
+    const fullname = document.getElementById("fullname").value.trim();
+    const studentId = document.getElementById("studentId").value.trim();
+    const faculty = document.getElementById("faculty").value.trim();
+    const major = document.getElementById("major").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    // ================= VALIDATE =================
+    if (!fullname || !studentId || !faculty || !major || !phone || !email || !password || !confirmPassword) {
+        alert("กรุณากรอกข้อมูลให้ครบ");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("รหัสผ่านไม่ตรงกัน");
+        return;
+    }
+
+    try {
+
+        // ================= CREATE USER =================
+const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+);
+
+alert("สร้าง Auth สำเร็จ");
+
+const user = userCredential.user;
+
+await setDoc(doc(db, "users", user.uid), {
+
+    fullname,
+    studentId,
+    faculty,
+    major,
+    phone,
+    email,
+
+    role: "student",
+
+    room: "",
+    status: "active",
+    themeColor:"#b30000",
+
+    photoURL: "",
+
+    createdAt: serverTimestamp()
+
+});
+
+alert("บันทึก Firestore สำเร็จ");
+
+        window.location.href = "login.html";
+
+} catch (error) {
+
+    console.error(error);
+
+    alert(
+`Error Code : ${error.code}
+
+Message : ${error.message}`
+    );
+
+    switch (error.code) {
+
+        case "auth/email-already-in-use":
+            alert("อีเมลนี้ถูกใช้งานแล้ว");
+            break;
+
+        case "auth/invalid-email":
+            alert("รูปแบบอีเมลไม่ถูกต้อง");
+            break;
+
+        case "auth/weak-password":
+            alert("รหัสผ่านอ่อนเกินไป");
+            break;
+
+        default:
+            alert(error.message);
+    }
+
+}
+
+});

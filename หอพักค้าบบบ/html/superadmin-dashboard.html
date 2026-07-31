@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Super Admin Dashboard</title>
+
+<link rel="stylesheet" href="../css/superadmin.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-user-shield"></i>
+
+        <div>
+
+            <h2>Super Admin</h2>
+
+            <small>Control Panel</small>
+
+        </div>
+
+    </div>
+
+    <ul>
+
+        <li class="active">
+            <a href="../html/superadmin-dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/owner-management.html">
+                <i class="fa-solid fa-user-tie"></i>
+                จัดการ Owner
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/student-management.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                จัดการ Student
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/dorm-management.html">
+                <i class="fa-solid fa-building"></i>
+                จัดการหอพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/room-management.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/payment-management.html">
+                <i class="fa-solid fa-qrcode"></i>
+                PromptPay
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-setting.html">
+                <i class="fa-solid fa-gear"></i>
+                ตั้งค่าระบบ
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-log.html">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Activity Logs
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+
+        <div class="admin-profile">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <h4 id="adminName">
+                    กำลังโหลด...
+                </h4>
+
+                <small>Super Administrator</small>
+
+            </div>
+
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>Dashboard</h2>
+
+            <p>
+                ภาพรวมของระบบทั้งหมด
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ================= CARDS ================= -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+            <h3>Owner</h3>
+
+            <h1 id="ownerCount">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-user-graduate"></i>
+
+            <h3>Student</h3>
+
+            <h1 id="studentCount">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-building"></i>
+
+            <h3>Dormitory</h3>
+
+            <h1 id="dormCount">0</h1>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            <h3>Revenue</h3>
+
+            <h1 id="income">0 บาท</h1>
+
+        </div>
+
+    </div>
+
+    <!-- ================= ACTIVITY ================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            กิจกรรมล่าสุด
+
+        </h2>
+
+        <div id="activityBox">
+
+            กำลังโหลดข้อมูล...
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="../js/superadmin-dashboard.js"></script>
+
+</body>
+
+</html>

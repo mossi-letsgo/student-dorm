@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Management</title>
+
+    <link rel="stylesheet" href="../css/superadmin.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+            <div>
+
+                <h2>Super Admin</h2>
+
+                <small>Control Panel</small>
+
+            </div>
+
+        </div>
+
+        <ul>
+
+            <li>
+
+                <a href="superadmin-dashboard.html">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="owner-management.html">
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    จัดการ Owner
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="student-management.html">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                    จัดการ Student
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="dorm-management.html">
+
+                    <i class="fa-solid fa-building"></i>
+
+                    จัดการหอพัก
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="room-management.html">
+
+                    <i class="fa-solid fa-bed"></i>
+
+                    จัดการห้องพัก
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="payment-management.html">
+
+                    <i class="fa-solid fa-qrcode"></i>
+
+                    PromptPay
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="system-setting.html">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    ตั้งค่าระบบ
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="system-log.html">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    Activity Logs
+
+                </a>
+
+            </li>
+
+        </ul>
+
+        <div class="sidebar-footer">
+
+            <div class="admin-profile">
+
+                <div class="avatar">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <h4 id="adminName">
+
+                        กำลังโหลด...
+
+                    </h4>
+
+                    <small>
+
+                        Super Administrator
+
+                    </small>
+
+                </div>
+
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MAIN ================= -->
+
+    <div class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>
+
+                    Admin Management
+
+                </h2>
+
+                <p>
+
+                    จัดการผู้ดูแลระบบ (Admin)
+
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- ================= TOOLBAR ================= -->
+
+        <div class="panel">
+
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;">
+
+                <input
+                    type="text"
+                    id="searchAdmin"
+                    placeholder="ค้นหา Admin">
+
+                <button class="btn" id="addAdminBtn">
+
+                    <i class="fa-solid fa-plus"></i>
+
+                    เพิ่ม Admin
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= TABLE ================= -->
+
+        <div class="panel">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ชื่อ</th>
+
+                        <th>Email</th>
+
+                        <th>สถานะ</th>
+
+                        <th>วันที่สร้าง</th>
+
+                        <th>จัดการ</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="adminTable">
+
+                    <tr>
+
+                        <td colspan="5" style="text-align:center;">
+
+                            กำลังโหลดข้อมูล...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="userModal" class="modal" style="display:none;">
+
+        <div class="modal-box">
+
+            <h2 id="modalTitle">
+
+                เพิ่ม Admin
+
+            </h2>
+
+            <input
+                type="text"
+                id="fullname"
+                placeholder="ชื่อ">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Password">
+
+            <select id="status">
+
+                <option value="active">
+
+                    Active
+
+                </option>
+
+                <option value="disabled">
+
+                    Disabled
+
+                </option>
+
+            </select>
+
+            <div style="display:flex;gap:10px;margin-top:20px;">
+
+                <button
+                    class="btn"
+                    id="saveAdminBtn">
+
+                    <i class="fa-solid fa-floppy-disk"></i>
+
+                    บันทึก
+
+                </button>
+
+                <button
+                    class="btn"
+                    id="deleteAdminBtn"
+                    style="background:#b71c1c;display:none;">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                    ลบ
+
+                </button>
+
+                <button
+                    class="btn"
+                    onclick="closeModal()">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    ยกเลิก
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function closeModal(){
+
+            document.getElementById("userModal").style.display="none";
+
+        }
+
+    </script>
+
+    <script type="module" src="../js/owner-management.js"></script>
+
+</body>
+
+</html>

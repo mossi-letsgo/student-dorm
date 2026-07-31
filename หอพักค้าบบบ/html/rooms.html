@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ห้องของฉัน</title>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        🏢 Dormitory
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                หน้าหลัก
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="rooms.html">
+                <i class="fa-solid fa-bed"></i>
+                ห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="booking.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                จองห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="repair.html">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                แจ้งซ่อม
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                โปรไฟล์
+            </a>
+        </li>
+
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                ออกจากระบบ
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>ห้องของฉัน</h2>
+
+            <p id="userName">
+                กำลังโหลด...
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ROOM INFO -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-door-open"></i>
+
+            รายละเอียดห้องพัก
+
+        </h2>
+
+        <div id="roomInfo">
+
+            <!-- JS -->
+
+        </div>
+
+    </div>
+
+    <!-- FACILITIES -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-house-circle-check"></i>
+
+            สิ่งอำนวยความสะดวก
+
+        </h2>
+
+        <ul id="facilityList" class="facility-list">
+
+            <!-- JS -->
+
+        </ul>
+
+    </div>
+
+    <!-- ACTION -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-gears"></i>
+
+            เมนูการใช้งาน
+
+        </h2>
+
+        <div class="action-buttons">
+
+            <a href="repair.html" class="action-btn repair">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                แจ้งซ่อม
+
+            </a>
+
+            <a href="contact.html" class="action-btn contact">
+
+                <i class="fa-solid fa-phone"></i>
+
+                ติดต่อเจ้าของหอ
+
+            </a>
+
+            <a href="payments.html" class="action-btn payment">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                ชำระค่าเช่า
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- LEAVE ROOM -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-person-walking-arrow-right"></i>
+
+            ยกเลิกการเช่าห้อง
+
+        </h2>
+
+        <p style="margin-top:15px;color:#bbb;line-height:1.8;">
+
+            หากต้องการยกเลิกการเช่าห้อง กรุณาส่งคำขอไปยังเจ้าของหอพัก
+            เมื่อเจ้าของหออนุมัติ ระบบจะคำนวณค่าใช้จ่ายทั้งหมด
+            และแสดง QR Code สำหรับการชำระเงิน
+
+        </p>
+
+        <div style="margin-top:25px;">
+
+            <button id="leaveRoomBtn" class="leave-btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                ส่งคำขอเลิกเช่า
+
+            </button>
+
+        </div>
+
+        <div id="leaveStatus" style="margin-top:20px;">
+
+            <!-- JS -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= PAYMENT MODAL ================= -->
+
+<div id="paymentModal" class="payment-modal">
+
+    <div class="payment-box">
+
+        <h2>
+
+            <i class="fa-solid fa-qrcode"></i>
+
+            ชำระเงิน (TEST MODE)
+
+        </h2>
+
+        <p class="payment-subtitle">
+
+            สแกน QR Code เพื่อจำลองการชำระเงิน
+
+        </p>
+
+  <canvas
+    id="promptpayQR"
+    class="payment-qr">
+</canvas>
+
+        <div class="payment-detail">
+
+            <span>ยอดที่ต้องชำระ</span>
+
+            <h1 id="paymentAmount">
+
+                0 บาท
+
+            </h1>
+
+        </div>
+
+        <div class="btn-group">
+
+            <button
+                id="confirmPaymentBtn"
+                class="btn">
+
+                <i class="fa-solid fa-check"></i>
+
+                จำลองการชำระเงิน
+
+            </button>
+
+            <button
+                class="btn btn-outline"
+                onclick="closePaymentModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                ยกเลิก
+
+            </button>
+
+        </div>
+
+        <p
+            style="
+            margin-top:20px;
+            color:#888;
+            font-size:14px;
+            ">
+
+            TEST MODE • ไม่มีการโอนเงินจริง
+
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+function closePaymentModal(){
+
+    document.getElementById("paymentModal").style.display="none";
+
+}
+
+</script>
+
+<script type="module" src="../js/rooms.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script type="module" src="../js/theme.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+</body>
+
+</html>
