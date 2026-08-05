@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Management</title>
+    <title>Owner Management</title>
 
-    <link rel="stylesheet" href="../css/superadmin.css">
+    <link rel="stylesheet" href="../css/owner-management.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -51,7 +51,7 @@
 
             </li>
 
-            <li>
+            <li class="active">
 
                 <a href="owner-management.html">
 
@@ -181,21 +181,19 @@
 
     <div class="main">
 
-        <!-- TOPBAR -->
-
         <div class="topbar">
 
             <div>
 
                 <h2>
 
-                    Admin Management
+                    Owner Management
 
                 </h2>
 
                 <p>
 
-                    จัดการผู้ดูแลระบบ (Admin)
+                    จัดการข้อมูลเจ้าของหอพัก
 
                 </p>
 
@@ -203,7 +201,7 @@
 
         </div>
 
-        <!-- ================= TOOLBAR ================= -->
+        <!-- TOOLBAR -->
 
         <div class="panel">
 
@@ -211,14 +209,16 @@
 
                 <input
                     type="text"
-                    id="searchAdmin"
-                    placeholder="ค้นหา Admin">
+                    id="searchOwner"
+                    placeholder="ค้นหา Owner">
 
-                <button class="btn" id="addAdminBtn">
+                <button
+                    class="btn"
+                    id="addOwnerBtn">
 
                     <i class="fa-solid fa-plus"></i>
 
-                    เพิ่ม Admin
+                    เพิ่ม Owner
 
                 </button>
 
@@ -226,7 +226,7 @@
 
         </div>
 
-        <!-- ================= TABLE ================= -->
+        <!-- TABLE -->
 
         <div class="panel">
 
@@ -250,11 +250,11 @@
 
                 </thead>
 
-                <tbody id="adminTable">
+                <tbody id="ownerTable">
 
                     <tr>
 
-                        <td colspan="5" style="text-align:center;">
+                        <td colspan="5" style="text-align:center">
 
                             กำลังโหลดข้อมูล...
 
@@ -278,7 +278,7 @@
 
             <h2 id="modalTitle">
 
-                เพิ่ม Admin
+                เพิ่ม Owner
 
             </h2>
 
@@ -317,7 +317,7 @@
 
                 <button
                     class="btn"
-                    id="saveAdminBtn">
+                    id="saveOwnerBtn">
 
                     <i class="fa-solid fa-floppy-disk"></i>
 
@@ -327,7 +327,7 @@
 
                 <button
                     class="btn"
-                    id="deleteAdminBtn"
+                    id="deleteOwnerBtn"
                     style="background:#b71c1c;display:none;">
 
                     <i class="fa-solid fa-trash"></i>
@@ -353,13 +353,9 @@
     </div>
 
     <script>
-
-        function closeModal(){
-
-            document.getElementById("userModal").style.display="none";
-
+        function closeModal() {
+            document.getElementById("userModal").style.display = "none";
         }
-
     </script>
 
     <script type="module" src="../js/owner-management.js"></script>

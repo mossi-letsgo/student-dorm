@@ -47,10 +47,12 @@ onAuthStateChanged(auth, async (user) => {
 
     }
 
-    document.getElementById("adminName").innerText =
-        me.fullname;
+document.getElementById("adminName").innerText = me.fullname;
 
-    loadOwners();
+// ล้างช่องค้นหา
+document.getElementById("searchOwner").value = "";
+
+loadOwners();   
 
 });
 
@@ -58,48 +60,36 @@ onAuthStateChanged(auth, async (user) => {
 
 async function loadOwners() {
 
-    try {
+    const snap = await getDocs(collection(db, "users"));
 
-        const snap = await getDocs(collection(db, "users"));
+    owners = [];
 
-        owners = [];
+    snap.forEach(doc => {
 
-        snap.forEach(item => {
+        const data = doc.data();
 
-            const data = item.data();
+        console.log(data.role);
 
-            console.log(data); // ดูข้อมูลใน Console
+        if (data.role === "owner") {
 
-            // เอาเฉพาะ owner
-            if (data.role === "owner") {
+            owners.push({
+                id: doc.id,
+                ...data
+            });
 
-                owners.push({
+        }
 
-                    id: item.id,
-                    ...data
+    });
 
-                });
+    console.log("owners =", owners);
 
-            }
-
-        });
-
-        console.log("Owner ทั้งหมด =", owners);
-
-        renderTable(owners);
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert("โหลดข้อมูล Owner ไม่สำเร็จ");
-
-    }
+  console.log("Owners =", owners);
+    renderTable(owners);
 
 }
 function renderTable(data){
-
-    const table = document.getElementById("adminTable");
+    console.log("renderTable()", data);
+    const table = document.getElementById("ownerTable");
 
     if(!table) return;
 
@@ -158,33 +148,28 @@ function renderTable(data){
 // ================= SEARCH =================
 
 document
-.getElementById("searchAdmin")
+.getElementById("searchOwner")
 .addEventListener("input", () => {
 
-    const keyword =
-
-        document
-        .getElementById("searchAdmin")
+    const keyword = document
+        .getElementById("searchOwner")
         .value
+        .trim()
         .toLowerCase();
 
-    renderTable(
+    console.log("keyword =", keyword);
 
-        owners.filter(owner =>
+    const result = owners.filter(owner =>
 
-            owner.fullname
-            ?.toLowerCase()
-            .includes(keyword)
+        owner.fullname?.toLowerCase().includes(keyword) ||
 
-            ||
-
-            owner.email
-            ?.toLowerCase()
-            .includes(keyword)
-
-        )
+        owner.email?.toLowerCase().includes(keyword)
 
     );
+
+    console.log("result =", result);
+
+    renderTable(result);
 
 });
 
@@ -234,7 +219,7 @@ ${newStatus}
 // ================= ADD OWNER =================
 
 document
-.getElementById("addAdminBtn")
+.getElementById("addOwnerBtn")
 .addEventListener("click",()=>{
 
     alert("จะทำระบบเพิ่ม Owner ในขั้นตอนถัดไป");
@@ -244,7 +229,7 @@ document
 // ================= SAVE =================
 
 document
-.getElementById("saveAdminBtn")
+.getElementById("saveOwnerBtn")
 .addEventListener("click",()=>{
 
     alert("ยังไม่ได้พัฒนาส่วนนี้");
@@ -254,7 +239,7 @@ document
 // ================= DELETE =================
 
 document
-.getElementById("deleteAdminBtn")
+.getElementById("deleteOwnerBtn")
 .addEventListener("click",()=>{
 
     alert("ยังไม่ได้พัฒนาส่วนนี้");

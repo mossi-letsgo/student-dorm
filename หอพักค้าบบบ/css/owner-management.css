@@ -1,0 +1,153 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Kanit",sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#5d0000,#8b0000,#b30000);
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width:260px;
+    background:rgba(20,20,20,.95);
+    backdrop-filter:blur(20px);
+    border-right:1px solid rgba(255,255,255,.08);
+    display:flex;
+    flex-direction:column;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:25px;
+}
+
+.logo i{
+    font-size:32px;
+}
+
+.logo h2{
+    color:#fff;
+}
+
+.logo small{
+    color:#999;
+}
+
+.sidebar ul{
+    list-style:none;
+    flex:1;
+}
+
+.sidebar li{
+    margin:8px 15px;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    color:#ddd;
+    text-decoration:none;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar .active a{
+    background:#b30000;
+    color:#fff;
+}
+
+.sidebar-footer{
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.logout-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#b30000;
+    color:#fff;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#d40000;
+}
+
+/* Main */
+
+.main{
+    flex:1;
+    padding:30px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.panel{
+    background:#1c1c1c;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+.btn{
+    background:#b30000;
+    color:#fff;
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:#d40000;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:15px;
+    border-bottom:1px solid #333;
+}
+
+th{
+    color:#ff7d7d;
+}
+
+td{
+    color:#fff;
+}
+
+table button{
+    background:#b30000;
+    color:#fff;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+table button:hover{
+    background:#d40000;
+}
