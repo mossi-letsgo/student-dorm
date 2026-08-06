@@ -29,6 +29,7 @@ onAuthStateChanged(auth, async (user) => {
     const userSnap = await getDoc(doc(db, "users", user.uid));
 
     if (!userSnap.exists()) {
+        await signOut(auth);
         location.href = "superadmin-login.html";
         return;
     }
@@ -44,15 +45,11 @@ onAuthStateChanged(auth, async (user) => {
         location.href = "../index.html";
 
         return;
-
     }
 
-document.getElementById("adminName").innerText = me.fullname;
+    document.getElementById("adminName").innerText = me.fullname;
 
-// ล้างช่องค้นหา
-document.getElementById("searchOwner").value = "";
-
-loadOwners();   
+    loadOwners();
 
 });
 
@@ -60,56 +57,54 @@ loadOwners();
 
 async function loadOwners() {
 
-    const snap = await getDocs(collection(db, "users"));
-
     owners = [];
 
-    snap.forEach(doc => {
+    const snap = await getDocs(collection(db, "users"));
 
-        const data = doc.data();
+    snap.forEach(item => {
 
-        console.log(data.role);
+        const data = item.data();
 
         if (data.role === "owner") {
 
             owners.push({
-                id: doc.id,
+
+                id: item.id,
                 ...data
+
             });
 
         }
 
     });
 
-    console.log("owners =", owners);
-
-  console.log("Owners =", owners);
     renderTable(owners);
 
 }
-function renderTable(data){
-    console.log("renderTable()", data);
-    const table = document.getElementById("ownerTable");
 
-    if(!table) return;
+// ================= RENDER TABLE =================
+
+function renderTable(data) {
+
+    const table = document.getElementById("ownerTable");
 
     table.innerHTML = "";
 
-    if(data.length === 0){
+    if (data.length === 0) {
 
         table.innerHTML = `
-        <tr>
-            <td colspan="5" style="text-align:center">
-                ไม่พบ Owner
-            </td>
-        </tr>
+            <tr>
+                <td colspan="5" style="text-align:center;">
+                    ไม่พบ Owner
+                </td>
+            </tr>
         `;
 
         return;
 
     }
 
-    data.forEach(owner=>{
+    data.forEach(owner => {
 
         const date = owner.createdAt?.toDate
             ? owner.createdAt.toDate().toLocaleDateString("th-TH")
@@ -121,7 +116,7 @@ function renderTable(data){
 
             <td>${owner.fullname ?? "-"}</td>
 
-            <td>${owner.email ?? "-"}</td>
+            <td>${owner.email}</td>
 
             <td>${owner.status ?? "active"}</td>
 
@@ -131,7 +126,7 @@ function renderTable(data){
 
                 <button onclick="changeStatus('${owner.id}')">
 
-                    เปลี่ยนสถานะ
+                    ${owner.status === "active" ? "ระงับ" : "เปิด"}
 
                 </button>
 
@@ -147,17 +142,13 @@ function renderTable(data){
 
 // ================= SEARCH =================
 
-document
-.getElementById("searchOwner")
-.addEventListener("input", () => {
+document.getElementById("searchOwner").addEventListener("input", () => {
 
     const keyword = document
         .getElementById("searchOwner")
         .value
         .trim()
         .toLowerCase();
-
-    console.log("keyword =", keyword);
 
     const result = owners.filter(owner =>
 
@@ -167,96 +158,221 @@ document
 
     );
 
-    console.log("result =", result);
-
     renderTable(result);
 
 });
 
-// ================= CHANGE STATUS =================
+// ================= OPEN MODAL =================
 
-window.changeStatus = async function(uid){
+document.getElementById("addOwnerBtn").onclick = () => {
 
-    const owner = owners.find(x=>x.id===uid);
+    document.getElementById("ownerEmail").value = "";
 
-    if(!owner) return;
+    document.getElementById("userModal").style.display = "flex";
 
-    const newStatus =
-        owner.status==="active"
-        ? "disabled"
-        : "active";
+};
 
-    const ok = confirm(
+// ================= ADD OWNER =================
 
-`เปลี่ยนสถานะเป็น
+document.getElementById("saveOwnerBtn").onclick = async () => {
 
-${newStatus}
+    const email = document
+        .getElementById("ownerEmail")
+        .value
+        .trim()
+        .toLowerCase();
 
-ใช่หรือไม่ ?`
+    if (!email) {
+
+        alert("กรุณากรอก Email");
+
+        return;
+
+    }
+
+    const q = query(
+
+        collection(db, "users"),
+
+        where("email", "==", email)
 
     );
 
-    if(!ok) return;
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+
+        alert("ไม่พบ Email นี้ในระบบ");
+
+        return;
+
+    }
+
+    const userDoc = snap.docs[0];
+
+    const data = userDoc.data();
+
+    if (data.role === "owner") {
+
+        alert("ผู้ใช้นี้เป็น Owner อยู่แล้ว");
+
+        return;
+
+    }
+
+    if (data.role === "superadmin") {
+
+        alert("ไม่สามารถเพิ่ม Super Admin ได้");
+
+        return;
+
+    }
 
     await updateDoc(
 
-        doc(db,"users",uid),
+        doc(db, "users", userDoc.id),
 
         {
 
-            status:newStatus
+            role: "owner",
+
+            status: "active"
 
         }
 
     );
 
-    alert("อัปเดตสถานะเรียบร้อย");
+    alert("เพิ่ม Owner สำเร็จ");
+
+    closeModal();
 
     loadOwners();
 
-}
+};
 
-// ================= ADD OWNER =================
+// ================= REMOVE OWNER =================
 
-document
-.getElementById("addOwnerBtn")
-.addEventListener("click",()=>{
+document.getElementById("deleteOwnerBtn").onclick = async () => {
 
-    alert("จะทำระบบเพิ่ม Owner ในขั้นตอนถัดไป");
+    const email = document
+        .getElementById("ownerEmail")
+        .value
+        .trim()
+        .toLowerCase();
 
-});
+    if (!email) {
 
-// ================= SAVE =================
+        alert("กรุณากรอก Email");
 
-document
-.getElementById("saveOwnerBtn")
-.addEventListener("click",()=>{
+        return;
 
-    alert("ยังไม่ได้พัฒนาส่วนนี้");
+    }
 
-});
+    const q = query(
 
-// ================= DELETE =================
+        collection(db, "users"),
 
-document
-.getElementById("deleteOwnerBtn")
-.addEventListener("click",()=>{
+        where("email", "==", email)
 
-    alert("ยังไม่ได้พัฒนาส่วนนี้");
+    );
 
-});
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+
+        alert("ไม่พบ Email");
+
+        return;
+
+    }
+
+    const userDoc = snap.docs[0];
+
+    const data = userDoc.data();
+
+    if (data.role !== "owner") {
+
+        alert("ผู้ใช้นี้ไม่ได้เป็น Owner");
+
+        return;
+
+    }
+
+    if (!confirm("ต้องการลบ Owner ใช่หรือไม่ ?"))
+        return;
+
+    await updateDoc(
+
+        doc(db, "users", userDoc.id),
+
+        {
+
+            role: "student",
+
+            status: "active"
+
+        }
+
+    );
+
+    alert("ลบ Owner สำเร็จ");
+
+    closeModal();
+
+    loadOwners();
+
+};
+
+// ================= CHANGE STATUS =================
+
+window.changeStatus = async function (uid) {
+
+    const owner = owners.find(x => x.id === uid);
+
+    if (!owner) return;
+
+    const status = owner.status === "active"
+        ? "disabled"
+        : "active";
+
+    if (!confirm("ต้องการเปลี่ยนสถานะใช่หรือไม่ ?"))
+        return;
+
+    await updateDoc(
+
+        doc(db, "users", uid),
+
+        {
+
+            status: status
+
+        }
+
+    );
+
+    loadOwners();
+
+};
+
+// ================= CLOSE MODAL =================
+
+window.closeModal = function () {
+
+    document.getElementById("userModal").style.display = "none";
+
+    document.getElementById("ownerEmail").value = "";
+
+};
 
 // ================= LOGOUT =================
 
-document
-.getElementById("logoutBtn")
-.addEventListener("click",async()=>{
+document.getElementById("logoutBtn").onclick = async () => {
 
-    if(!confirm("ออกจากระบบ ?"))
+    if (!confirm("ออกจากระบบ ?"))
         return;
 
     await signOut(auth);
 
-    location.href="superadmin-login.html";
+    location.href = "superadmin-login.html";
 
-});
+};

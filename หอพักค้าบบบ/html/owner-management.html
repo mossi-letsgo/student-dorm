@@ -40,99 +40,59 @@
         <ul>
 
             <li>
-
                 <a href="superadmin-dashboard.html">
-
                     <i class="fa-solid fa-chart-line"></i>
-
                     Dashboard
-
                 </a>
-
             </li>
 
             <li class="active">
-
                 <a href="owner-management.html">
-
                     <i class="fa-solid fa-user-tie"></i>
-
                     จัดการ Owner
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="student-management.html">
-
                     <i class="fa-solid fa-user-graduate"></i>
-
                     จัดการ Student
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="dorm-management.html">
-
                     <i class="fa-solid fa-building"></i>
-
                     จัดการหอพัก
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="room-management.html">
-
                     <i class="fa-solid fa-bed"></i>
-
                     จัดการห้องพัก
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="payment-management.html">
-
                     <i class="fa-solid fa-qrcode"></i>
-
                     PromptPay
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="system-setting.html">
-
                     <i class="fa-solid fa-gear"></i>
-
                     ตั้งค่าระบบ
-
                 </a>
-
             </li>
 
             <li>
-
                 <a href="system-log.html">
-
                     <i class="fa-solid fa-clock-rotate-left"></i>
-
                     Activity Logs
-
                 </a>
-
             </li>
 
         </ul>
@@ -142,23 +102,17 @@
             <div class="admin-profile">
 
                 <div class="avatar">
-
                     <i class="fa-solid fa-user"></i>
-
                 </div>
 
                 <div>
 
                     <h4 id="adminName">
-
                         กำลังโหลด...
-
                     </h4>
 
                     <small>
-
                         Super Administrator
-
                     </small>
 
                 </div>
@@ -185,40 +139,32 @@
 
             <div>
 
-                <h2>
+                <h2>Owner Management</h2>
 
-                    Owner Management
-
-                </h2>
-
-                <p>
-
-                    จัดการข้อมูลเจ้าของหอพัก
-
-                </p>
+                <p>จัดการข้อมูลเจ้าของหอพัก</p>
 
             </div>
 
         </div>
 
-        <!-- TOOLBAR -->
+        <!-- ================= TOOLBAR ================= -->
 
         <div class="panel">
 
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;">
+            <div class="toolbar">
 
                 <input
                     type="text"
                     id="searchOwner"
-                    placeholder="ค้นหา Owner">
+                    placeholder="ค้นหา Owner จากชื่อหรือ Email">
 
                 <button
                     class="btn"
                     id="addOwnerBtn">
 
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fa-solid fa-user-plus"></i>
 
-                    เพิ่ม Owner
+                    แก้ไข Owner
 
                 </button>
 
@@ -226,7 +172,7 @@
 
         </div>
 
-        <!-- TABLE -->
+        <!-- ================= TABLE ================= -->
 
         <div class="panel">
 
@@ -254,7 +200,7 @@
 
                     <tr>
 
-                        <td colspan="5" style="text-align:center">
+                        <td colspan="5" style="text-align:center;">
 
                             กำลังโหลดข้อมูล...
 
@@ -276,68 +222,49 @@
 
         <div class="modal-box">
 
-            <h2 id="modalTitle">
+            <h2>
+
+                <i class="fa-solid fa-user-plus"></i>
 
                 เพิ่ม Owner
 
             </h2>
 
-            <input
-                type="text"
-                id="fullname"
-                placeholder="ชื่อ">
+            <p class="modal-text">
+
+                กรอก Email ของผู้ใช้ที่สมัครสมาชิกแล้ว
+
+            </p>
 
             <input
                 type="email"
-                id="email"
-                placeholder="Email">
+                id="ownerEmail"
+                placeholder="example@gmail.com">
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Password">
-
-            <select id="status">
-
-                <option value="active">
-
-                    Active
-
-                </option>
-
-                <option value="disabled">
-
-                    Disabled
-
-                </option>
-
-            </select>
-
-            <div style="display:flex;gap:10px;margin-top:20px;">
+            <div class="modal-footer">
 
                 <button
                     class="btn"
                     id="saveOwnerBtn">
 
-                    <i class="fa-solid fa-floppy-disk"></i>
+                    <i class="fa-solid fa-check"></i>
 
-                    บันทึก
-
-                </button>
-
-                <button
-                    class="btn"
-                    id="deleteOwnerBtn"
-                    style="background:#b71c1c;display:none;">
-
-                    <i class="fa-solid fa-trash"></i>
-
-                    ลบ
+                    ยืนยัน
 
                 </button>
 
                 <button
-                    class="btn"
+                    class="btn btn-danger"
+                    id="deleteOwnerBtn">
+
+                    <i class="fa-solid fa-user-minus"></i>
+
+                    ลบ Owner
+
+                </button>
+
+                <button
+                    class="btn btn-secondary"
                     onclick="closeModal()">
 
                     <i class="fa-solid fa-xmark"></i>
@@ -353,9 +280,15 @@
     </div>
 
     <script>
-        function closeModal() {
-            document.getElementById("userModal").style.display = "none";
+
+        function closeModal(){
+
+            document.getElementById("userModal").style.display="none";
+
+            document.getElementById("ownerEmail").value="";
+
         }
+
     </script>
 
     <script type="module" src="../js/owner-management.js"></script>

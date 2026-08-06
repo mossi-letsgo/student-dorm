@@ -11,56 +11,172 @@ body{
     justify-content:center;
     align-items:center;
     background:linear-gradient(135deg,#520000,#a00000);
-    color:white;
+    color:#fff;
 }
+
+/* Container */
+
+.login-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* Login Box */
 
 .login-box{
     width:420px;
     background:#151010;
     border-radius:25px;
     padding:45px;
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+    text-align:center;
 }
 
+/* Logo */
+
 .login-logo{
-    width:80px;
-    height:80px;
-    margin:auto;
+    width:85px;
+    height:85px;
+    margin:0 auto 25px;
     border-radius:50%;
     background:#d00000;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:35px;
 }
+
+.login-logo i{
+    font-size:38px;
+    color:#fff;
+}
+
+/* Title */
+
+.login-box h2{
+    font-size:34px;
+    font-weight:600;
+    margin-bottom:5px;
+}
+
+.subtitle{
+    color:#aaa;
+    margin-bottom:35px;
+    font-size:15px;
+}
+
+/* Input */
 
 .input-group{
     display:flex;
     align-items:center;
-    background:#111;
-    border-radius:10px;
-    padding:15px;
-    margin:15px 0;
+    gap:15px;
+    background:#101010;
+    border-radius:14px;
+    padding:16px 18px;
+    margin-bottom:18px;
+    transition:.25s;
+}
+
+.input-group:focus-within{
+    border:1px solid #d00000;
+    box-shadow:0 0 12px rgba(208,0,0,.35);
+}
+
+.input-group i{
+    color:#ff4444;
+    font-size:18px;
 }
 
 .input-group input{
     flex:1;
     border:none;
+    outline:none;
     background:none;
     color:#fff;
-    outline:none;
+    font-size:16px;
 }
+
+.input-group input::placeholder{
+    color:#777;
+}
+
+/* Chrome Autofill */
+
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus{
+    -webkit-box-shadow:0 0 0 1000px #101010 inset;
+    -webkit-text-fill-color:#fff;
+}
+
+/* Button */
 
 .loginBtn{
     width:100%;
-    padding:15px;
+    height:56px;
+    margin-top:10px;
     border:none;
-    border-radius:10px;
-    background:#d00000;
+    border-radius:14px;
+    background:#c00000;
     color:#fff;
+    font-size:18px;
+    font-weight:500;
     cursor:pointer;
+    transition:.25s;
 }
 
 .loginBtn:hover{
     background:#ff0000;
+    transform:translateY(-2px);
+}
+
+/* Back */
+
+.back-link{
+    margin-top:30px;
+}
+
+.back-link a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:15px;
+    transition:.25s;
+}
+
+.back-link a:hover{
+    color:#fff;
+}
+
+/* Selection */
+
+::selection{
+    background:#d00000;
+    color:#fff;
+}
+
+/* Responsive */
+
+@media(max-width:480px){
+
+.login-box{
+    width:100%;
+    padding:35px 25px;
+}
+
+.login-box h2{
+    font-size:28px;
+}
+
+.login-logo{
+    width:70px;
+    height:70px;
+}
+
+.login-logo i{
+    font-size:30px;
+}
+
 }

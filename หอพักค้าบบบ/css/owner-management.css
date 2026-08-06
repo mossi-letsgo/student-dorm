@@ -151,3 +151,205 @@ table button{
 table button:hover{
     background:#d40000;
 }
+
+/* ================= ADMIN PROFILE ================= */
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.avatar{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#b30000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:18px;
+}
+
+.admin-profile h4{
+    font-size:15px;
+    color:#fff;
+}
+
+.admin-profile small{
+    color:#999;
+    font-size:12px;
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.toolbar input{
+    flex:1;
+    min-width:250px;
+    padding:12px 15px;
+    border:none;
+    outline:none;
+    border-radius:10px;
+    background:#2b2b2b;
+    color:#fff;
+    font-size:15px;
+}
+
+.toolbar input::placeholder{
+    color:#999;
+}
+
+
+/* ================= TABLE ================= */
+
+table tr{
+    transition:.25s;
+}
+
+table tr:hover{
+    background:#272727;
+}
+
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-box{
+    width:420px;
+    background:#1c1c1c;
+    border-radius:18px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.modal-box h2{
+    margin-bottom:10px;
+    font-size:25px;
+}
+
+.modal-text{
+    color:#bbb;
+    margin-bottom:20px;
+}
+
+.modal-box input{
+    width:100%;
+    padding:13px 15px;
+    border:none;
+    border-radius:10px;
+    background:#2b2b2b;
+    color:#fff;
+    outline:none;
+    font-size:15px;
+}
+
+.modal-box input::placeholder{
+    color:#888;
+}
+
+.modal-footer{
+    margin-top:25px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.btn{
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-danger{
+    background:#8b0000;
+}
+
+.btn-danger:hover{
+    background:#c40000;
+}
+
+.btn-secondary{
+    background:#555;
+}
+
+.btn-secondary:hover{
+    background:#777;
+}
+
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#900;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#222;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    body{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    .main{
+        padding:18px;
+    }
+
+    .toolbar{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .toolbar input{
+        width:100%;
+    }
+
+    .modal-box{
+        width:92%;
+    }
+
+    table{
+        font-size:14px;
+    }
+
+}
