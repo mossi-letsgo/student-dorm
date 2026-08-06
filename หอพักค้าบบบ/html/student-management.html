@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Management</title>
+
+    <link rel="stylesheet" href="../css/studen-manament.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+   <div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-user-shield"></i>
+
+        <div>
+
+            <h2>Super Admin</h2>
+
+            <small>Control Panel</small>
+
+        </div>
+
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="../html/superadmin-dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/owner-management.html">
+                <i class="fa-solid fa-user-tie"></i>
+                จัดการ Owner
+            </a>
+        </li>
+
+        <!-- Active อยู่ตรงนี้ -->
+        <li class="active">
+            <a href="../html/student-management.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                จัดการ Student
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/dorm-management.html">
+                <i class="fa-solid fa-building"></i>
+                จัดการหอพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/room-management.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/payment-management.html">
+                <i class="fa-solid fa-qrcode"></i>
+                PromptPay
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-setting.html">
+                <i class="fa-solid fa-gear"></i>
+                ตั้งค่าระบบ
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-log.html">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Activity Logs
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+
+        <div class="admin-profile">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <h4 id="adminName">
+                    กำลังโหลด...
+                </h4>
+
+                <small>Super Administrator</small>
+
+            </div>
+
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>Student Management</h2>
+
+                <p>จัดการข้อมูลนักศึกษา</p>
+
+            </div>
+
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="panel">
+
+            <div class="toolbar">
+
+                <input
+                    type="text"
+                    id="searchStudent"
+                    placeholder="ค้นหาจากชื่อ Email หรือรหัสนักศึกษา">
+
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="panel">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>ชื่อ</th>
+                        <th>Email</th>
+                        <th>รหัสนักศึกษา</th>
+                        <th>สาขา</th>
+                        <th>อายุ</th>
+                        <th>เบอร์โทร</th>
+                        <th>จัดการ</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="studentTable">
+
+                    <tr>
+
+                        <td colspan="7" style="text-align:center">
+
+                            กำลังโหลดข้อมูล...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- EDIT MODAL -->
+
+    <div id="studentModal" class="modal" style="display:none;">
+
+        <div class="modal-box">
+
+            <h2>แก้ไขข้อมูลนักศึกษา</h2>
+
+            <input type="hidden" id="studentUid">
+
+            <input
+                type="text"
+                id="fullname"
+                placeholder="ชื่อ">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email">
+
+            <input
+                type="text"
+                id="studentId"
+                placeholder="รหัสนักศึกษา">
+
+            <input
+                type="text"
+                id="major"
+                placeholder="สาขา">
+
+            <input
+                type="number"
+                id="age"
+                placeholder="อายุ">
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="เบอร์โทร">
+
+            <div class="modal-footer">
+
+                <button
+                    class="btn"
+                    id="saveStudentBtn">
+
+                    บันทึก
+
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="closeStudentModal()">
+
+                    ยกเลิก
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function closeStudentModal(){
+
+            document.getElementById("studentModal").style.display="none";
+
+        }
+
+    </script>
+
+    <script type="module" src="../js/student-management.js"></script>
+
+</body>
+
+</html>

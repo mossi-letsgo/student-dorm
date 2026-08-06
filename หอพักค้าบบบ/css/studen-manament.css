@@ -36,6 +36,7 @@ body{
 
 .logo h2{
     color:#fff;
+    font-size:20px;
 }
 
 .logo small{
@@ -59,7 +60,7 @@ body{
     color:#ddd;
     text-decoration:none;
     border-radius:10px;
-    transition:.3s;
+    transition:.25s;
 }
 
 .sidebar a:hover,
@@ -68,18 +69,18 @@ body{
     color:#fff;
 }
 
-/* ================= ADMIN ================= */
-
 .sidebar-footer{
     padding:20px;
     border-top:1px solid rgba(255,255,255,.08);
 }
 
+/* ================= ADMIN ================= */
+
 .admin-profile{
     display:flex;
     align-items:center;
     gap:12px;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .avatar{
@@ -90,18 +91,18 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+}
+
+.avatar i{
     color:#fff;
-    font-size:18px;
 }
 
 .admin-profile h4{
-    color:#fff;
     font-size:15px;
 }
 
 .admin-profile small{
     color:#999;
-    font-size:12px;
 }
 
 .logout-btn{
@@ -127,10 +128,7 @@ body{
 }
 
 .topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .topbar h2{
@@ -145,41 +143,62 @@ body{
 
 .panel{
     background:#1c1c1c;
-    border-radius:15px;
-    padding:20px;
-    margin-bottom:20px;
-    border:1px solid rgba(255,255,255,.08);
+    border-radius:16px;
+    padding:22px;
+    margin-bottom:25px;
+    border:1px solid rgba(255,255,255,.06);
 }
 
-/* ================= TOOLBAR ================= */
+/* ================= SEARCH ================= */
 
 .toolbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
     gap:15px;
-    flex-wrap:wrap;
 }
 
 .toolbar input{
     flex:1;
-    min-width:280px;
-    max-width:450px;
-    padding:12px 15px;
+    padding:14px;
     border:none;
     outline:none;
     border-radius:10px;
-    background:#2b2b2b;
+    background:#2a2a2a;
     color:#fff;
     font-size:15px;
 }
 
 .toolbar input::placeholder{
-    color:#888;
+    color:#999;
 }
 
-.toolbar .btn{
-    white-space:nowrap;
+/* ================= TABLE ================= */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    padding:15px;
+    text-align:left;
+    color:#ff8f8f;
+    border-bottom:2px solid #333;
+}
+
+td{
+    padding:15px;
+    border-bottom:1px solid #333;
+    color:#fff;
+}
+
+tbody tr{
+    transition:.2s;
+}
+
+tbody tr:hover{
+    background:#262626;
 }
 
 /* ================= BUTTON ================= */
@@ -196,7 +215,6 @@ body{
 
 .btn:hover{
     background:#d40000;
-    transform:translateY(-2px);
 }
 
 .btn-secondary{
@@ -208,78 +226,25 @@ body{
 }
 
 .btn-danger{
-    background:#8b0000;
+    background:#7b0000;
 }
 
 .btn-danger:hover{
-    background:#c40000;
-}
-
-/* ================= TABLE ================= */
-
-.table-responsive{
-    overflow-x:auto;
-}
-
-table{
-    width:100%;
-    min-width:1000px;
-    border-collapse:collapse;
-}
-
-th,td{
-    padding:15px;
-    border-bottom:1px solid #333;
-    text-align:left;
-}
-
-th{
-    color:#ff7d7d;
-}
-
-td{
-    color:#fff;
-}
-
-tbody tr{
-    transition:.25s;
-}
-
-tbody tr:hover{
-    background:#272727;
+    background:#a00000;
 }
 
 table button{
-    border:none;
-    border-radius:8px;
-    padding:8px 12px;
-    cursor:pointer;
+    background:#b30000;
     color:#fff;
-    margin-right:6px;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-.edit-btn{
-    background:#1976d2;
-}
-
-.edit-btn:hover{
-    background:#2196f3;
-}
-
-.password-btn{
-    background:#ff9800;
-}
-
-.password-btn:hover{
-    background:#ffb300;
-}
-
-.delete-btn{
-    background:#8b0000;
-}
-
-.delete-btn:hover{
-    background:#c40000;
+table button:hover{
+    background:#d40000;
 }
 
 /* ================= MODAL ================= */
@@ -287,21 +252,34 @@ table button{
 .modal{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.65);
     display:none;
     justify-content:center;
     align-items:center;
+    background:rgba(0,0,0,.7);
     z-index:999;
 }
 
 .modal-box{
-    width:95%;
-    max-width:480px;
+    width:500px;
     background:#1c1c1c;
     border-radius:18px;
     padding:30px;
     border:1px solid rgba(255,255,255,.08);
-    box-shadow:0 20px 60px rgba(0,0,0,.45);
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
 }
 
 .modal-box h2{
@@ -310,13 +288,14 @@ table button{
 
 .modal-box input{
     width:100%;
-    padding:13px 15px;
+    padding:13px;
     margin-bottom:15px;
     border:none;
-    border-radius:10px;
-    background:#2b2b2b;
-    color:#fff;
     outline:none;
+    border-radius:10px;
+    background:#2a2a2a;
+    color:#fff;
+    font-size:15px;
 }
 
 .modal-box input::placeholder{
@@ -324,11 +303,10 @@ table button{
 }
 
 .modal-footer{
-    margin-top:20px;
     display:flex;
     justify-content:flex-end;
     gap:10px;
-    flex-wrap:wrap;
+    margin-top:15px;
 }
 
 /* ================= SCROLLBAR ================= */
@@ -359,30 +337,23 @@ table button{
     }
 
     .main{
-        padding:18px;
+        padding:15px;
     }
 
     .toolbar{
         flex-direction:column;
-        align-items:stretch;
     }
 
     .toolbar input{
         width:100%;
-        min-width:100%;
-        max-width:100%;
-    }
-
-    .toolbar .btn{
-        width:100%;
     }
 
     .modal-box{
-        width:92%;
+        width:95%;
     }
 
     table{
-        min-width:850px;
+        font-size:13px;
     }
 
 }
