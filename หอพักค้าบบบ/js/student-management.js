@@ -124,8 +124,6 @@ function renderTable(data){
 
             <td>${student.fullname ?? "-"}</td>
 
-            <td>${student.email ?? "-"}</td>
-
             <td>${student.studentId ?? "-"}</td>
 
             <td>${student.major ?? "-"}</td>
@@ -171,8 +169,6 @@ document
 
         student.fullname?.toLowerCase().includes(keyword)||
 
-        student.email?.toLowerCase().includes(keyword)||
-
         student.studentId?.toLowerCase().includes(keyword)
 
     );
@@ -194,9 +190,6 @@ window.editStudent = function(uid){
 
     document.getElementById("fullname").value =
         student.fullname ?? "";
-
-    document.getElementById("email").value =
-        student.email ?? "";
 
     document.getElementById("studentId").value =
         student.studentId ?? "";
@@ -228,8 +221,6 @@ document
 
     const fullname = document.getElementById("fullname").value.trim();
 
-    const email = document.getElementById("email").value.trim();
-
     const studentId = document.getElementById("studentId").value.trim();
 
     const major = document.getElementById("major").value.trim();
@@ -240,7 +231,6 @@ document
 
     if (
         fullname === "" ||
-        email === "" ||
         studentId === ""
     ){
 
@@ -259,8 +249,6 @@ document
             {
 
                 fullname,
-
-                email,
 
                 studentId,
 

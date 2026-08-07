@@ -1,70 +1,184 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>สมัครสมาชิก</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/regsiter.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
-<body class="login-page">
+<body class="register-page">
 
-<div class="login-box">
+<form class="register-box">
 
     <h2>สมัครสมาชิก</h2>
 
+    <p class="subtitle">
+        ระบบจัดการหอพักนักศึกษา
+    </p>
+
+    <!-- ชื่อ -->
+
     <div class="input-group">
+
         <label>ชื่อ - นามสกุล</label>
-        <input type="text" id="fullname" placeholder="กรอกชื่อ - นามสกุล">
+
+        <input
+            type="text"
+            id="fullname"
+            placeholder="กรอกชื่อ - นามสกุล"
+            required>
+
     </div>
 
+    <!-- รหัสนักศึกษา -->
+
     <div class="input-group">
+
         <label>รหัสนักศึกษา</label>
-        <input type="text" id="studentId" placeholder="เช่น 66338010001">
+
+        <input
+            type="text"
+            id="studentId"
+            placeholder="เช่น 66338010001"
+            required>
+
     </div>
 
-    <div class="input-group">
-        <label>คณะ / แผนก</label>
-        <input type="text" id="faculty" placeholder="เช่น วิทยาศาสตร์">
-    </div>
+    <!-- ระดับการศึกษา -->
 
     <div class="input-group">
+
+        <label>ระดับการศึกษา</label>
+
+        <select id="education" required>
+
+            <option value="">-- เลือกระดับการศึกษา --</option>
+
+            <option value="ปวช.">ประกาศนียบัตรวิชาชีพ (ปวช.)</option>
+
+            <option value="ปวส.">ประกาศนียบัตรวิชาชีพชั้นสูง (ปวส.)</option>
+
+        </select>
+
+    </div>
+
+    <!-- ระดับชั้น -->
+
+    <div class="input-group">
+
+        <label>ระดับชั้น</label>
+
+        <select id="level" disabled>
+
+            <option value="">-- เลือกระดับชั้น --</option>
+
+        </select>
+
+    </div>
+
+    <!-- สาขา -->
+
+    <div class="input-group">
+
         <label>สาขา</label>
-        <input type="text" id="major" placeholder="เช่น วิทยาการคอมพิวเตอร์">
+
+        <select id="major" disabled>
+
+            <option value="">-- เลือกสาขา --</option>
+
+        </select>
+
     </div>
 
+    <!-- เบอร์โทร -->
+
     <div class="input-group">
+
         <label>เบอร์โทรศัพท์</label>
-        <input type="tel" id="phone" placeholder="08xxxxxxxx">
+
+        <input
+            type="tel"
+            id="phone"
+            maxlength="10"
+            placeholder="08xxxxxxxx"
+            required>
+
     </div>
 
+    <!-- Email -->
+
     <div class="input-group">
+
         <label>Email</label>
-        <input type="email" id="email" placeholder="example@gmail.com">
+
+        <input
+            type="email"
+            id="email"
+            placeholder="example@gmail.com"
+            required>
+
     </div>
 
+    <!-- Password -->
+
     <div class="input-group">
+
         <label>รหัสผ่าน</label>
-        <input type="password" id="password" placeholder="อย่างน้อย 6 ตัวอักษร">
+
+        <input
+            type="password"
+            id="password"
+            placeholder="อย่างน้อย 6 ตัวอักษร"
+            required>
+
     </div>
+
+    <!-- Confirm Password -->
 
     <div class="input-group">
-        <label>ยืนยันรหัสผ่าน</label>   
-        <input type="password" id="confirmPassword" placeholder="กรอกรหัสผ่านอีกครั้ง">
+
+        <label>ยืนยันรหัสผ่าน</label>
+
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="กรอกรหัสผ่านอีกครั้ง"
+            required>
+
     </div>
 
-    <button class="login-btn" id="registerBtn">
+    <!-- สมัคร -->
+
+    <button
+        type="button"
+        class="register-btn"
+        id="registerBtn">
+
         สมัครสมาชิก
+
     </button>
 
     <div class="bottom-text">
+
         มีบัญชีอยู่แล้ว ?
-        <a href="login.html">เข้าสู่ระบบ</a>
+
+        <a href="login.html">
+
+            เข้าสู่ระบบ
+
+        </a>
+
     </div>
 
-</div>
+</form>
 
 <script type="module" src="../js/register.js"></script>
 

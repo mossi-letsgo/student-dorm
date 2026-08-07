@@ -4,7 +4,7 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     onAuthStateChanged,
-     signOut,
+    signOut,
     signInWithPopup
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
@@ -19,7 +19,9 @@ import {
 import { loadTheme } from "../js/theme.js";
 
 await loadTheme();
+
 const provider = new GoogleAuthProvider();
+
 
 // ================= AUTO LOGIN =================
 
@@ -32,23 +34,45 @@ onAuthStateChanged(auth, async (user) => {
         const ref = doc(db, "users", user.uid);
         const snap = await getDoc(ref);
 
-        if (!snap.exists()) return;
+        if (!snap.exists()) {
 
-        const role = snap.data().role;
+            await signOut(auth);
+            return;
 
-        if (role === "owner") {
-            window.location.href = "admin-dashboard.html";
-        } else {
-            window.location.href = "dashboard.html";
         }
 
-    } catch (err) {
+        const data = snap.data();
+
+        if (data.status === "disabled") {
+
+            alert("บัญชีของคุณถูกระงับการใช้งาน");
+
+            await signOut(auth);
+
+            return;
+
+        }
+
+        if (data.role === "owner") {
+
+            location.href = "admin-dashboard.html";
+
+        }
+        else if (data.role === "student") {
+
+            location.href = "dashboard.html";
+
+        }
+
+    }
+    catch (err) {
 
         console.error(err);
 
     }
 
 });
+
 
 // ================= LOGIN EMAIL =================
 
@@ -66,63 +90,89 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
     try {
 
-        const userCredential = await signInWithEmailAndPassword(
-    auth,
-    email,
-    password
-);
+        const userCredential =
+            await signInWithEmailAndPassword(auth, email, password);
 
-const user = userCredential.user;
+        const user = userCredential.user;
 
-const snap = await getDoc(doc(db, "users", user.uid));
+        const userRef = doc(db, "users", user.uid);
 
-if (!snap.exists()) {
+        const snap = await getDoc(userRef);
 
-    alert("ไม่พบข้อมูลผู้ใช้");
+        if (!snap.exists()) {
 
-    await signOut(auth);
+            alert("ไม่พบข้อมูลผู้ใช้");
 
-    return;
+            await signOut(auth);
 
-}
+            return;
 
-const data = snap.data();
+        }
 
-// ❌ ห้าม Super Admin เข้า Login นี้
-if (data.role === "superadmin") {
+        const data = snap.data();
 
-    alert("บัญชี Super Admin กรุณาเข้าสู่ระบบผ่านหน้า Super Admin");
+        // ตรวจสอบสถานะ
+        if (data.status === "disabled") {
 
-    await signOut(auth);
+            alert("บัญชีของคุณถูกระงับ");
 
-    location.href = "index.html"; // หรือ superadmin/login.html
+            await signOut(auth);
 
-    return;
+            return;
 
-}
+        }
 
-// ✅ Student
-if (data.role === "student") {
+        // กัน Super Admin
+        if (data.role === "superadmin") {
 
-    location.href = "dashboard.html";
-    return;
+            alert("บัญชี Super Admin กรุณาเข้าสู่ระบบผ่านหน้า Super Admin");
 
-}
+            await signOut(auth);
 
-// ✅ Owner
-if (data.role === "owner") {
+            location.href = "index.html";
 
-    location.href = "admin-dashboard.html";
-    return;
+            return;
 
-}
+        }
 
-// ❌ Role อื่น
-alert("ไม่มีสิทธิ์เข้าใช้งาน");
+        // อัปเดตเวลา Login
+        await updateDoc(userRef, {
 
-await signOut(auth);
+            lastLogin: serverTimestamp()
 
-    } catch (error) {
+        });
+
+        // Student
+        if (data.role === "student") {
+
+            alert("เข้าสู่ระบบสำเร็จ");
+
+            location.href = "dashboard.html";
+
+            return;
+
+        }
+
+        // Owner
+        if (data.role === "owner") {
+
+            alert("เข้าสู่ระบบสำเร็จ");
+
+            location.href = "admin-dashboard.html";
+
+            return;
+
+        }
+
+        alert("ไม่มีสิทธิ์เข้าใช้งาน");
+
+        await signOut(auth);
+
+    }
+
+    catch (error) {
+
+        console.error(error);
 
         switch (error.code) {
 
@@ -139,7 +189,11 @@ await signOut(auth);
                 break;
 
             case "auth/too-many-requests":
-                alert("ลองใหม่ภายหลัง");
+                alert("เข้าสู่ระบบหลายครั้งเกินไป กรุณาลองใหม่ภายหลัง");
+                break;
+
+            case "auth/network-request-failed":
+                alert("ไม่สามารถเชื่อมต่ออินเทอร์เน็ต");
                 break;
 
             default:
@@ -151,7 +205,8 @@ await signOut(auth);
 
 });
 
-// ================= LOGIN GOOGLE =================
+
+// ================= GOOGLE LOGIN =================
 
 document.getElementById("googleLoginBtn").addEventListener("click", async () => {
 
@@ -165,23 +220,31 @@ document.getElementById("googleLoginBtn").addEventListener("click", async () => 
 
         const userSnap = await getDoc(userRef);
 
-        // ถ้ายังไม่มีข้อมูลใน Firestore
+        // ยังไม่มีข้อมูล
         if (!userSnap.exists()) {
 
-           await setDoc(userRef, {
+            await setDoc(userRef, {
 
                 fullname: user.displayName,
+
                 email: user.email,
 
                 studentId: "",
+
                 faculty: "",
+
+                level: "",
+
                 major: "",
+
                 phone: "",
 
                 role: "student",
 
                 room: "",
+
                 tenant: false,
+
                 status: "active",
 
                 photoURL: user.photoURL || "",
@@ -189,44 +252,84 @@ document.getElementById("googleLoginBtn").addEventListener("click", async () => 
                 themeColor: "#b30000",
 
                 createdAt: serverTimestamp(),
+
                 lastLogin: serverTimestamp()
 
             });
 
             alert("สร้างบัญชีด้วย Google สำเร็จ");
 
-            window.location.href = "dashboard.html";
+            location.href = "dashboard.html";
 
             return;
 
         }
 
-        // อัปเดตเวลา Login
+        const data = userSnap.data();
+
+        // ตรวจสอบสถานะ
+        if (data.status === "disabled") {
+
+            alert("บัญชีของคุณถูกระงับ");
+
+            await signOut(auth);
+
+            return;
+
+        }
+
+        // กัน Super Admin
+        if (data.role === "superadmin") {
+
+            alert("บัญชี Super Admin กรุณาเข้าสู่ระบบผ่านหน้า Super Admin");
+
+            await signOut(auth);
+
+            location.href = "index.html";
+
+            return;
+
+        }
+
         await updateDoc(userRef, {
 
             lastLogin: serverTimestamp()
 
         });
 
-        const role = userSnap.data().role || "student";
-
         alert("เข้าสู่ระบบด้วย Google สำเร็จ");
 
-        if (role === "owner") {
+        if (data.role === "owner") {
 
-            window.location.href = "admin-dashboard.html";
+            location.href = "admin-dashboard.html";
 
-        } else {
+        }
+        else {
 
-            window.location.href = "dashboard.html";
+            location.href = "dashboard.html";
 
         }
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(error);
 
-        alert(error.message);
+        switch (error.code) {
+
+            case "auth/popup-closed-by-user":
+                alert("ยกเลิกการเข้าสู่ระบบ");
+                break;
+
+            case "auth/popup-blocked":
+                alert("Browser บล็อก Popup");
+                break;
+
+            default:
+                alert(error.message);
+
+        }
 
     }
 
