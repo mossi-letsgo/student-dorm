@@ -4,85 +4,215 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>โปรไฟล์เจ้าของหอ</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ================= CSS ================= -->
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+
+    <!-- ================= GOOGLE FONT ================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ================= FONT AWESOME ================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
 
-<!-- ================= SIDEBAR ================= -->
+
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    id="menuToggle"
+    class="menu-toggle"
+    type="button"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
 <div class="sidebar">
 
+
+    <!-- LOGO -->
+
     <div class="logo">
+
         🏢 OWNER PANEL
+
     </div>
+
+
+    <!-- MENU -->
 
     <ul>
 
+
+        <!-- Dashboard -->
+
         <li>
+
             <a href="admin-dashboard.html">
+
                 <i class="fa-solid fa-house"></i>
-                Dashboard
+
+                <span>
+                    Dashboard
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Booking -->
+
         <li>
+
             <a href="admin-bookings.html">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                คำขอจองห้อง
+
+                <span>
+                    คำขอจองห้อง
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Leave -->
+
         <li>
+
             <a href="admin-leave.html">
+
                 <i class="fa-solid fa-person-walking-arrow-right"></i>
-                คำขอเลิกเช่า
+
+                <span>
+                    คำขอเลิกเช่า
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Repair -->
+
         <li>
+
             <a href="admin-repair.html">
+
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                แจ้งซ่อม
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Profile -->
 
         <li class="active">
+
             <a href="admin-profile.html">
+
                 <i class="fa-solid fa-user"></i>
-                โปรไฟล์
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Logout -->
+
         <li>
-            <a href="#" id="logoutBtn">
+
+            <a
+                href="#"
+                id="logoutBtn">
+
                 <i class="fa-solid fa-right-from-bracket"></i>
-                ออกจากระบบ
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
             </a>
+
         </li>
+
 
     </ul>
 
 </div>
 
-<!-- ================= MAIN ================= -->
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
 
     <div class="topbar">
 
         <div>
 
-            <h2>โปรไฟล์เจ้าของหอ</h2>
+            <h2>
+                โปรไฟล์เจ้าของหอ
+            </h2>
 
             <p id="adminName">
                 กำลังโหลดข้อมูล...
@@ -92,35 +222,51 @@
 
     </div>
 
-<div class="profile-header">
 
-    <img
-        id="profileImage"
-        class="profile-image"
-        src="../images/default-avatar.png"
-    >
 
-    <input
-        type="file"
-        id="profileFile"
-        accept="image/*"
-        hidden
-    >
+    <!-- =================================================
+         PROFILE IMAGE
+    ================================================= -->
 
-    <button
-        class="btn"
-        id="uploadBtn">
+    <div class="profile-header">
 
-        <i class="fa-solid fa-camera"></i>
 
-        เปลี่ยนรูปโปรไฟล์
+        <img
+            id="profileImage"
+            class="profile-image"
+            src="../images/default-avatar.png"
+            alt="รูปโปรไฟล์">
 
-    </button>
 
-</div>
-    <!-- ================= PROFILE ================= -->
+        <input
+            type="file"
+            id="profileFile"
+            accept="image/*"
+            hidden>
+
+
+        <button
+            class="btn"
+            id="uploadBtn"
+            type="button">
+
+            <i class="fa-solid fa-camera"></i>
+
+            เปลี่ยนรูปโปรไฟล์
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- =================================================
+         PROFILE INFORMATION
+    ================================================= -->
 
     <div class="welcome">
+
 
         <h2>
 
@@ -130,79 +276,114 @@
 
         </h2>
 
+
         <div class="profile-box">
+
+
+            <!-- ชื่อ -->
 
             <div class="input-group">
 
-                <label>ชื่อ - นามสกุล</label>
+                <label>
+                    ชื่อ - นามสกุล
+                </label>
 
                 <input
                     type="text"
-                    id="fullname"
-                >
+                    id="fullname">
 
             </div>
 
+
+
+            <!-- Email -->
+
             <div class="input-group">
 
-                <label>Email</label>
+                <label>
+                    Email
+                </label>
 
                 <input
                     type="email"
                     id="email"
-                    disabled
-                >
+                    disabled>
 
             </div>
 
+
+
+            <!-- ชื่อหอ -->
+
             <div class="input-group">
 
-                <label>ชื่อหอพัก</label>
+                <label>
+                    ชื่อหอพัก
+                </label>
 
                 <input
                     type="text"
-                    id="dormName"
-                >
+                    id="dormName">
 
             </div>
 
+
+
+            <!-- เบอร์ -->
+
             <div class="input-group">
 
-                <label>เบอร์โทร</label>
+                <label>
+                    เบอร์โทร
+                </label>
 
                 <input
                     type="text"
-                    id="phone"
-                >
+                    id="phone">
 
             </div>
 
+
+
+            <!-- ที่อยู่ -->
+
             <div class="input-group">
 
-                <label>ที่อยู่</label>
+                <label>
+                    ที่อยู่
+                </label>
 
                 <textarea
                     id="address"
-                    rows="4"
-                ></textarea>
+                    rows="4"></textarea>
 
             </div>
 
+
+
+            <!-- Theme -->
+
             <div class="input-group">
 
-                <label>สีธีมระบบ</label>
+                <label>
+                    สีธีมระบบ
+                </label>
 
                 <input
                     type="color"
                     id="themeColor"
-                    value="#b30000"
-                >
+                    value="#b30000">
 
             </div>
 
+
+
+            <!-- Save -->
+
             <button
                 class="btn"
-                id="saveBtn">
+                id="saveBtn"
+                type="button">
 
                 <i class="fa-solid fa-floppy-disk"></i>
 
@@ -210,15 +391,56 @@
 
             </button>
 
+
         </div>
 
     </div>
 
+
 </div>
 
-<script type="module" src="../js/admin-profile.js"></script>
-<script type="module" src="../js/admin-dashboard.js"></script>
-<script type="module" src="../js/theme.js"></script>
-<script type="module" src="../js/owner-notification.js"></script>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<script
+    type="module"
+    src="../js/admin-profile.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/admin-dashboard.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/owner-notification.js">
+</script>
+
+
+<!-- MOBILE SIDEBAR -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
 </body>
+
 </html>

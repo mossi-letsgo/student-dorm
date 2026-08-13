@@ -12,6 +12,10 @@ import {
     updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import {
+    writeLog
+} from "./logger.js";
+
 let currentUser = null;
 
 // ================= LOAD USER =================

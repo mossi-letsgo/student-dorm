@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Payment Management</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/payment-management.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-user-shield"></i>
+
+        <div>
+
+            <h2>Super Admin</h2>
+
+            <small>Control Panel</small>
+
+        </div>
+
+    </div>
+
+
+    <ul>
+
+        <li>
+
+            <a href="superadmin-dashboard.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Dashboard
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="owner-management.html">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                จัดการ Owner
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="student-management.html">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                จัดการ Student
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="room-management.html">
+
+                <i class="fa-solid fa-bed"></i>
+
+                จัดการห้องพัก
+
+            </a>
+
+        </li>
+
+
+        <li class="active">
+
+            <a href="payment-management.html">
+
+                <i class="fa-solid fa-qrcode"></i>
+
+                PromptPay
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="system-setting.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                ตั้งค่าระบบ
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="system-log.html">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Activity Logs
+
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <!-- =========================
+         ADMIN PROFILE
+    ========================= -->
+
+    <div class="sidebar-footer">
+
+        <div class="admin-profile">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4 id="adminName">
+                    กำลังโหลด...
+                </h4>
+
+                <small>
+                    Super Administrator
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="logoutBtn"
+            class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<div class="main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+                Payment Management
+            </h2>
+
+            <p>
+                จัดการข้อมูล PromptPay สำหรับรับชำระเงิน
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PAYMENT PANEL
+    ========================= -->
+
+    <div class="panel payment-panel">
+
+        <div class="panel-header">
+
+            <div>
+
+                <h3>
+                    <i class="fa-solid fa-qrcode"></i>
+
+                    PromptPay ของหอพัก
+                </h3>
+
+                <p>
+                    กำหนดบัญชี PromptPay ที่ใช้รับเงินจากนักศึกษา
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- OWNER -->
+
+        <div class="input-group">
+
+            <label for="ownerSelect">
+
+                เจ้าของหอพัก
+
+            </label>
+
+            <select id="ownerSelect">
+
+                <option value="">
+                    กำลังโหลด Owner...
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- PROMPTPAY -->
+
+        <div class="input-group">
+
+            <label for="promptpayNumber">
+
+                หมายเลข PromptPay
+
+            </label>
+
+            <input
+                type="text"
+                id="promptpayNumber"
+                maxlength="10"
+                placeholder="เช่น 0812345678">
+
+            <small class="input-help">
+
+                ใช้เบอร์โทรศัพท์ที่ผูกกับ PromptPay
+
+            </small>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="input-group">
+
+            <label for="paymentStatus">
+
+                สถานะการใช้งาน
+
+            </label>
+
+            <select id="paymentStatus">
+
+                <option value="active">
+                    เปิดใช้งาน
+                </option>
+
+                <option value="inactive">
+                    ปิดใช้งาน
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- CURRENT INFO -->
+
+        <div class="current-payment">
+
+            <div class="current-icon">
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+            </div>
+
+
+            <div class="current-info">
+
+                <span>
+                    PromptPay ที่กำลังใช้งาน
+                </span>
+
+                <strong id="currentPromptpay">
+                    -
+                </strong>
+
+                <small id="currentOwner">
+                    ยังไม่ได้กำหนด
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- SAVE -->
+
+        <div class="form-footer">
+
+            <button
+                class="btn"
+                id="savePaymentBtn">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                บันทึกข้อมูล
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         INFORMATION
+    ========================= -->
+
+    <div class="panel info-panel">
+
+        <div class="info-icon">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+        </div>
+
+
+        <div>
+
+            <h3>
+                ข้อมูลการชำระเงิน
+            </h3>
+
+            <p>
+                PromptPay ที่เปิดใช้งานจะถูกนำไปใช้สร้าง QR Code
+                สำหรับการชำระค่าห้องและค่าใช้จ่ายต่าง ๆ
+                ภายในระบบ
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script
+    type="module"
+    src="../js/payment-management.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
+</body>
+
+</html>

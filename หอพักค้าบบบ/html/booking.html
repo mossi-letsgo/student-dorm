@@ -1,127 +1,369 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
     <title>ห้องพัก | ระบบหอพัก</title>
 
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <script type="module" src="../js/theme.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
+
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
 
-    <div class="logo">🏢 Dormitory</div>
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        🏢 Dormitory
+
+    </div>
+
+
+    <!-- MENU -->
 
     <ul>
 
-        <li>
-            <a href="dashboard.html">
-                <i class="fa-solid fa-house"></i> หน้าหลัก
-            </a>
-        </li>
+
+        <!-- Dashboard -->
 
         <li>
-            <a href="rooms.html">
-                <i class="fa-solid fa-bed"></i> ห้องพัก 
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    หน้าหลัก
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Rooms -->
+
+        <li>
+
+            <a href="rooms.html">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <span>
+                    ห้องพัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- Booking -->
 
         <li class="active">
+
             <a href="booking.html">
-                <i class="fa-solid fa-calendar-check"></i> จองห้องพัก
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>
+                    จองห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Repair -->
+
         <li>
+
             <a href="repair.html">
-                <i class="fa-solid fa-screwdriver-wrench"></i> แจ้งซ่อม
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Profile -->
+
         <li>
+
             <a href="profile.html">
-                <i class="fa-solid fa-user"></i> โปรไฟล์
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Logout -->
+
         <li>
-            <a href="#" id="logoutBtn">
-                <i class="fa-solid fa-right-from-bracket"></i> ออกจากระบบ
+
+            <a
+                href="#"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
             </a>
+
         </li>
+
 
     </ul>
 
-</div>
+</aside>
 
-<!-- MAIN -->
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
 <div class="main">
 
-    <!-- TOP -->
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
     <div class="topbar">
+
         <div>
-            <h2>ห้องพักทั้งหมด</h2>
-            <p>เลือกห้องที่ต้องการจอง</p>
+
+            <h2>
+                ห้องพักทั้งหมด
+            </h2>
+
+            <p>
+                เลือกห้องที่ต้องการจอง
+            </p>
+
         </div>
+
     </div>
 
-    <!-- FILTER -->
+
+    <!-- =================================================
+         FILTER
+    ================================================= -->
+
     <div class="welcome">
 
-        <h2><i class="fa-solid fa-filter"></i> ประเภทห้อง</h2>
+
+        <h2>
+
+            <i class="fa-solid fa-filter"></i>
+
+            ประเภทห้อง
+
+        </h2>
+
 
         <div class="room-filter">
 
-    <button class="btn active-filter" onclick="filterRoom('all')">
-        <i class="fa-solid fa-border-all"></i>
-        ทั้งหมด
-    </button>
 
-    <button class="btn" onclick="filterRoom('small')">
-        <i class="fa-solid fa-house"></i>
-        ห้องเล็ก
-    </button>
+            <!-- ALL -->
 
-    <button class="btn" onclick="filterRoom('medium')">
-        <i class="fa-solid fa-building"></i>
-        ห้องกลาง
-    </button>
+            <button
+                type="button"
+                class="btn active-filter"
+                onclick="filterRoom('all')">
 
-    <button class="btn" onclick="filterRoom('large')">
-        <i class="fa-solid fa-hotel"></i>
-        ห้องใหญ่
-    </button>
+                <i class="fa-solid fa-border-all"></i>
 
-</div>
+                ทั้งหมด
 
-    </div>
+            </button>
 
-    <!-- ROOM LIST -->
-    <div class="welcome">
 
-        <h2><i class="fa-solid fa-door-open"></i> รายการห้องพัก</h2>
+            <!-- SMALL -->
 
-        <div id="roomContainer"
-             style="
-                display:grid;
-                grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-                gap:20px;
-                margin-top:20px;
-             ">
+            <button
+                type="button"
+                class="btn"
+                onclick="filterRoom('small')">
+
+                <i class="fa-solid fa-house"></i>
+
+                ห้องเล็ก
+
+            </button>
+
+
+            <!-- MEDIUM -->
+
+            <button
+                type="button"
+                class="btn"
+                onclick="filterRoom('medium')">
+
+                <i class="fa-solid fa-building"></i>
+
+                ห้องกลาง
+
+            </button>
+
+
+            <!-- LARGE -->
+
+            <button
+                type="button"
+                class="btn"
+                onclick="filterRoom('large')">
+
+                <i class="fa-solid fa-hotel"></i>
+
+                ห้องใหญ่
+
+            </button>
+
+
         </div>
 
     </div>
 
+
+    <!-- =================================================
+         ROOM LIST
+    ================================================= -->
+
+    <div class="welcome">
+
+
+        <h2>
+
+            <i class="fa-solid fa-door-open"></i>
+
+            รายการห้องพัก
+
+        </h2>
+
+
+        <div
+            id="roomContainer"
+            class="room-container">
+
+        </div>
+
+
+    </div>
+
+
 </div>
 
-<script type="module" src="../js/booking.js"></script>
- <script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/dashboard.js"></script>
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<!-- Theme -->
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<!-- Booking -->
+
+<script
+    type="module"
+    src="../js/booking.js">
+</script>
+
+
+<!-- Mobile Sidebar -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
 </body>
+
 </html>

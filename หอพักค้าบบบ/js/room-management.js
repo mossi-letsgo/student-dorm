@@ -17,6 +17,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 import { loadTheme } from "./theme.js";
+import { writeSystemLog } from "./system-log.js";
 
 await loadTheme();
 

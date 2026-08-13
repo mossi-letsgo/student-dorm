@@ -25,6 +25,9 @@ from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 
 import { loadTheme } from "../js/theme.js";
+import {
+    writeLog
+} from "./logger.js";
 
 
 await loadTheme();
@@ -834,61 +837,192 @@ ${data.message}
 
 async function loadStatistics() {
 
-    // ผู้เช่าทั้งหมด
-   const tenantSnap = await getDocs(
-    query(
-        collection(db, "users"),
-        where("role", "==", "student"),
-        where("tenant", "==", true)
-    )
-);
+    try {
 
-    document.getElementById("totalUser").innerText =
-        tenantSnap.size;
+        // =====================================================
+        // ผู้เช่าทั้งหมด
+        // =====================================================
 
-    // ห้องทั้งหมด
-    const roomSnap = await getDocs(
-        collection(db, "rooms")
-    );
+        const tenantSnap =
+            await getDocs(
+                query(
+                    collection(db, "users"),
+                    where("role", "==", "student"),
+                    where("tenant", "==", true)
+                )
+            );
 
-    document.getElementById("totalRooms").innerText =
-        roomSnap.size;
 
-    // แจ้งซ่อม
-    const repairSnap = await getDocs(
-        collection(db, "repairs")
-    );
+        const totalUserEl =
+            document.getElementById("totalUser");
 
-    document.getElementById("totalRepairs").innerText =
-        repairSnap.size;
 
-    // รายได้รวม
-    let income = 0;
+        if (totalUserEl) {
 
-    const paymentSnap = await getDocs(
-        query(
-            collection(db, "leaseRequests"),
-            where("paymentStatus", "==", "paid")
-        )
-    );
+            totalUserEl.innerText =
+                tenantSnap.size;
 
-    paymentSnap.forEach(doc => {
+        }
+        else {
 
-        income += Number(doc.data().total || 0);
+            console.warn(
+                "ไม่พบ element #totalUser"
+            );
 
-    });
+        }
 
-    document.getElementById("totalIncome").innerText =
-        income.toLocaleString() + " บาท";
+
+        // =====================================================
+        // ห้องทั้งหมด
+        // =====================================================
+
+        const roomSnap =
+            await getDocs(
+                collection(db, "rooms")
+            );
+
+
+        const totalRoomsEl =
+            document.getElementById("totalRooms");
+
+
+        if (totalRoomsEl) {
+
+            totalRoomsEl.innerText =
+                roomSnap.size;
+
+        }
+        else {
+
+            console.warn(
+                "ไม่พบ element #totalRooms"
+            );
+
+        }
+
+
+        // =====================================================
+        // แจ้งซ่อมทั้งหมด
+        // =====================================================
+
+        const repairSnap =
+            await getDocs(
+                collection(db, "repairs")
+            );
+
+
+        const totalRepairsEl =
+            document.getElementById("totalRepairs");
+
+
+        if (totalRepairsEl) {
+
+            totalRepairsEl.innerText =
+                repairSnap.size;
+
+        }
+        else {
+
+            console.warn(
+                "ไม่พบ element #totalRepairs"
+            );
+
+        }
+
+
+        // =====================================================
+        // รายได้รวม
+        // =====================================================
+
+        let income = 0;
+
+
+        const paymentSnap =
+            await getDocs(
+                query(
+                    collection(db, "leaseRequests"),
+                    where(
+                        "paymentStatus",
+                        "==",
+                        "paid"
+                    )
+                )
+            );
+
+
+        paymentSnap.forEach(
+            (paymentDoc) => {
+
+                const data =
+                    paymentDoc.data();
+
+
+                income +=
+                    Number(
+                        data.total || 0
+                    );
+
+            }
+        );
+
+
+        const totalIncomeEl =
+            document.getElementById(
+                "totalIncome"
+            );
+
+
+        if (totalIncomeEl) {
+
+            totalIncomeEl.innerText =
+                income.toLocaleString() +
+                " บาท";
+
+        }
+        else {
+
+            console.warn(
+                "ไม่พบ element #totalIncome"
+            );
+
+        }
+
+
+        // =====================================================
+        // DEBUG
+        // =====================================================
+
+        console.log(
+            "Statistics loaded:",
+            {
+
+                totalUser:
+                    tenantSnap.size,
+
+                totalRooms:
+                    roomSnap.size,
+
+                totalRepairs:
+                    repairSnap.size,
+
+                totalIncome:
+                    income
+
+            }
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Load Statistics Error:",
+            error
+        );
+
+    }
 
 }
-
-
-
-
-
-
-
 // ================= LOGOUT =================
 
 document.getElementById("logoutBtn").addEventListener("click", async () => {

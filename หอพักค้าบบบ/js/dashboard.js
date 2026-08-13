@@ -19,9 +19,7 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import { loadTheme } from "../js/theme.js";
-
-
+import { loadTheme } from "../js/theme.js"; 
 await loadTheme();
 
 
@@ -405,3 +403,61 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
     }
 
 });
+
+// ================= MOBILE SIDEBAR =================
+
+const mobileMenuBtn =
+    document.getElementById("mobileMenuBtn");
+
+const mobileSidebar =
+    document.querySelector(".sidebar");
+
+const mobileOverlay =
+    document.getElementById("sidebarOverlay");
+
+
+if (
+    mobileMenuBtn &&
+    mobileSidebar &&
+    mobileOverlay
+) {
+
+    // เปิด Sidebar
+
+    mobileMenuBtn.addEventListener("click", () => {
+
+        mobileSidebar.classList.add("open");
+
+        mobileOverlay.classList.add("show");
+
+    });
+
+
+    // ปิด Sidebar เมื่อกด Overlay
+
+    mobileOverlay.addEventListener("click", () => {
+
+        mobileSidebar.classList.remove("open");
+
+        mobileOverlay.classList.remove("show");
+
+    });
+
+
+    // กดเมนูแล้วปิด Sidebar
+
+    mobileSidebar
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                mobileSidebar.classList.remove("open");
+
+                mobileOverlay.classList.remove("show");
+
+            });
+
+        });
+
+}

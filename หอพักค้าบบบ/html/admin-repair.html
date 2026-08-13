@@ -4,143 +4,327 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>จัดการแจ้งซ่อม</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ================= CSS ================= -->
 
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+
+    <!-- ================= GOOGLE FONT ================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ================= FONT AWESOME ================= -->
+
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
-<!-- ================= SIDEBAR ================= -->
+
+
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    id="menuToggle"
+    class="menu-toggle"
+    type="button"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
 <div class="sidebar">
 
+
+    <!-- LOGO -->
+
     <div class="logo">
+
         🏢 OWNER PANEL
+
     </div>
+
+
+    <!-- MENU -->
 
     <ul>
 
+
+        <!-- Dashboard -->
+
         <li>
+
             <a href="admin-dashboard.html">
+
                 <i class="fa-solid fa-house"></i>
-                Dashboard
+
+                <span>
+                    Dashboard
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Bookings -->
+
         <li>
+
             <a href="admin-bookings.html">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                คำขอจองห้อง
+
+                <span>
+                    คำขอจองห้อง
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Leave -->
+
         <li>
+
             <a href="admin-leave.html">
+
                 <i class="fa-solid fa-person-walking-arrow-right"></i>
-                คำขอเลิกเช่า
+
+                <span>
+                    คำขอเลิกเช่า
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Repair -->
 
         <li class="active">
+
             <a href="admin-repair.html">
+
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                แจ้งซ่อม
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
 
-<li>
-    <a href="admin-profile.html">
-        <i class="fa-solid fa-user-gear"></i>
-        โปรไฟล์
-    </a>
-</li>
+
+        <!-- Profile -->
+
         <li>
-            <a href="#" id="logoutBtn">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                ออกจากระบบ
+
+            <a href="admin-profile.html">
+
+                <i class="fa-solid fa-user-gear"></i>
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Logout -->
+
+        <li>
+
+            <a
+                href="#"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
+            </a>
+
+        </li>
+
 
     </ul>
 
 </div>
 
-    <!-- ================= MAIN ================= -->
 
-  <div class="main">
 
-    <!-- ================= TOPBAR ================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
 
     <div class="topbar">
 
+
         <div>
 
-            <h2>จัดการแจ้งซ่อม</h2>
+            <h2>
+                จัดการแจ้งซ่อม
+            </h2>
+
 
             <p id="adminName">
+
                 Loading...
+
             </p>
 
         </div>
 
+
     </div>
 
-    <!-- ================= SUMMARY ================= -->
+
+
+    <!-- =================================================
+         SUMMARY CARDS
+    ================================================= -->
 
     <div class="cards">
+
+
+        <!-- ================= ALL ================= -->
 
         <div class="card">
 
             <i class="fa-solid fa-screwdriver-wrench"></i>
 
-            <h3>รายการทั้งหมด</h3>
 
-            <h1 id="totalRepair">0</h1>
+            <h3>
+                รายการทั้งหมด
+            </h3>
+
+
+            <h1 id="totalRepair">
+                0
+            </h1>
 
         </div>
+
+
+
+        <!-- ================= PENDING ================= -->
 
         <div class="card">
 
             <i class="fa-solid fa-hourglass-half"></i>
 
-            <h3>รอดำเนินการ</h3>
 
-            <h1 id="pendingRepair">0</h1>
+            <h3>
+                รอดำเนินการ
+            </h3>
+
+
+            <h1 id="pendingRepair">
+                0
+            </h1>
 
         </div>
+
+
+
+        <!-- ================= REPAIRING ================= -->
 
         <div class="card">
 
             <i class="fa-solid fa-hammer"></i>
 
-            <h3>กำลังซ่อม</h3>
 
-            <h1 id="repairingRepair">0</h1>
+            <h3>
+                กำลังซ่อม
+            </h3>
+
+
+            <h1 id="repairingRepair">
+                0
+            </h1>
 
         </div>
+
+
+
+        <!-- ================= COMPLETED ================= -->
 
         <div class="card">
 
             <i class="fa-solid fa-circle-check"></i>
 
-            <h3>ซ่อมเสร็จ</h3>
 
-            <h1 id="completedRepair">0</h1>
+            <h3>
+                ซ่อมเสร็จ
+            </h3>
+
+
+            <h1 id="completedRepair">
+                0
+            </h1>
 
         </div>
 
+
     </div>
-    <!-- ================= REPAIR LIST ================= -->
+
+
+
+    <!-- =================================================
+         REPAIR LIST
+    ================================================= -->
 
     <div class="welcome">
+
 
         <h2>
 
@@ -150,7 +334,9 @@
 
         </h2>
 
+
         <br>
+
 
         <div id="repairContainer">
 
@@ -158,13 +344,61 @@
 
         </div>
 
+
     </div>
 
+
 </div>
-    <script type="module" src="../js/admin-repair.js"></script>
-    <script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/admin-dashboard.js"></script>
-    <script type="module" src="../js/owner-notification.js"></script>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<!-- Admin Repair -->
+
+<script
+    type="module"
+    src="../js/admin-repair.js">
+</script>
+
+
+<!-- Theme -->
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<!-- Admin Dashboard -->
+
+<script
+    type="module"
+    src="../js/admin-dashboard.js">
+</script>
+
+
+<!-- Owner Notification -->
+
+<script
+    type="module"
+    src="../js/owner-notification.js">
+</script>
+
+
+<!-- Mobile Sidebar -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
 
 </body>
 

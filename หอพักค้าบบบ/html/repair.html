@@ -4,84 +4,204 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>แจ้งซ่อม</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
 
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
 
-    <!-- ================= SIDEBAR ================= -->
 
-    <div class="sidebar">
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
 
-        <div class="logo">
-            🏢 Dormitory
-        </div>
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
 
-        <ul>
+    <i class="fa-solid fa-bars"></i>
 
-            <li>
-                <a href="dashboard.html">
-                    <i class="fa-solid fa-house"></i>
-                    หน้าหลัก
-                </a>
-            </li>
+</button>
 
-            <li>
-                <a href="rooms.html">
-                    <i class="fa-solid fa-bed"></i>
-                    ห้องพัก
-                </a>
-            </li>
 
-            <li>
-                <a href="booking.html">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    จองห้องพัก
-                </a>
-            </li>
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
 
-            <li class="active">
-                <a href="repair.html">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                    แจ้งซ่อม
-                </a>
-            </li>
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
 
-            <li>
-                <a href="profile.html">
-                    <i class="fa-solid fa-user"></i>
-                    โปรไฟล์
-                </a>
-            </li>
 
-            <li>
-                <a href="#" id="logoutBtn">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                    ออกจากระบบ
-                </a>
-            </li>
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
 
-        </ul>
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        🏢 Dormitory
 
     </div>
 
-    <!-- ================= MAIN ================= -->
 
-    <div class="main">
+    <!-- MENU -->
 
-        <div class="topbar">
+    <ul>
 
-            <h2>แจ้งซ่อมห้องพัก</h2>
+
+        <li>
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    หน้าหลัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="rooms.html">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <span>
+                    ห้องพัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="booking.html">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>
+                    จองห้องพัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li class="active">
+
+            <a href="repair.html">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    โปรไฟล์
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="#"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+                แจ้งซ่อมห้องพัก
+            </h2>
 
             <p id="userName">
                 กำลังโหลด...
@@ -89,91 +209,188 @@
 
         </div>
 
-        <!-- ฟอร์มแจ้งซ่อม -->
+    </div>
 
-        <div class="welcome">
 
-            <h2>
+    <!-- =================================================
+         REPAIR FORM
+    ================================================= -->
 
-                <i class="fa-solid fa-screwdriver-wrench"></i>
+    <div class="welcome">
 
-                แจ้งปัญหาห้องพัก
 
-            </h2>
+        <h2>
 
-            <br>
+            <i class="fa-solid fa-screwdriver-wrench"></i>
 
-            <label>ประเภทปัญหา</label>
+            แจ้งปัญหาห้องพัก
 
-            <select id="problem">
+        </h2>
 
-                <option value="">-- เลือกประเภทปัญหา --</option>
 
-                <option value="ไฟฟ้า">💡 ไฟฟ้า</option>
+        <br>
 
-                <option value="ประปา">🚰 ประปา</option>
 
-                <option value="เครื่องปรับอากาศ">❄ เครื่องปรับอากาศ</option>
+        <!-- ประเภทปัญหา -->
 
-                <option value="เฟอร์นิเจอร์">🛏 เฟอร์นิเจอร์</option>
+        <label for="problem">
+            ประเภทปัญหา
+        </label>
 
-                <option value="ประตู/หน้าต่าง">🚪 ประตู / หน้าต่าง</option>
 
-                <option value="อื่น ๆ">📌 อื่น ๆ</option>
+        <select id="problem">
 
-            </select>
 
-            <br><br>
+            <option value="">
+                -- เลือกประเภทปัญหา --
+            </option>
 
-            <label>รายละเอียดปัญหา</label>
 
-            <textarea
-                id="detail"
-                rows="6"
-                placeholder="อธิบายปัญหาที่พบ..."
-            ></textarea>
+            <option value="ไฟฟ้า">
+                💡 ไฟฟ้า
+            </option>
 
-            <br><br>
 
-            <button id="sendRepairBtn" class="btn">
+            <option value="ประปา">
+                🚰 ประปา
+            </option>
 
-                <i class="fa-solid fa-paper-plane"></i>
 
-                ส่งคำขอแจ้งซ่อม
+            <option value="เครื่องปรับอากาศ">
+                ❄ เครื่องปรับอากาศ
+            </option>
 
-            </button>
 
-        </div>
+            <option value="เฟอร์นิเจอร์">
+                🛏 เฟอร์นิเจอร์
+            </option>
 
-        <!-- สถานะ -->
 
-        <div class="welcome">
+            <option value="ประตู/หน้าต่าง">
+                🚪 ประตู / หน้าต่าง
+            </option>
 
-            <h2>
 
-                <i class="fa-solid fa-list-check"></i>
+            <option value="อื่น ๆ">
+                📌 อื่น ๆ
+            </option>
 
-                สถานะการแจ้งซ่อม
 
-            </h2>
+        </select>
 
-            <div id="repairStatus">
 
-                <p style="margin-top:20px;color:#aaa;">
+        <br>
+        <br>
 
-                    ยังไม่มีรายการแจ้งซ่อม
 
-                </p>
+        <!-- รายละเอียด -->
 
-            </div>
+        <label for="detail">
+            รายละเอียดปัญหา
+        </label>
 
-        </div>
+
+        <textarea
+            id="detail"
+            rows="6"
+            placeholder="อธิบายปัญหาที่พบ...">
+        </textarea>
+
+
+        <br>
+        <br>
+
+
+        <!-- ส่ง -->
+
+        <button
+            type="button"
+            id="sendRepairBtn"
+            class="btn">
+
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            ส่งคำขอแจ้งซ่อม
+
+
+        </button>
+
 
     </div>
 
-    <script type="module" src="../js/repair.js"></script>
-    <script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/dashboard.js"></script>
+
+    <!-- =================================================
+         REPAIR STATUS
+    ================================================= -->
+
+    <div class="welcome">
+
+
+        <h2>
+
+            <i class="fa-solid fa-list-check"></i>
+
+            สถานะการแจ้งซ่อม
+
+        </h2>
+
+
+        <div id="repairStatus">
+
+
+            <p
+                style="
+                margin-top:20px;
+                color:#aaa;
+                ">
+
+                ยังไม่มีรายการแจ้งซ่อม
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+
+<!-- Theme -->
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<!-- Repair -->
+
+<script
+    type="module"
+    src="../js/repair.js">
+</script>
+
+
+<!-- Mobile Sidebar -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
 </body>
 
 </html>

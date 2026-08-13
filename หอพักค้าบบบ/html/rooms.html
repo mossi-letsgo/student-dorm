@@ -4,80 +4,179 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>ห้องของฉัน</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
 
-<!-- ================= SIDEBAR ================= -->
 
-<div class="sidebar">
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
 
     <div class="logo">
+
         🏢 Dormitory
+
     </div>
+
 
     <ul>
 
+
         <li>
+
             <a href="dashboard.html">
+
                 <i class="fa-solid fa-house"></i>
-                หน้าหลัก
+
+                <span>
+                    หน้าหลัก
+                </span>
+
             </a>
+
         </li>
+
 
         <li class="active">
+
             <a href="rooms.html">
+
                 <i class="fa-solid fa-bed"></i>
-                ห้องพัก
+
+                <span>
+                    ห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
         <li>
+
             <a href="booking.html">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                จองห้องพัก
+
+                <span>
+                    จองห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
         <li>
+
             <a href="repair.html">
+
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                แจ้งซ่อม
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
 
+
         <li>
+
             <a href="profile.html">
+
                 <i class="fa-solid fa-user"></i>
-                โปรไฟล์
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
 
+
         <li>
-            <a href="#" id="logoutBtn">
+
+            <a
+                href="#"
+                id="logoutBtn">
+
                 <i class="fa-solid fa-right-from-bracket"></i>
-                ออกจากระบบ
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
             </a>
+
         </li>
+
 
     </ul>
 
-</div>
+</aside>
 
-<!-- ================= MAIN ================= -->
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="main">
+
 
     <!-- TOPBAR -->
 
@@ -85,7 +184,9 @@
 
         <div>
 
-            <h2>ห้องของฉัน</h2>
+            <h2>
+                ห้องของฉัน
+            </h2>
 
             <p id="userName">
                 กำลังโหลด...
@@ -95,7 +196,10 @@
 
     </div>
 
-    <!-- ROOM INFO -->
+
+    <!-- =================================================
+         ROOM INFO
+    ================================================= -->
 
     <div class="welcome">
 
@@ -107,6 +211,7 @@
 
         </h2>
 
+
         <div id="roomInfo">
 
             <!-- JS -->
@@ -115,7 +220,10 @@
 
     </div>
 
-    <!-- FACILITIES -->
+
+    <!-- =================================================
+         FACILITIES
+    ================================================= -->
 
     <div class="welcome">
 
@@ -127,7 +235,10 @@
 
         </h2>
 
-        <ul id="facilityList" class="facility-list">
+
+        <ul
+            id="facilityList"
+            class="facility-list">
 
             <!-- JS -->
 
@@ -135,7 +246,10 @@
 
     </div>
 
-    <!-- ACTION -->
+
+    <!-- =================================================
+         ACTION
+    ================================================= -->
 
     <div class="welcome">
 
@@ -147,9 +261,13 @@
 
         </h2>
 
+
         <div class="action-buttons">
 
-            <a href="repair.html" class="action-btn repair">
+
+            <a
+                href="repair.html"
+                class="action-btn repair">
 
                 <i class="fa-solid fa-screwdriver-wrench"></i>
 
@@ -157,7 +275,10 @@
 
             </a>
 
-            <a href="contact.html" class="action-btn contact">
+
+            <a
+                href="contact.html"
+                class="action-btn contact">
 
                 <i class="fa-solid fa-phone"></i>
 
@@ -165,7 +286,10 @@
 
             </a>
 
-            <a href="payments.html" class="action-btn payment">
+
+            <a
+                href="payments.html"
+                class="action-btn payment">
 
                 <i class="fa-solid fa-money-bill-wave"></i>
 
@@ -173,13 +297,18 @@
 
             </a>
 
+
         </div>
 
     </div>
 
-    <!-- LEAVE ROOM -->
+
+    <!-- =================================================
+         LEAVE ROOM
+    ================================================= -->
 
     <div class="welcome">
+
 
         <h2>
 
@@ -189,17 +318,29 @@
 
         </h2>
 
-        <p style="margin-top:15px;color:#bbb;line-height:1.8;">
 
-            หากต้องการยกเลิกการเช่าห้อง กรุณาส่งคำขอไปยังเจ้าของหอพัก
-            เมื่อเจ้าของหออนุมัติ ระบบจะคำนวณค่าใช้จ่ายทั้งหมด
+        <p
+            style="
+            margin-top:15px;
+            color:#bbb;
+            line-height:1.8;
+            ">
+
+            หากต้องการยกเลิกการเช่าห้อง
+            กรุณาส่งคำขอไปยังเจ้าของหอพัก
+            เมื่อเจ้าของหออนุมัติ
+            ระบบจะคำนวณค่าใช้จ่ายทั้งหมด
             และแสดง QR Code สำหรับการชำระเงิน
 
         </p>
 
+
         <div style="margin-top:25px;">
 
-            <button id="leaveRoomBtn" class="leave-btn">
+
+            <button
+                id="leaveRoomBtn"
+                class="leave-btn">
 
                 <i class="fa-solid fa-paper-plane"></i>
 
@@ -207,23 +348,36 @@
 
             </button>
 
+
         </div>
 
-        <div id="leaveStatus" style="margin-top:20px;">
+
+        <div
+            id="leaveStatus"
+            style="margin-top:20px;">
 
             <!-- JS -->
 
         </div>
 
+
     </div>
+
 
 </div>
 
-<!-- ================= PAYMENT MODAL ================= -->
 
-<div id="paymentModal" class="payment-modal">
+<!-- =====================================================
+     PAYMENT MODAL
+===================================================== -->
+
+<div
+    id="paymentModal"
+    class="payment-modal">
+
 
     <div class="payment-box">
+
 
         <h2>
 
@@ -233,20 +387,26 @@
 
         </h2>
 
+
         <p class="payment-subtitle">
 
             สแกน QR Code เพื่อจำลองการชำระเงิน
 
         </p>
 
-  <canvas
-    id="promptpayQR"
-    class="payment-qr">
-</canvas>
+
+        <canvas
+            id="promptpayQR"
+            class="payment-qr">
+        </canvas>
+
 
         <div class="payment-detail">
 
-            <span>ยอดที่ต้องชำระ</span>
+            <span>
+                ยอดที่ต้องชำระ
+            </span>
+
 
             <h1 id="paymentAmount">
 
@@ -256,7 +416,9 @@
 
         </div>
 
+
         <div class="btn-group">
+
 
             <button
                 id="confirmPaymentBtn"
@@ -268,7 +430,9 @@
 
             </button>
 
+
             <button
+                type="button"
                 class="btn btn-outline"
                 onclick="closePaymentModal()">
 
@@ -278,12 +442,14 @@
 
             </button>
 
+
         </div>
+
 
         <p
             style="
             margin-top:20px;
-            color:#888;
+            color:#e70d0d;
             font-size:14px;
             ">
 
@@ -291,24 +457,68 @@
 
         </p>
 
+
     </div>
 
 </div>
 
+
+<!-- =====================================================
+     CLOSE PAYMENT MODAL
+===================================================== -->
+
 <script>
 
-function closePaymentModal(){
+function closePaymentModal() {
 
-    document.getElementById("paymentModal").style.display="none";
+    const modal =
+        document.getElementById("paymentModal");
+
+    if (modal) {
+
+        modal.style.display = "none";
+
+    }
 
 }
 
 </script>
 
-<script type="module" src="../js/rooms.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
-<script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/dashboard.js"></script>
+
+<!-- =====================================================
+     QR CODE
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js">
+</script>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script
+    type="module"
+    src="../js/rooms.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
 </body>
 
 </html>

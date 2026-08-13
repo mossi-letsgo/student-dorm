@@ -4,141 +4,324 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>โปรไฟล์</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
 
-<!-- SIDEBAR -->
 
-<div class="sidebar">
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <!-- LOGO -->
 
     <div class="logo">
+
         🏢 Dormitory
+
     </div>
+
+
+    <!-- MENU -->
 
     <ul>
 
+
+        <!-- Dashboard -->
+
         <li>
+
             <a href="dashboard.html">
+
                 <i class="fa-solid fa-house"></i>
-                หน้าหลัก
+
+                <span>
+                    หน้าหลัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Rooms -->
+
         <li>
+
             <a href="rooms.html">
+
                 <i class="fa-solid fa-bed"></i>
-                ห้องพัก
+
+                <span>
+                    ห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Booking -->
+
         <li>
+
             <a href="booking.html">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                จองห้องพัก
+
+                <span>
+                    จองห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Repair -->
+
         <li>
+
             <a href="repair.html">
+
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                แจ้งซ่อม
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
+
+
+        <!-- Profile -->
 
         <li class="active">
+
             <a href="profile.html">
+
                 <i class="fa-solid fa-user"></i>
-                โปรไฟล์
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Logout -->
+
         <li>
-            <a href="#" id="logoutBtn">
+
+            <a
+                href="#"
+                id="logoutBtn">
+
                 <i class="fa-solid fa-right-from-bracket"></i>
-                ออกจากระบบ
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
             </a>
+
         </li>
+
 
     </ul>
 
-</div>
+</aside>
 
-<!-- MAIN -->
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <div class="main">
 
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
     <div class="topbar">
 
-        <h2>ข้อมูลส่วนตัว</h2>
+        <div>
 
-        <p id="welcomeText">กำลังโหลด...</p>
+            <h2>
+                ข้อมูลส่วนตัว
+            </h2>
+
+            <p id="welcomeText">
+                กำลังโหลด...
+            </p>
+
+        </div>
 
     </div>
 
-    <!-- ข้อมูล -->
+
+    <!-- =================================================
+         USER INFORMATION
+    ================================================= -->
 
     <div class="welcome">
 
+
         <h2>
+
             <i class="fa-solid fa-id-card"></i>
+
             ข้อมูลผู้ใช้
+
         </h2>
 
+
         <br>
+
+
+        <!-- ชื่อ -->
 
         <div class="input-group">
 
-            <label>ชื่อ-นามสกุล</label>
+            <label for="fullname">
+                ชื่อ-นามสกุล
+            </label>
 
-            <input type="text" id="fullname">
+            <input
+                type="text"
+                id="fullname">
 
         </div>
 
+
         <br>
+
+
+        <!-- Email -->
 
         <div class="input-group">
 
-            <label>อีเมล</label>
+            <label for="email">
+                อีเมล
+            </label>
 
-            <input type="email" id="email" disabled>
+            <input
+                type="email"
+                id="email"
+                disabled>
 
         </div>
 
+
         <br>
+
+
+        <!-- Student ID -->
 
         <div class="input-group">
 
-            <label>รหัสนักศึกษา</label>
+            <label for="studentId">
+                รหัสนักศึกษา
+            </label>
 
-            <input type="text" id="studentId">
+            <input
+                type="text"
+                id="studentId">
 
         </div>
 
+
         <br>
+
+
+        <!-- Phone -->
 
         <div class="input-group">
 
-            <label>เบอร์โทรศัพท์</label>
+            <label for="phone">
+                เบอร์โทรศัพท์
+            </label>
 
-            <input type="text" id="phone">
+            <input
+                type="text"
+                id="phone">
 
         </div>
 
+
         <br>
 
-        <button class="btn" id="saveBtn">
+
+        <!-- Save -->
+
+        <button
+            type="button"
+            class="btn"
+            id="saveBtn">
 
             <i class="fa-solid fa-floppy-disk"></i>
 
@@ -146,11 +329,16 @@
 
         </button>
 
+
     </div>
 
-    <!-- Theme -->
+
+    <!-- =================================================
+         THEME
+    ================================================= -->
 
     <div class="welcome">
+
 
         <h2>
 
@@ -160,22 +348,40 @@
 
         </h2>
 
+
         <br>
 
-        <label>เลือกสีหลักของระบบ</label>
 
-        <br><br>
+        <label for="themeColor">
+            เลือกสีหลักของระบบ
+        </label>
+
+
+        <br>
+        <br>
+
 
         <input
             type="color"
             id="themeColor"
             value="#b30000"
-            style="width:120px;height:60px;border:none;background:none;cursor:pointer;"
-        >
+            style="
+                width:120px;
+                height:60px;
+                border:none;
+                background:none;
+                cursor:pointer;
+            ">
 
-        <br><br>
 
-        <button class="btn" id="saveThemeBtn">
+        <br>
+        <br>
+
+
+        <button
+            type="button"
+            class="btn"
+            id="saveThemeBtn">
 
             <i class="fa-solid fa-paintbrush"></i>
 
@@ -183,13 +389,45 @@
 
         </button>
 
+
     </div>
+
 
 </div>
 
-<script type="module" src="../js/profile.js"></script>
-<script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/dashboard.js"></script>
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+
+<!-- Theme -->
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<!-- Profile -->
+
+<script
+    type="module"
+    src="../js/profile.js">
+</script>
+
+
+<!-- Mobile Sidebar -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
 </body>
 
 </html>

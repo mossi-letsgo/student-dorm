@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>System Log | Superadmin</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
+
+    <link
+        rel="stylesheet"
+        href="../css/system-log.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<button
+    id="menuToggle"
+    class="menu-toggle"
+    type="button"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="logo">
+
+        🛡️ SUPERADMIN
+
+    </div>
+
+
+        <ul>
+
+        <li class="active">
+            <a href="../html/superadmin-dashboard.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/owner-management.html">
+                <i class="fa-solid fa-user-tie"></i>
+                จัดการ Owner
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/student-management.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                จัดการ Student
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/room-management.html">
+                <i class="fa-solid fa-bed"></i>
+                จัดการห้องพัก
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/payment-management.html">
+                <i class="fa-solid fa-qrcode"></i>
+                PromptPay
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-setting.html">
+                <i class="fa-solid fa-gear"></i>
+                ตั้งค่าระบบ
+            </a>
+        </li>
+
+        <li>
+            <a href="../html/system-log.html">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Activity Logs
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+
+        <div class="admin-profile">
+
+            <div class="avatar">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+            <div>
+
+                <h4 id="adminName">
+                    กำลังโหลด...
+                </h4>
+
+                <small>Super Administrator</small>
+
+            </div>
+
+        </div>
+
+        <button id="logoutBtn" class="logout-btn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+                System Log
+            </h2>
+
+            <p id="adminName">
+                กำลังโหลดข้อมูล...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================= -->
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-file-lines"></i>
+
+            <h3>
+                Log ทั้งหมด
+            </h3>
+
+            <h1 id="totalLogs">
+                0
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-right-to-bracket"></i>
+
+            <h3>
+                Login
+            </h3>
+
+            <h1 id="loginLogs">
+                0
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-pen-to-square"></i>
+
+            <h3>
+                Update
+            </h3>
+
+            <h1 id="updateLogs">
+                0
+            </h1>
+
+        </div>
+
+
+        <div class="card">
+
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <h3>
+                Error
+            </h3>
+
+            <h1 id="errorLogs">
+                0
+            </h1>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         FILTER
+    ================================================= -->
+
+    <div class="welcome log-filter">
+
+
+        <h2>
+
+            <i class="fa-solid fa-filter"></i>
+
+            ค้นหา Log
+
+        </h2>
+
+
+        <div class="filter-grid">
+
+
+            <div>
+
+                <label>
+                    ค้นหา
+                </label>
+
+                <input
+                    type="text"
+                    id="logSearch"
+                    placeholder="UID / Email / รายละเอียด">
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Action
+                </label>
+
+                <select id="logAction">
+
+                    <option value="all">
+                        ทั้งหมด
+                    </option>
+
+                    <option value="LOGIN">
+                        LOGIN
+                    </option>
+
+                    <option value="LOGOUT">
+                        LOGOUT
+                    </option>
+
+                    <option value="CREATE">
+                        CREATE
+                    </option>
+
+                    <option value="UPDATE">
+                        UPDATE
+                    </option>
+
+                    <option value="DELETE">
+                        DELETE
+                    </option>
+
+                    <option value="ERROR">
+                        ERROR
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    Role
+                </label>
+
+                <select id="logRole">
+
+                    <option value="all">
+                        ทุก Role
+                    </option>
+
+                    <option value="superadmin">
+                        Superadmin
+                    </option>
+
+                    <option value="owner">
+                        Owner
+                    </option>
+
+                    <option value="student">
+                        Student
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-button">
+
+                <button
+                    type="button"
+                    id="filterLogBtn"
+                    class="btn">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    ค้นหา
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         LOG LIST
+    ================================================= -->
+
+    <div class="welcome">
+
+
+        <h2>
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            ประวัติการใช้งานระบบ
+
+        </h2>
+
+
+        <div id="logContainer">
+
+            <div class="log-loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                กำลังโหลด System Log...
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script type="module" src="../js/dashboard.js"></script>
+
+<script
+    type="module"
+    src="../js/system-log.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+
+</body>
+
+</html>

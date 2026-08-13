@@ -12,6 +12,8 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+import { writeSystemLog } from "./system-log.js";
+
 let students = [];
 
 // ================= LOGIN =================

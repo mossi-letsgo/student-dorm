@@ -1,0 +1,526 @@
+/* =====================================================
+   SYSTEM LOG
+===================================================== */
+
+.log-filter {
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   FILTER GRID
+===================================================== */
+
+.filter-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 2fr)
+        minmax(150px, 1fr)
+        minmax(150px, 1fr)
+        auto;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+.filter-grid label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 500;
+
+}
+
+
+.filter-grid input,
+.filter-grid select {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.15
+    );
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.05
+    );
+
+    color: inherit;
+
+    font-family: inherit;
+
+    outline: none;
+
+}
+
+
+.filter-grid input:focus,
+.filter-grid select:focus {
+
+    border-color: #b30000;
+
+}
+
+
+.filter-button {
+
+    display: flex;
+
+    align-items: end;
+
+}
+
+
+/* =====================================================
+   LOG TABLE
+===================================================== */
+
+.log-table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+}
+
+
+.log-table {
+
+    width: 100%;
+
+    min-width: 950px;
+
+    border-collapse: collapse;
+
+}
+
+
+.log-table th {
+
+    padding: 14px;
+
+    text-align: left;
+
+    font-weight: 600;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.07
+    );
+
+    border-bottom: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    white-space: nowrap;
+
+}
+
+
+.log-table td {
+
+    padding: 14px;
+
+    border-bottom: 1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    vertical-align: top;
+
+}
+
+
+.log-table tbody tr {
+
+    transition:
+        background 0.2s ease;
+
+}
+
+
+.log-table tbody tr:hover {
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.04
+    );
+
+}
+
+
+.log-table small {
+
+    opacity: 0.65;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   ACTION BADGE
+===================================================== */
+
+.action-badge {
+
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+}
+
+
+.action-login {
+
+    background: rgba(
+        0,
+        180,
+        100,
+        0.15
+    );
+
+    color: #35d98b;
+
+}
+
+
+.action-logout {
+
+    background: rgba(
+        100,
+        100,
+        100,
+        0.2
+    );
+
+}
+
+
+.action-create {
+
+    background: rgba(
+        0,
+        150,
+        255,
+        0.15
+    );
+
+    color: #55b9ff;
+
+}
+
+
+.action-update {
+
+    background: rgba(
+        255,
+        180,
+        0,
+        0.15
+    );
+
+    color: #ffc857;
+
+}
+
+
+.action-delete {
+
+    background: rgba(
+        255,
+        60,
+        60,
+        0.15
+    );
+
+    color: #ff6b6b;
+
+}
+
+
+.action-error {
+
+    background: rgba(
+        255,
+        50,
+        50,
+        0.2
+    );
+
+    color: #ff5c5c;
+
+}
+
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.role-badge {
+
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+
+}
+
+
+.role-superadmin {
+
+    background: rgba(
+        150,
+        80,
+        255,
+        0.15
+    );
+
+}
+
+
+.role-owner {
+
+    background: rgba(
+        255,
+        160,
+        0,
+        0.15
+    );
+
+}
+
+
+.role-student {
+
+    background: rgba(
+        0,
+        160,
+        255,
+        0.15
+    );
+
+}
+
+
+.role-unknown {
+
+    opacity: 0.6;
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-success {
+
+    color: #35d98b;
+
+}
+
+
+.status-error {
+
+    color: #ff5c5c;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.log-loading {
+
+    padding: 40px;
+
+    text-align: center;
+
+    opacity: 0.7;
+
+}
+
+
+.log-loading i {
+
+    margin-right: 8px;
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty-log {
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    opacity: 0.6;
+
+}
+
+
+.empty-log i {
+
+    font-size: 40px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.log-error {
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    background: rgba(
+        255,
+        0,
+        0,
+        0.08
+    );
+
+    color: #ff6b6b;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .filter-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .filter-button {
+
+        display: block;
+
+    }
+
+
+    .filter-button .btn {
+
+        width: 100%;
+
+    }
+
+
+    .log-table-wrapper {
+
+        margin-left: -5px;
+
+        width: calc(100% + 10px);
+
+    }
+
+}
+
+/* ================= ADMIN ================= */
+
+.sidebar-footer{
+    padding:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+.admin-profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.avatar{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#b30000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:18px;
+}
+
+.admin-profile h4{
+    color:#fff;
+    font-size:15px;
+}
+
+.admin-profile small{
+    color:#999;
+    font-size:12px;
+}
+
+.logout-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#b30000;
+    color:#fff;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.logout-btn:hover{
+    background:#d40000;
+}

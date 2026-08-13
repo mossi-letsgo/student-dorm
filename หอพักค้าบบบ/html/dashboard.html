@@ -4,92 +4,212 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard | ระบบหอพักนักศึกษา</title>
 
-    <link rel="stylesheet" href="../css/dashboard.css">
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css">
 
-    <script type="module" src="../js/theme.js"></script>
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
+
 <body>
 
-<!-- Sidebar -->
 
-<div class="sidebar">
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <!-- Logo -->
 
     <div class="logo">
+
         🏢 Dormitory
+
     </div>
+
+
+    <!-- Menu -->
 
     <ul>
 
+
+        <!-- Dashboard -->
+
         <li class="active">
+
             <a href="dashboard.html">
+
                 <i class="fa-solid fa-house"></i>
-                หน้าหลัก
+
+                <span>
+                    หน้าหลัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Rooms -->
+
         <li>
+
             <a href="rooms.html">
+
                 <i class="fa-solid fa-bed"></i>
-                ห้องพัก
+
+                <span>
+                    ห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Booking -->
+
         <li>
+
             <a href="booking.html">
+
                 <i class="fa-solid fa-calendar-check"></i>
-                จองห้องพัก
+
+                <span>
+                    จองห้องพัก
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Repair -->
+
         <li>
+
             <a href="repair.html">
+
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                แจ้งซ่อม
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Profile -->
+
         <li>
+
             <a href="profile.html">
+
                 <i class="fa-solid fa-user"></i>
-                โปรไฟล์
+
+                <span>
+                    โปรไฟล์
+                </span>
+
             </a>
+
         </li>
 
+
+        <!-- Logout -->
+
         <li>
-            <a href="#" id="logoutBtn">
+
+            <a
+                href="#"
+                id="logoutBtn">
+
                 <i class="fa-solid fa-right-from-bracket"></i>
-                ออกจากระบบ
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
             </a>
+
         </li>
+
 
     </ul>
 
-</div>
 
-<!-- Main -->
+</aside>
 
-<div class="main">
 
-    <!-- Topbar -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
 
     <div class="topbar">
 
         <div>
 
-            <h2>Dashboard</h2>
+            <h2>
+                Dashboard
+            </h2>
 
             <p id="userName">
                 กำลังโหลดข้อมูล...
@@ -99,55 +219,90 @@
 
     </div>
 
-    <!-- Dashboard Cards -->
+
+    <!-- =================================================
+         DASHBOARD CARDS
+    ================================================= -->
 
     <div class="cards">
+
+
+        <!-- ห้อง -->
 
         <div class="card">
 
             <i class="fa-solid fa-bed"></i>
 
-            <h3>ห้องของฉัน</h3>
+            <h3>
+                ห้องของฉัน
+            </h3>
 
-            <h1 id="myRoom">-</h1>
+            <h1 id="myRoom">
+                -
+            </h1>
 
         </div>
+
+
+        <!-- ค่าเช่า -->
 
         <div class="card">
 
             <i class="fa-solid fa-money-bill-wave"></i>
 
-            <h3>ค่าเช่า</h3>
+            <h3>
+                ค่าเช่า
+            </h3>
 
-            <h1 id="myRent">0 บาท</h1>
+            <h1 id="myRent">
+                0 บาท
+            </h1>
 
         </div>
+
+
+        <!-- แจ้งซ่อม -->
 
         <div class="card">
 
             <i class="fa-solid fa-screwdriver-wrench"></i>
 
-            <h3>แจ้งซ่อม</h3>
+            <h3>
+                แจ้งซ่อม
+            </h3>
 
-            <h1 id="myRepair">0</h1>
+            <h1 id="myRepair">
+                0
+            </h1>
 
         </div>
+
+
+        <!-- สถานะ -->
 
         <div class="card">
 
             <i class="fa-solid fa-circle-check"></i>
 
-            <h3>สถานะ</h3>
+            <h3>
+                สถานะ
+            </h3>
 
-            <h1 id="roomStatus">-</h1>
+            <h1 id="roomStatus">
+                -
+            </h1>
 
         </div>
 
+
     </div>
 
-    <!-- Notification -->
 
-    <div class="welcome notification-section">
+    <!-- =================================================
+         NOTIFICATION
+    ================================================= -->
+
+    <section class="welcome notification-section">
 
         <h2>
 
@@ -157,29 +312,36 @@
 
         </h2>
 
+
         <div id="notificationContainer">
 
             <div class="notification-item">
 
                 <i class="fa-solid fa-spinner"></i>
 
-                <p>กำลังโหลดการแจ้งเตือน...</p>
+                <p>
+                    กำลังโหลดการแจ้งเตือน...
+                </p>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <!-- Welcome -->
 
-    <div class="welcome">
+    <!-- =================================================
+         WELCOME
+    ================================================= -->
+
+    <section class="welcome">
 
         <h2 id="welcomeTitle">
 
             ยินดีต้อนรับเข้าสู่ระบบหอพักนักศึกษา
 
         </h2>
+
 
         <p id="welcomeText">
 
@@ -189,11 +351,14 @@
 
         </p>
 
-    </div>
+    </section>
 
-    <!-- News -->
 
-    <div class="welcome">
+    <!-- =================================================
+         NEWS
+    ================================================= -->
+
+    <section class="welcome">
 
         <h2>
 
@@ -203,26 +368,53 @@
 
         </h2>
 
+
         <div id="newsContainer">
 
             <p>
-
                 ยังไม่มีข่าวประชาสัมพันธ์
-
             </p>
 
         </div>
 
-    </div>
+    </section>
 
-</div>
 
-<!-- JS -->
+</main>
 
- <script type="module" src="../js/theme.js"></script>
-    <script type="module" src="../js/dashboard.js"></script>
 
-<script type="module" src="../js/user-guard.js"></script>
+<!-- =====================================================
+     SCRIPTS
+===================================================== -->
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/dashboard.js">
+</script>
+
+<script
+    type="module"
+    src="../js/user-guard.js">
+</script>
+
+
+<!-- ใช้ตัวนี้ตัวเดียว -->
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
 
 </body>
+
 </html>
