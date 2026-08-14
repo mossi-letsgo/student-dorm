@@ -21,7 +21,9 @@ import {
 
 
 import { loadTheme } from "../js/theme.js";
-import { writeSystemLog } from "./system-log.js";
+import {
+    writeLog
+} from "./logger.js";
 
 await loadTheme();
 

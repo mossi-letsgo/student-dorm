@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>จัดการค่าเช่า | OWNER PANEL</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/owner-cpayment.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE MENU
+===================================================== -->
+
+<button
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="logo">
+
+        🏢 OWNER PANEL
+
+    </div>
+
+
+    <ul>
+
+
+        <!-- DASHBOARD -->
+
+        <li>
+
+            <a href="admin-dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- BOOKING -->
+
+        <li>
+
+            <a href="admin-bookings.html">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>
+                    คำขอจองห้อง
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- LEAVE -->
+
+        <li>
+
+            <a href="admin-leave.html">
+
+                <i class="fa-solid fa-person-walking-arrow-right"></i>
+
+                <span>
+                    คำขอเลิกเช่า
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- REPAIR -->
+
+        <li>
+
+            <a href="admin-repair.html">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- PAYMENT -->
+
+        <li class="active">
+
+            <a href="owner-cpayment.html">
+
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                <span>
+                    สร้างบิลค่าเช่า
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- PROFILE -->
+
+        <li>
+
+            <a href="admin-profile.html">
+
+                <i class="fa-solid fa-user-gear"></i>
+
+                <span>
+                    โปรไฟล์
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <a
+                href="#"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                จัดการค่าเช่า
+
+            </h2>
+
+
+            <p id="ownerName">
+
+                กำลังโหลดข้อมูล...
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CREATE BILL + SUMMARY
+    ================================================= -->
+
+    <div class="payment-layout">
+
+
+        <!-- =================================================
+             CREATE BILL
+        ================================================= -->
+
+        <div class="welcome">
+
+
+            <h2>
+
+                <i class="fa-solid fa-plus-circle"></i>
+
+                สร้างบิลค่าเช่า
+
+            </h2>
+
+
+            <form id="paymentForm">
+
+
+                <!-- TENANT -->
+
+                <div class="form-group">
+
+                    <label for="tenantSelect">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        ผู้เช่า
+
+                    </label>
+
+
+                    <select
+                        id="tenantSelect"
+                        required>
+
+                        <option value="">
+
+                            -- เลือกผู้เช่า --
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ROOM -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        <i class="fa-solid fa-bed"></i>
+
+                        ห้องพัก
+
+                    </label>
+
+
+                    <div
+                        id="roomDisplay"
+                        class="room-display">
+
+                        กรุณาเลือกผู้เช่า
+
+                    </div>
+
+                </div>
+
+
+                <!-- AMOUNT -->
+
+                <div class="form-group">
+
+                    <label for="amount">
+
+                        <i class="fa-solid fa-money-bill-wave"></i>
+
+                        จำนวนเงิน
+
+                    </label>
+
+
+                    <div class="input-money">
+
+                        <input
+                            type="number"
+                            id="amount"
+                            min="1"
+                            step="0.01"
+                            placeholder="เช่น 3500"
+                            required>
+
+
+                        <span>
+
+                            บาท
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DUE DATE -->
+
+                <div class="form-group">
+
+                    <label for="dueDate">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        วันครบกำหนดชำระ
+
+                    </label>
+
+
+                    <input
+                        type="date"
+                        id="dueDate"
+                        required>
+
+                </div>
+
+
+                <!-- NOTE -->
+
+                <div class="form-group">
+
+                    <label for="note">
+
+                        <i class="fa-solid fa-note-sticky"></i>
+
+                        หมายเหตุ
+
+                    </label>
+
+
+                    <textarea
+                        id="note"
+                        rows="4"
+                        placeholder="รายละเอียดเพิ่มเติม เช่น ค่าเช่าประจำเดือน...">
+                    </textarea>
+
+                </div>
+
+
+                <!-- CREATE BUTTON -->
+
+                <button
+                    type="submit"
+                    id="createPaymentBtn"
+                    class="btn btn-primary">
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    สร้างบิล
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+        <!-- =================================================
+             SUMMARY
+        ================================================= -->
+
+        <div class="welcome">
+
+
+            <h2>
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+                สรุปการชำระเงิน
+
+            </h2>
+
+
+            <div class="summary-grid">
+
+
+                <!-- TOTAL -->
+
+                <div class="summary-card">
+
+                    <i class="fa-solid fa-file-invoice"></i>
+
+                    <span>
+
+                        บิลทั้งหมด
+
+                    </span>
+
+
+                    <strong id="totalBills">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+
+                <!-- PENDING -->
+
+                <div class="summary-card">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    <span>
+
+                        รอชำระ
+
+                    </span>
+
+
+                    <strong id="pendingBills">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+
+                <!-- PAID -->
+
+                <div class="summary-card">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+
+                        ชำระแล้ว
+
+                    </span>
+
+
+                    <strong id="paidBills">
+
+                        0
+
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         BILL LIST
+    ================================================= -->
+
+    <div class="welcome">
+
+
+        <!-- HEADER -->
+
+        <div class="section-header">
+
+
+            <h2>
+
+                <i class="fa-solid fa-list"></i>
+
+                รายการบิล
+
+            </h2>
+
+
+            <button
+                type="button"
+                id="refreshBtn"
+                class="btn btn-outline">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                รีเฟรช
+
+            </button>
+
+
+        </div>
+
+
+        <!-- =================================================
+             PAYMENT LIST
+        ================================================= -->
+
+        <div
+            id="paymentList"
+            class="payment-list">
+
+
+            <div class="loading">
+
+                <i
+                    class="fa-solid fa-spinner fa-spin">
+                </i>
+
+                กำลังโหลดรายการบิล...
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     PAYMENT CONFIRMATION MODAL
+===================================================== -->
+
+<div
+    id="paymentConfirmModal"
+    class="payment-modal">
+
+
+    <div class="payment-box">
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            id="closePaymentModal"
+            class="modal-close"
+            aria-label="ปิด">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <!-- TITLE -->
+
+        <h2>
+
+            <i class="fa-solid fa-money-check-dollar"></i>
+
+            ตรวจสอบการชำระเงิน
+
+        </h2>
+
+
+        <p class="payment-subtitle">
+
+            ตรวจสอบข้อมูลก่อนยืนยันการชำระเงิน
+
+        </p>
+
+
+        <!-- PAYMENT INFO -->
+
+        <div class="payment-confirm-info">
+
+
+            <div class="confirm-row">
+
+                <span>
+
+                    <i class="fa-solid fa-user"></i>
+
+                    ผู้เช่า
+
+                </span>
+
+
+                <strong id="confirmTenantName">
+
+                    -
+
+                </strong>
+
+            </div>
+
+
+            <div class="confirm-row">
+
+                <span>
+
+                    <i class="fa-solid fa-bed"></i>
+
+                    ห้อง
+
+                </span>
+
+
+                <strong id="confirmRoom">
+
+                    -
+
+                </strong>
+
+            </div>
+
+
+            <div class="confirm-row">
+
+                <span>
+
+                    <i class="fa-solid fa-money-bill-wave"></i>
+
+                    จำนวนเงิน
+
+                </span>
+
+
+                <strong id="confirmAmount">
+
+                    0 บาท
+
+                </strong>
+
+            </div>
+
+
+            <div class="confirm-row">
+
+                <span>
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                    วันครบกำหนด
+
+                </span>
+
+
+                <strong id="confirmDueDate">
+
+                    -
+
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- PAYMENT SLIP -->
+
+        <div
+            id="paymentSlipContainer"
+            class="payment-slip-container">
+
+
+            <h3>
+
+                <i class="fa-solid fa-receipt"></i>
+
+                หลักฐานการชำระเงิน
+
+            </h3>
+
+
+            <div
+                id="paymentSlipPreview"
+                class="payment-slip-preview">
+
+                ยังไม่มีหลักฐานการชำระเงิน
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ACTION -->
+
+        <div class="payment-confirm-actions">
+
+
+            <!-- CONFIRM -->
+
+            <button
+                type="button"
+                id="confirmPaymentBtn"
+                class="btn btn-success">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                ยืนยันการชำระเงิน
+
+            </button>
+
+
+            <!-- REJECT -->
+
+            <button
+                type="button"
+                id="rejectPaymentBtn"
+                class="btn btn-danger">
+
+                <i class="fa-solid fa-circle-xmark"></i>
+
+                ปฏิเสธการชำระเงิน
+
+            </button>
+
+
+            <!-- CANCEL -->
+
+            <button
+                type="button"
+                id="cancelPaymentBtn"
+                class="btn btn-outline">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                ยกเลิก
+
+            </button>
+
+
+        </div>
+
+
+        <p class="test-mode">
+
+            กรุณาตรวจสอบหลักฐานการชำระเงินก่อนยืนยัน
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     REJECT MODAL
+===================================================== -->
+
+<div
+    id="rejectModal"
+    class="payment-modal">
+
+
+    <div class="payment-box">
+
+
+        <button
+            type="button"
+            id="closeRejectModal"
+            class="modal-close">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+
+            <i class="fa-solid fa-circle-xmark"></i>
+
+            ปฏิเสธการชำระเงิน
+
+        </h2>
+
+
+        <p class="payment-subtitle">
+
+            กรุณาระบุเหตุผลที่ปฏิเสธ
+
+        </p>
+
+
+        <div class="form-group">
+
+
+            <label for="rejectReason">
+
+                <i class="fa-solid fa-comment"></i>
+
+                เหตุผล
+
+            </label>
+
+
+            <textarea
+                id="rejectReason"
+                rows="4"
+                placeholder="เช่น หลักฐานการโอนไม่ถูกต้อง หรือยอดเงินไม่ตรงกับบิล...">
+            </textarea>
+
+
+        </div>
+
+
+        <div class="payment-confirm-actions">
+
+
+            <button
+                type="button"
+                id="submitRejectBtn"
+                class="btn btn-danger">
+
+                <i class="fa-solid fa-ban"></i>
+
+                ยืนยันการปฏิเสธ
+
+            </button>
+
+
+            <button
+                type="button"
+                id="cancelRejectBtn"
+                class="btn btn-outline">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                ยกเลิก
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script
+    type="module"
+    src="../js/owner-cpayment.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
+
+</body>
+
+</html>

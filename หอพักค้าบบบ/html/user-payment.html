@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>ชำระค่าเช่า</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/user-payment.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MOBILE MENU BUTTON
+===================================================== -->
+
+<button
+    type="button"
+    id="menuToggle"
+    class="menu-toggle"
+    aria-label="เปิดเมนู"
+    aria-expanded="false">
+
+    <i class="fa-solid fa-bars"></i>
+
+</button>
+
+
+<!-- =====================================================
+     SIDEBAR OVERLAY
+===================================================== -->
+
+<div
+    id="sidebarOverlay"
+    class="sidebar-overlay">
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside
+    class="sidebar"
+    id="sidebar">
+
+
+    <div class="logo">
+
+        🏢 Dormitory
+
+    </div>
+
+
+    <ul>
+
+
+        <li>
+
+            <a href="dashboard.html">
+
+                <i class="fa-solid fa-house"></i>
+
+                <span>
+                    หน้าหลัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="rooms.html">
+
+                <i class="fa-solid fa-bed"></i>
+
+                <span>
+                    ห้องพัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="booking.html">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                <span>
+                    จองห้องพัก
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="repair.html">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <span>
+                    แจ้งซ่อม
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li class="active">
+
+            <a href="user-payment.html">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <span>
+                    ชำระค่าเช่า
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a href="profile.html">
+
+                <i class="fa-solid fa-user"></i>
+
+                <span>
+                    โปรไฟล์
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <li>
+
+            <a
+                href="#"
+                id="logoutBtn">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    ออกจากระบบ
+                </span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<div class="main">
+
+
+    <!-- =================================================
+         TOPBAR
+    ================================================= -->
+
+    <div class="topbar">
+
+        <div>
+
+            <h2>
+                ชำระค่าเช่า
+            </h2>
+
+            <p id="userName">
+                กำลังโหลด...
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PAYMENT NOTICE
+    ================================================= -->
+
+    <div
+        id="paymentNotice"
+        class="payment-notice">
+
+        <div class="notice-icon">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </div>
+
+
+        <div class="notice-content">
+
+            <h3>
+                แจ้งเตือนการชำระค่าเช่า
+            </h3>
+
+            <p id="noticeText">
+
+                กำลังตรวจสอบข้อมูลการชำระเงิน...
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         ROOM / TENANT INFO
+    ================================================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-house"></i>
+
+            ข้อมูลการเช่า
+
+        </h2>
+
+
+        <div
+            id="roomInfo"
+            class="info-grid">
+
+            <div class="info-card">
+
+                <span>
+                    ห้อง
+                </span>
+
+                <strong id="roomNumber">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>
+                    ค่าเช่าต่อเดือน
+                </span>
+
+                <strong id="monthlyRent">
+                    0 บาท
+                </strong>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <span>
+                    ผู้เช่า
+                </span>
+
+                <strong id="tenantName">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CURRENT PAYMENT
+    ================================================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+
+            ค่าเช่ารอบปัจจุบัน
+
+        </h2>
+
+
+        <div
+            id="paymentStatus"
+            class="payment-status">
+
+            <!-- JS -->
+
+            <div class="loading-payment">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                กำลังตรวจสอบข้อมูล...
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYMENT BUTTON -->
+
+        <div
+            id="paymentAction"
+            class="payment-action">
+
+            <!-- JS -->
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PAYMENT DETAILS
+    ================================================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-calendar-days"></i>
+
+            รายละเอียดกำหนดชำระ
+
+        </h2>
+
+
+        <div class="payment-detail-grid">
+
+
+            <div class="detail-box">
+
+                <span>
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    วันครบกำหนด
+
+                </span>
+
+                <strong id="dueDate">
+
+                    -
+
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    สถานะ
+
+                </span>
+
+                <strong
+                    id="dueStatus"
+                    class="status-text">
+
+                    -
+
+                </strong>
+
+            </div>
+
+
+            <div class="detail-box">
+
+                <span>
+
+                    <i class="fa-solid fa-money-bill"></i>
+
+                    ยอดที่ต้องชำระ
+
+                </span>
+
+                <strong id="paymentAmount">
+
+                    0 บาท
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         PAYMENT HISTORY
+    ================================================= -->
+
+    <div class="welcome">
+
+        <h2>
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            ประวัติการชำระเงิน
+
+        </h2>
+
+
+        <div
+            id="paymentHistory"
+            class="payment-history">
+
+            <div class="empty-history">
+
+                <i class="fa-solid fa-receipt"></i>
+
+                <p>
+                    กำลังโหลดประวัติการชำระเงิน...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     PAYMENT MODAL
+===================================================== -->
+
+<div
+    id="paymentModal"
+    class="payment-modal">
+
+
+    <div class="payment-box">
+
+
+        <button
+            type="button"
+            id="closePaymentModal"
+            class="modal-close">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <h2>
+
+            <i class="fa-solid fa-qrcode"></i>
+
+            ชำระค่าเช่า
+
+        </h2>
+
+
+        <p class="payment-subtitle">
+
+            สแกน QR Code เพื่อชำระค่าเช่า
+
+        </p>
+
+
+        <!-- QR -->
+
+        <div class="qr-wrapper">
+
+            <canvas
+                id="promptpayQR">
+            </canvas>
+
+        </div>
+
+
+        <!-- AMOUNT -->
+
+        <div class="payment-total">
+
+            <span>
+                ยอดที่ต้องชำระ
+            </span>
+
+            <h1 id="modalPaymentAmount">
+
+                0 บาท
+
+            </h1>
+
+        </div>
+
+
+        <!-- DUE DATE -->
+
+        <p
+            id="modalDueDate"
+            class="modal-due-date">
+
+            ครบกำหนดชำระ -
+
+        </p>
+
+
+        <!-- CONFIRM -->
+
+        <button
+            type="button"
+            id="confirmPaymentBtn"
+            class="btn btn-primary">
+
+            <i class="fa-solid fa-check"></i>
+
+            แจ้งว่าชำระเงินแล้ว
+
+        </button>
+
+
+        <button
+            type="button"
+            id="cancelPaymentBtn"
+            class="btn btn-outline">
+
+            <i class="fa-solid fa-xmark"></i>
+
+            ยกเลิก
+
+        </button>
+
+
+        <p class="test-mode">
+
+            ระบบจะแสดงสถานะการชำระเงิน
+            หลังจากแจ้งชำระแล้ว
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     QR CODE
+===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js">
+</script>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script
+    type="module"
+    src="../js/user-payment.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/theme.js">
+</script>
+
+
+<script
+    src="../js/mobile-menu.js">
+</script>
+
+
+<script
+    type="module"
+    src="../js/auto-logger.js">
+</script>
+
+
+</body>
+
+</html>

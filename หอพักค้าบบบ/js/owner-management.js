@@ -16,7 +16,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 let owners = [];
-import { writeSystemLog } from "./system-log.js";
+import {
+    writeLog
+} from "./logger.js";
 
 // ================= LOGIN =================
 

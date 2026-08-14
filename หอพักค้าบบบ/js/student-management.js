@@ -12,7 +12,9 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-import { writeSystemLog } from "./system-log.js";
+import {
+    writeLog
+} from "./logger.js";
 
 let students = [];
 
