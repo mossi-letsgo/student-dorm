@@ -269,7 +269,7 @@ if (loginBtn) {
                     await signOut(auth);
 
                     location.href =
-                        "index.html";
+                        "../index.html";
 
                     return;
 
