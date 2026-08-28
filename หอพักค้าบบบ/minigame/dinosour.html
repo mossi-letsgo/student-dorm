@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dino Runner | Super Admin Minigame</title>
+    <link rel="stylesheet" href="dinosour.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2><i class="fa-solid fa-dragon"></i> DINO RUNNER</h2>
+            <p>กด SPACEBAR หรือแตะปุ่มเพื่อกระโดดหลบสิ่งกีดขวาง</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="header-info">
+                <span><i class="fa-solid fa-trophy"></i> SCORE: <strong id="score">0</strong></span>
+                <span><i class="fa-solid fa-crown"></i> HIGH: <strong id="highScore">0</strong></span>
+            </div>
+            
+            <canvas id="gameCanvas" width="320" height="200"></canvas>
+
+            <div id="gameOverText" class="game-over-msg">
+                <i class="fa-solid fa-skull-crossbones"></i> GAME OVER<br>
+                <small>กด SPACEBAR หรือ RESTART เพื่อเริ่มใหม่</small>
+            </div>
+        </div>
+
+        <!-- ปุ่มควบคุม -->
+        <div class="controls">
+            <button class="btn jump-btn" id="jumpBtn"><i class="fa-solid fa-arrow-up"></i> JUMP (กระโดด)</button>
+            <button class="btn reset-btn" id="resetBtn"><i class="fa-solid fa-rotate-right"></i> RESTART</button>
+        </div>
+
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            <i class="fa-solid fa-arrow-left"></i> กลับสู่ Super Admin Dashboard
+        </a>
+    </div>
+
+    <script src="dinosour.js"></script>
+</body>
+</html>

@@ -138,3 +138,63 @@ document.getElementById("logoutBtn").onclick = async () => {
     location.href = "../index.html";
 
 };
+
+// ================= SECRET MULTI-GAME ACCESS (FIREBASE) =================
+let secretClickCount = 0;
+let secretClickTimer = null;
+
+const shieldBtn = document.getElementById("secretShieldBtn");
+
+if (shieldBtn) {
+    shieldBtn.addEventListener("click", async () => {
+        secretClickCount++;
+
+        clearTimeout(secretClickTimer);
+        secretClickTimer = setTimeout(() => {
+            secretClickCount = 0;
+        }, 2000);
+
+        // เมื่อกดครบ 5 ครั้งภายใน 2 วินาที
+        if (secretClickCount === 5) {
+            secretClickCount = 0;
+            clearTimeout(secretClickTimer);
+
+            const inputPass = prompt("🔒 กรุณากรอกรหัสลับเพื่อเข้าสู่มินิเกม:");
+            
+            if (inputPass === null) return; // กดยกเลิก
+
+            const cleanInput = inputPass.trim().toLowerCase();
+
+            try {
+                // ดึงข้อมูลรหัสลับจาก Firestore (collection: system, doc: game)
+                const secretDocRef = doc(db, "system", "game");
+                const secretSnap = await getDoc(secretDocRef);
+
+                if (secretSnap.exists()) {
+                    const secretData = secretSnap.data();
+                    
+                    const snakeCode = secretData.gametag; // ค่าใน DB คือ "snake"
+                    const dinoCode = secretData.dinotag;   // ค่าใน DB คือ "dino"
+
+                    // ตรวจสอบรหัสและเปลี่ยนหน้าตามที่พิมพ์
+                    if (cleanInput === snakeCode) {
+                        alert("🐍 รหัสถูกต้อง! กำลังเข้าสู่เกม Snake...");
+                        window.location.href = "../minigame/minigame.html";
+
+                    } else if (cleanInput === dinoCode) {
+                        alert("🦖 รหัสถูกต้อง! กำลังเข้าสู่เกม Dino Runner...");
+                        window.location.href = "../minigame/dinosour.html";
+
+                    } else {
+                        alert("❌ รหัสผ่านไม่ถูกต้อง!");
+                    }
+                } else {
+                    alert("⚠️ ไม่พบข้อมูลรหัสลับในระบบ Firestore");
+                }
+            } catch (error) {
+                console.error("Error fetching secret code:", error);
+                alert("เกิดข้อผิดพลาดในการตรวจสอบรหัสลับ");
+            }
+        }
+    });
+}

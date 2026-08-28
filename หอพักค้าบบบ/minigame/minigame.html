@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Snake | Super Admin Minigame</title>
+    <link rel="stylesheet" href="minigame.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <!-- Header Zone -->
+        <div class="card-header">
+            <h2><i class="fa-solid fa-shield-cat"></i> SUPER ADMIN SNAKE</h2>
+            <p>มินิเกมลับเฉพาะผู้ดูแลระบบ</p>
+        </div>
+
+        <!-- หน้าจอเกม -->
+        <div class="screen-wrapper">
+            <div class="header-info">
+                <span><i class="fa-solid fa-trophy"></i> SCORE: <strong id="score">0</strong></span>
+                <span><i class="fa-solid fa-crown"></i> HIGH: <strong id="highScore">0</strong></span>
+            </div>
+            
+            <!-- ปรับขนาดให้พอดีกรอบ 270x270 -->
+            <canvas id="gameCanvas" width="270" height="270"></canvas>
+
+            <div id="gameOverText" class="game-over-msg">
+                <i class="fa-solid fa-skull-crossbones"></i> GAME OVER<br>
+                <small>กด SPACEBAR หรือ RESET เพื่อเริ่มใหม่</small>
+            </div>
+        </div>
+
+        <!-- ปุ่มควบคุม -->
+        <div class="controls">
+            <button class="btn up" onclick="changeDirection('UP')"><i class="fa-solid fa-chevron-up"></i></button>
+            <div class="middle-row">
+                <button class="btn left" onclick="changeDirection('LEFT')"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn reset" id="resetBtn">RESET</button>
+                <button class="btn right" onclick="changeDirection('RIGHT')"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <button class="btn down" onclick="changeDirection('DOWN')"><i class="fa-solid fa-chevron-down"></i></button>
+        </div>
+
+        <!-- ปุ่มย้อนกลับ -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            <i class="fa-solid fa-arrow-left"></i> กลับสู่ Super Admin Dashboard
+        </a>
+    </div>
+
+    <script src="minigame.js"></script>
+</body>
+</html>

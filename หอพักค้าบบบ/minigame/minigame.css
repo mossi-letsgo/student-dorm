@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: #990000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Card หลัก */
+.superadmin-game-card {
+    background-color: #1a1515;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 360px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-header h2 {
+    color: #ff3333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.card-header p {
+    color: #aaaaaa;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+/* กรอบหน้าจอเกม (แก้ปัญหาล้นขอบตรงนี้) */
+.screen-wrapper {
+    background-color: #0d0a0a;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden; /* กันส่วนเกินทะลุออกข้างนอก */
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px; /* เท่าความกว้าง Canvas */
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #ff4d4d;
+}
+
+.header-info strong {
+    color: #ffffff;
+}
+
+canvas {
+    background-color: #141010;
+    border-radius: 6px;
+    display: block;
+    margin: 0 auto;
+}
+
+.game-over-msg {
+    display: none;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(180, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 8px;
+    width: 80%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.game-over-msg small {
+    font-size: 10px;
+    opacity: 0.9;
+}
+
+/* ปุ่มควบคุม */
+.controls {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.middle-row {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    background: #2b2222;
+    color: #ff4d4d;
+    border: 1px solid #443333;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: #ff1a1a;
+    color: #ffffff;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn.reset {
+    width: 70px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #cc0000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn.reset:hover {
+    background: #ff1a1a;
+}
+
+/* ปุ่มย้อนกลับ */
+.back-dashboard-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 15px;
+    background-color: #cc0000;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.back-dashboard-btn:hover {
+    background-color: #ff1a1a;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+}
