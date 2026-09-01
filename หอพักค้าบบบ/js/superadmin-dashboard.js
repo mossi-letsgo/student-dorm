@@ -173,8 +173,14 @@ if (shieldBtn) {
                 if (secretSnap.exists()) {
                     const secretData = secretSnap.data();
                     
-                    const snakeCode = secretData.gametag; // ค่าใน DB คือ "snake"
-                    const dinoCode = secretData.dinotag;   // ค่าใน DB คือ "dino"
+                    const snakeCode = secretData.gametag;   // เช่น "snake"
+                    const dinoCode = secretData.dinotag;     // เช่น "dino"
+                    const flappyCode = secretData.flappytag; // 👈 1. เพิ่มการดึงค่ารหัส Flappy Bird
+                    const marioCode = secretData.mariotag; // เช่น ตั้งใน DB ไว้ว่า "mario"
+                    const fighterCode = secretData.fightertag; // เช่น ตั้งใน DB ไว้ว่า "street"
+                    const pokemonCode = secretData.pokemontag; // เช่น ตั้งใน DB ไว้ว่า "pokemon"
+                    const terrariaCode = secretData.terrariatag; // เช่น ตั้งไว้ว่า "terraria"
+                    const nfsCode = secretData.nfstag; // เช่น ตั้งใน DB ไว้ว่า "nfs"
 
                     // ตรวจสอบรหัสและเปลี่ยนหน้าตามที่พิมพ์
                     if (cleanInput === snakeCode) {
@@ -184,6 +190,36 @@ if (shieldBtn) {
                     } else if (cleanInput === dinoCode) {
                         alert("🦖 รหัสถูกต้อง! กำลังเข้าสู่เกม Dino Runner...");
                         window.location.href = "../minigame/dinosour.html";
+
+                    } else if (flappyCode && cleanInput === flappyCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("🐦 รหัสถูกต้อง! กำลังเข้าสู่เกม Flappy Bird...");
+                        window.location.href = "../minigame/flappybird.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
+
+                     } else if (marioCode && cleanInput === marioCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("🎩 รหัสถูกต้อง! กำลังเข้าสู่เกม Mario");
+                        window.location.href = "../minigame/mario.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
+
+                     } else if (fighterCode && cleanInput === fighterCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("👊 รหัสถูกต้อง! กำลังเข้าสู่เกม Streetfighter");
+                        window.location.href = "../minigame/streetfighter.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
+
+                     } else if (pokemonCode && cleanInput === pokemonCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("⚡ รหัสถูกต้อง! กำลังเข้าสู่เกม pokemon");
+                        window.location.href = "../minigame/pokemon.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
+
+                      } else if (terrariaCode && cleanInput === terrariaCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("🪓 รหัสถูกต้อง! กำลังเข้าสู่เกม terraria");
+                        window.location.href = "../minigame/terraria.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
+
+                     } else if (nfsCode && cleanInput === nfsCode) { 
+                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
+                        alert("🏎️ รหัสถูกต้อง! กำลังเข้าสู่ Need For Speed JDM...");
+                        window.location.href = "../minigame/nfs.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
 
                     } else {
                         alert("❌ รหัสผ่านไม่ถูกต้อง!");

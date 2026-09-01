@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Fighter - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="streetfighter.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>🥊 STREET FIGHTER</h2>
+            <p>P1: A/D เดิน, W โดด, F ต่อย | P2: ลูกศร เดิน/โดด, L ต่อย</p>
+        </div>
+
+        <!-- หน้าเลือกโหมดและตัวละคร -->
+        <div id="selectionScreen" class="selection-screen">
+            <div class="mode-select">
+                <button id="modeBotBtn" class="mode-btn active">🤖 เล่นกับบอท</button>
+                <button id="modePvpBtn" class="mode-btn">⚔️ 2 คน (PVP)</button>
+            </div>
+
+            <div class="char-select-container">
+                <div class="player-box">
+                    <h3>P1 ตัวละคร</h3>
+                    <div class="char-grid" id="p1Chars"></div>
+                </div>
+                <div class="player-box">
+                    <h3 id="p2Title">BOT ตัวละคร</h3>
+                    <div class="char-grid" id="p2Chars"></div>
+                </div>
+            </div>
+
+            <button id="startGameBtn" class="btn jump-btn start-btn">🔥 สุ่มแมพ & สู้เลย!</button>
+        </div>
+
+        <!-- หน้าจอเล่นเกม -->
+        <div id="gameScreen" class="screen-wrapper" style="display: none;">
+            <div class="header-info">
+                <span>P1: <strong id="p1Name">RED</strong></span>
+                <span id="mapName" class="map-tag">MAP: VOLCANO</span>
+                <span>P2: <strong id="p2Name">BOT</strong></span>
+            </div>
+
+            <!-- Health Bars -->
+            <div class="hp-bar-container">
+                <div class="hp-bar"><div id="p1Hp" class="hp-fill"></div></div>
+                <div class="hp-bar"><div id="p2Hp" class="hp-fill"></div></div>
+            </div>
+
+            <canvas id="gameCanvas" width="300" height="200"></canvas>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong id="winnerText">RED WIN!</strong><br>
+                <small>กด "เริ่มใหม่" เพื่อสู้ต่อ</small>
+            </div>
+        </div>
+
+        <div class="controls" id="inGameControls" style="display: none;">
+            <button id="resetBtn" class="btn reset-btn" style="width: 100%;">🔄 เลือกตัวละครใหม่</button>
+        </div>
+
+  <!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <script src="streetfighter.js"></script>
+</body>
+</html>

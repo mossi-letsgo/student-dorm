@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraria Mini - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="terraria.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>🌳 TERRARIA MINI</h2>
+            <p>A/D: เดิน | Space: โดด | คลิกซ้าย: ตัดไม้/ตีมอน/วางบล็อก | คลิกขวา: ลบบล็อก</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <!-- Header Status -->
+            <div class="header-info">
+                <span>❤️ HP: <strong id="hpText">100/100</strong></span>
+                <span>☀️ เวลา: <strong id="timeText">กลางวัน</strong></span>
+                <span>⚔️ ศัตรู: <strong id="killText">0</strong></span>
+            </div>
+
+            <!-- Game Canvas -->
+            <canvas id="gameCanvas" width="320" height="200"></canvas>
+
+            <!-- Hotbar / Select Item -->
+            <div class="hotbar">
+                <button class="slot active" id="slotAxe" onclick="selectTool('axe')">🪓 ขวาน</button>
+                <button class="slot" id="slotSword" onclick="selectTool('sword')">⚔️ ดาบ</button>
+                <button class="slot" id="slotBlock" onclick="selectTool('block')">🪵 บล็อก (<span id="woodCount">0</span>)</button>
+            </div>
+
+            <!-- Crafting Panel -->
+            <div class="crafting-panel">
+                <span>🔨 คราฟต์:</span>
+                <button class="craft-btn" onclick="craftItem('block')">🪵 บล็อก (+2) <small>[ใช้ 3 ไม้]</small></button>
+                <button class="craft-btn" onclick="craftItem('sword')">⚔️ ดาบไม้ <small>[ใช้ 5 ไม้]</small></button>
+            </div>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong id="winnerText">💀 GAME OVER!</strong><br>
+                <small>คุณถูกมอนสเตอร์จัดการ!</small>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="resetBtn" class="btn reset-btn" style="width: 100%;">🔄 เริ่มเกมใหม่</button>
+        </div>
+
+<!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <script src="terraria.js"></script>
+</body>
+</html>

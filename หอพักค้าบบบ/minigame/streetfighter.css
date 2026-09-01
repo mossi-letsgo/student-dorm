@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: #990000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.superadmin-game-card {
+    background-color: #1a1515;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 360px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-header h2 {
+    color: #ff3333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-header p {
+    color: #aaaaaa;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+/* หน้าเลือกตัวละคร */
+.selection-screen {
+    background: #0d0a0a;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.mode-select {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px;
+    background: #2b2222;
+    border: 1px solid #443333;
+    color: #aaa;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.mode-btn.active {
+    background: #ff1a1a;
+    color: #fff;
+    border-color: #ff4d4d;
+}
+
+.char-select-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.player-box {
+    flex: 1;
+}
+
+.player-box h3 {
+    font-size: 12px;
+    color: #ff4d4d;
+    margin-bottom: 6px;
+}
+
+.char-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.char-card {
+    background: #1e1818;
+    border: 1px solid #443333;
+    border-radius: 6px;
+    padding: 6px 4px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.2s;
+}
+
+.char-card.selected {
+    border-color: #ff1a1a;
+    background: #440000;
+    color: #fff;
+    font-weight: bold;
+}
+
+.start-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* หน้าจอต่อสู้ */
+.screen-wrapper {
+    background-color: #0d0a0a;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #ff4d4d;
+    margin-bottom: 6px;
+}
+
+.map-tag {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+.hp-bar-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.hp-bar {
+    flex: 1;
+    height: 12px;
+    background: #331111;
+    border: 1px solid #ff1a1a;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.hp-fill {
+    height: 100%;
+    width: 100%;
+    background: #ff1a1a;
+    transition: width 0.1s ease;
+}
+
+canvas {
+    background-color: #141010;
+    border-radius: 6px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.game-over-msg {
+    display: none;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(180, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 85%;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+    margin-top: 12px;
+}
+
+.btn {
+    border: none;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn.jump-btn {
+    background: #ff1a1a;
+    color: #ffffff;
+}
+
+.btn.reset-btn {
+    background: #2b2222;
+    color: #ff4d4d;
+    border: 1px solid #443333;
+}
+
+.back-dashboard-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #cc0000;
+    color: #ffffff;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 10px;
+}   

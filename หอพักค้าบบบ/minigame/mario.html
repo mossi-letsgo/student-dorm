@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Hardcore - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mario.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>🍄 MARIO HARDCORE</h2>
+            <p>ลูกศร (← →) เดิน | Spacebar กระโดด | เหยียบหัวศัตรูเพื่อฆ่า!</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="header-info">
+                <span>SCORE: <strong id="score">0</strong></span>
+                <span>STAGE: <strong id="stage">1</strong></span>
+            </div>
+
+            <canvas id="gameCanvas" width="290" height="400"></canvas>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong id="msgTitle">GAME OVER!</strong><br>
+                <small id="msgSub">กด "เริ่มใหม่" หรือ Spacebar เพื่อเอาชนะใหม่</small>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="leftBtn" class="btn reset-btn">◀</button>
+            <button id="jumpBtn" class="btn jump-btn">🚀 กระโดด</button>
+            <button id="rightBtn" class="btn reset-btn">▶</button>
+        </div>
+
+        <button id="resetBtn" class="btn reset-btn" style="width: 100%; margin-top: 10px;">🔄 เริ่มใหม่</button>
+
+     <!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <script src="mario.js"></script>
+</body>
+</html>

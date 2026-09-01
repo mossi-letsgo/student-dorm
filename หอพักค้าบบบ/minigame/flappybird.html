@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- เชื่อมไฟล์ CSS ในโฟลเดอร์เดียวกัน -->
+    <link rel="stylesheet" href="flappybird.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>🐦 FLAPPY BIRD</h2>
+            <p>กด Spacebar, Click หรือปุ่มกระโดด เพื่อบิน</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <div class="header-info">
+                <span>SCORE: <strong id="score">0</strong></span>
+                <span>HIGH SCORE: <strong id="highScore">0</strong></span>
+            </div>
+
+            <canvas id="gameCanvas" width="290" height="400"></canvas>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong>GAME OVER!</strong><br>
+                <small>กด "เริ่มใหม่" หรือ Spacebar เพื่อเล่นอีกครั้ง</small>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="jumpBtn" class="btn jump-btn">🚀 กระโดด</button>
+            <button id="resetBtn" class="btn reset-btn">🔄 เริ่มใหม่</button>
+        </div>
+
+        <!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <!-- เชื่อมไฟล์ JS ในโฟลเดอร์เดียวกัน -->
+    <script src="flappybird.js"></script>
+</body>
+</html>

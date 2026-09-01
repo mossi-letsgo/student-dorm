@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Battle - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pokemon.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>⚡ POKÉMON BATTLE</h2>
+            <p>เลือกโปเกมอนและวางแผนต่อสู้แบบ Turn-Based!</p>
+        </div>
+
+        <!-- หน้าเลือกโหมดและตัวละคร -->
+        <div id="selectionScreen" class="selection-screen">
+            <div class="mode-select">
+                <button id="modeBotBtn" class="mode-btn active">🤖 สู้กับบอท</button>
+                <button id="modePvpBtn" class="mode-btn">⚔️ 2 คน (PVP)</button>
+            </div>
+
+            <div class="char-select-container">
+                <div class="player-box">
+                    <h3>P1 เลือกโปเกมอน</h3>
+                    <div class="char-grid" id="p1Chars"></div>
+                </div>
+                <div class="player-box">
+                    <h3 id="p2Title">BOT เลือกโปเกมอน</h3>
+                    <div class="char-grid" id="p2Chars"></div>
+                </div>
+            </div>
+
+            <button id="startGameBtn" class="btn jump-btn start-btn">🔥 สุ่มแมพ & เริ่มแบทเทิล!</button>
+        </div>
+
+        <!-- หน้าจอต่อสู้ -->
+        <div id="gameScreen" class="screen-wrapper" style="display: none;">
+            <div class="header-info">
+                <span>P1: <strong id="p1Name">Pikachu</strong></span>
+                <span id="mapName" class="map-tag">VOLCANO</span>
+                <span>P2: <strong id="p2Name">Mewtwo</strong></span>
+            </div>
+
+            <!-- Health Bars & Status -->
+            <div class="battle-arena">
+                <!-- ฝั่ง P2 (อยู่บนขวา) -->
+                <div class="poke-hud enemy-hud">
+                    <div class="poke-info-text">
+                        <span id="p2PokeName">MEWTWO</span>
+                        <span id="p2HpText">100/100</span>
+                    </div>
+                    <div class="hp-bar"><div id="p2Hp" class="hp-fill"></div></div>
+                </div>
+
+                <!-- Canvas สำหรับวาดตัวโปเกมอนและแมพ -->
+                <canvas id="gameCanvas" width="300" height="150"></canvas>
+
+                <!-- ฝั่ง P1 (อยู่ล่างซ้าย) -->
+                <div class="poke-hud player-hud">
+                    <div class="poke-info-text">
+                        <span id="p1PokeName">PIKACHU</span>
+                        <span id="p1HpText">100/100</span>
+                    </div>
+                    <div class="hp-bar"><div id="p1Hp" class="hp-fill"></div></div>
+                </div>
+            </div>
+
+            <!-- Battle Log -->
+            <div id="battleLog" class="battle-log">เตรียมพร้อมประลอง!</div>
+
+            <!-- Command Controls -->
+            <div id="actionControls" class="action-controls">
+                <button id="btnAtk" class="act-btn atk-btn">⚔️ โจมตี</button>
+                <button id="btnSkill" class="act-btn skill-btn">🔥 ท่าไม้ตาย</button>
+                <button id="btnDef" class="act-btn def-btn">🛡️ ป้องกัน</button>
+            </div>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong id="winnerText">PIKACHU WIN!</strong><br>
+                <small>กดปุ่มด้านล่างเพื่อเล่นใหม่</small>
+            </div>
+        </div>
+
+        <div class="controls" id="inGameControls" style="display: none;">
+            <button id="resetBtn" class="btn reset-btn" style="width: 100%;">🔄 เลือกตัวละครใหม่</button>
+        </div>
+
+  <!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <script src="pokemon.js"></script>
+</body>
+</html>

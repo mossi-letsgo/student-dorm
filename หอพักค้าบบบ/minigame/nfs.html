@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Need For Speed JDM - Superadmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="nfs.css">
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>🏎️ NEED FOR SPEED: JDM 2D</h2>
+            <p>W/ลูกศรขึ้น: คันเร่ง | A/D: เลี้ยว | S: เบรก | Shift: NOS ไนตรัส</p>
+        </div>
+
+        <!-- หน้าเลือกเลือกรถ JDM -->
+        <div id="selectionScreen" class="selection-screen">
+            <h3>🔰 เลือกรถ JDM ของคุณ</h3>
+            <div class="car-grid" id="carGrid"></div>
+            <button id="startGameBtn" class="btn start-btn">🔥 เริ่มการแข่งขัน (RACE)!</button>
+        </div>
+
+        <!-- หน้าจอแข่งขัน -->
+        <div id="gameScreen" class="screen-wrapper" style="display: none;">
+            <div class="header-info">
+                <span>🚘 CAR: <strong id="carName">SUPRA</strong></span>
+                <span>🏁 RANK: <strong id="rankText">6/6</strong></span>
+                <span>⚡ SPEED: <strong id="speedText">0</strong> KM/H</span>
+            </div>
+
+            <!-- Canvas แสดงผลแบบ Camera Follow -->
+            <canvas id="gameCanvas" width="320" height="220"></canvas>
+
+            <!-- NOS Gauge -->
+            <div class="nos-container">
+                <span>N2O NOS:</span>
+                <div class="nos-bar"><div id="nosFill" class="nos-fill"></div></div>
+            </div>
+
+            <div id="gameOverMsg" class="game-over-msg">
+                <strong id="winnerText">🏆 FINISH!</strong><br>
+                <small id="rankResultText">คุณเข้าเส้นชัยอันดับที่ 1</small>
+            </div>
+        </div>
+
+        <div class="controls" id="inGameControls" style="display: none;">
+            <button id="resetBtn" class="btn reset-btn" style="width: 100%;">🔄 เลือกรถใหม่ / แข่งใหม่</button>
+        </div>
+
+ <!-- ย้อนกลับไปหน้า index.html ที่อยู่นอกโฟลเดอร์ minigame -->
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">
+            ⬅ กลับหน้าหลัก
+        </a>
+    </div>
+
+    <script src="nfs.js"></script>
+</body>
+</html>

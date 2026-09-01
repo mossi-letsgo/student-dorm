@@ -1,0 +1,288 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+body {
+    background-color: #990000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.superadmin-game-card {
+    background-color: #1a1515;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    width: 360px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-header h2 {
+    color: #ff3333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-header p {
+    color: #aaaaaa;
+    font-size: 11px;
+    margin-bottom: 12px;
+}
+
+/* หน้าเลือกตัวละคร */
+.selection-screen {
+    background: #0d0a0a;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.mode-select {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 8px;
+    background: #2b2222;
+    border: 1px solid #443333;
+    color: #aaa;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.mode-btn.active {
+    background: #ff1a1a;
+    color: #fff;
+    border-color: #ff4d4d;
+}
+
+.char-select-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.player-box {
+    flex: 1;
+}
+
+.player-box h3 {
+    font-size: 11px;
+    color: #ff4d4d;
+    margin-bottom: 6px;
+}
+
+.char-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.char-card {
+    background: #1e1818;
+    border: 1px solid #443333;
+    border-radius: 6px;
+    padding: 6px 4px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.char-card.selected {
+    border-color: #ff1a1a;
+    background: #440000;
+    color: #fff;
+    font-weight: bold;
+}
+
+.start-btn {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* หน้าต่อสู้ */
+.screen-wrapper {
+    background-color: #0d0a0a;
+    border: 2px solid #ff1a1a;
+    border-radius: 12px;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #ff4d4d;
+    margin-bottom: 6px;
+}
+
+.map-tag {
+    color: #ffaa00;
+    font-weight: bold;
+}
+
+.battle-arena {
+    position: relative;
+}
+
+.poke-hud {
+    background: rgba(26, 21, 21, 0.85);
+    border: 1px solid #ff3333;
+    border-radius: 6px;
+    padding: 4px 8px;
+    position: absolute;
+    width: 130px;
+    z-index: 5;
+}
+
+.enemy-hud {
+    top: 6px;
+    left: 6px;
+}
+
+.player-hud {
+    bottom: 6px;
+    right: 6px;
+}
+
+.poke-info-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.hp-bar {
+    height: 8px;
+    background: #331111;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #551111;
+}
+
+.hp-fill {
+    height: 100%;
+    width: 100%;
+    background: #00ff66;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+canvas {
+    background-color: #141010;
+    border-radius: 6px;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Battle Log */
+.battle-log {
+    background: #151010;
+    border: 1px solid #442222;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 11px;
+    color: #ffcc00;
+    margin-top: 8px;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Action Controls */
+.action-controls {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.act-btn {
+    flex: 1;
+    padding: 8px 2px;
+    border: none;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s;
+}
+
+.atk-btn { background: #cc0000; }
+.atk-btn:hover { background: #ff1a1a; }
+
+.skill-btn { background: #ffaa00; color: #000; }
+.skill-btn:hover { background: #ffcc00; }
+
+.def-btn { background: #334466; }
+.def-btn:hover { background: #446699; }
+
+.act-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.game-over-msg {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(180, 0, 0, 0.95);
+    color: #ffffff;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 85%;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+    margin-top: 12px;
+}
+
+.btn {
+    border: none;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn.jump-btn { background: #ff1a1a; color: #ffffff; }
+.btn.reset-btn { background: #2b2222; color: #ff4d4d; border: 1px solid #443333; }
+
+.back-dashboard-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px;
+    background-color: #cc0000;
+    color: #ffffff;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 10px;
+}
