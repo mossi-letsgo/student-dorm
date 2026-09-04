@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Among Us 2D - AI Bot Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="amongus2d.css">
+</head>
+<body>
+
+    <div class="game-card">
+        <div class="card-header">
+            <h2>🚀 AMONG US 2D (REAL MINIGAMES & EXPANDED MAP)</h2>
+            <p>WASD / ลูกศร: เดิน | V: มุดท่อ | คลิกทำมินิเกมเควสจริง</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <div id="toastContainer" class="toast-container"></div>
+
+            <!-- Lobby Setup Menu -->
+            <div id="lobbyMenu" class="lobby-menu">
+                <h3>⚙️ ตั้งค่าห้องเล่น (Lobby 2D)</h3>
+                
+                <div class="menu-group">
+                    <label>🗺️ เลือกแผนที่ (Map):</label>
+                    <select id="mapSelect">
+                        <option value="skeld">The Skeld (ยานอวกาศขนาดใหญ่พิเศษ)</option>
+                        <option value="polus">Polus (ฐานดาวอังคารขนาดใหญ่พิเศษ)</option>
+                    </select>
+                </div>
+
+                <div class="menu-group">
+                    <label>🤖 จำนวนผู้เล่นรวม (บอท + คุณ):</label>
+                    <input type="range" id="botCountRange" min="4" max="10" value="8" oninput="document.getElementById('botVal').innerText = this.value">
+                    <span id="botVal" class="val-badge">8</span> คน
+                </div>
+
+                <button class="start-btn" onclick="startGame()">🚀 เริ่มเกม (Start Game)</button>
+            </div>
+
+            <!-- Role Reveal Screen -->
+            <div id="roleScreen" class="role-screen style-hidden">
+                <h1 id="roleTitle">CREWMATE</h1>
+                <p id="roleSub">ทำเควสให้ครบ หรือหาตัว Impostor!</p>
+            </div>
+
+            <!-- In-Game HUD -->
+            <div id="gameHud" class="hud-layer" style="display: none;">
+                <div id="roleBadge" class="role-badge">CREWMATE</div>
+
+                <div class="task-bar-container">
+                    <div id="taskFill" class="task-fill"></div>
+                    <span id="taskText">TOTAL TASKS: 0%</span>
+                </div>
+
+                <div id="roomTitle" class="room-title">CAFETERIA</div>
+
+                <canvas id="gameCanvas" width="850" height="480"></canvas>
+
+                <div class="action-bar">
+                    <button id="ventBtn" class="action-btn vent" onclick="useVent()" style="display:none;">🌀 VENT</button>
+                    <button id="taskBtn" class="action-btn task" onclick="openTaskMinigame()" style="display:none;">⚡ DO TASK</button>
+                    <button id="killBtn" class="action-btn kill" onclick="killBot()" style="display:none;">🔪 KILL</button>
+                    <button id="reportBtn" class="action-btn report" onclick="reportBody()" style="display:none;">📢 REPORT</button>
+                    <button id="emergencyBtn" class="action-btn emergency" onclick="triggerMeeting()">🚨 EMERGENCY</button>
+                </div>
+            </div>
+
+            <!-- Task Minigame Modal Overlay -->
+            <div id="taskModal" class="task-modal" style="display: none;">
+                <div class="task-modal-content">
+                    <div class="task-modal-header">
+                        <h3 id="minigameTitle">TASK MINIGAME</h3>
+                        <button class="close-task-btn" onclick="closeTaskModal()">✖</button>
+                    </div>
+                    <canvas id="minigameCanvas" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Voting Modal Screen -->
+            <div id="votingModal" class="voting-modal" style="display: none;">
+                <h2>🚨 EMERGENCY MEETING</h2>
+                <p class="vote-sub">ใครคือ Impostor? เลือกโหวตผู้ต้องสงสัย!</p>
+                <div id="voterList" class="voter-list"></div>
+                <button class="skip-btn" onclick="castVote(null)">Skip Vote</button>
+            </div>
+        </div>
+
+        <a href="../html/superadmin-dashboard.html" class="back-btn">⬅ กลับหน้าหลัก</a>
+    </div>
+
+    <script src="amongus2d.js"></script>
+</body>
+</html>

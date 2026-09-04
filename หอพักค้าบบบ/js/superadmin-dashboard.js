@@ -139,7 +139,7 @@ document.getElementById("logoutBtn").onclick = async () => {
 
 };
 
-// ================= SECRET MULTI-GAME ACCESS (FIREBASE) =================
+// ================= SECRET MULTI-GAME ACCESS (NO PASSWORD DROPDOWN) =================
 let secretClickCount = 0;
 let secretClickTimer = null;
 
@@ -159,77 +159,71 @@ if (shieldBtn) {
             secretClickCount = 0;
             clearTimeout(secretClickTimer);
 
-            const inputPass = prompt("🔒 กรุณากรอกรหัสลับเพื่อเข้าสู่มินิเกม:");
-            
-            if (inputPass === null) return; // กดยกเลิก
-
-            const cleanInput = inputPass.trim().toLowerCase();
-
-            try {
-                // ดึงข้อมูลรหัสลับจาก Firestore (collection: system, doc: game)
-                const secretDocRef = doc(db, "system", "game");
-                const secretSnap = await getDoc(secretDocRef);
-
-                if (secretSnap.exists()) {
-                    const secretData = secretSnap.data();
-                    
-                    const snakeCode = secretData.gametag;   // เช่น "snake"
-                    const dinoCode = secretData.dinotag;     // เช่น "dino"
-                    const flappyCode = secretData.flappytag; // 👈 1. เพิ่มการดึงค่ารหัส Flappy Bird
-                    const marioCode = secretData.mariotag; // เช่น ตั้งใน DB ไว้ว่า "mario"
-                    const fighterCode = secretData.fightertag; // เช่น ตั้งใน DB ไว้ว่า "street"
-                    const pokemonCode = secretData.pokemontag; // เช่น ตั้งใน DB ไว้ว่า "pokemon"
-                    const terrariaCode = secretData.terrariatag; // เช่น ตั้งไว้ว่า "terraria"
-                    const nfsCode = secretData.nfstag; // เช่น ตั้งใน DB ไว้ว่า "nfs"
-
-                    // ตรวจสอบรหัสและเปลี่ยนหน้าตามที่พิมพ์
-                    if (cleanInput === snakeCode) {
-                        alert("🐍 รหัสถูกต้อง! กำลังเข้าสู่เกม Snake...");
-                        window.location.href = "../minigame/minigame.html";
-
-                    } else if (cleanInput === dinoCode) {
-                        alert("🦖 รหัสถูกต้อง! กำลังเข้าสู่เกม Dino Runner...");
-                        window.location.href = "../minigame/dinosour.html";
-
-                    } else if (flappyCode && cleanInput === flappyCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("🐦 รหัสถูกต้อง! กำลังเข้าสู่เกม Flappy Bird...");
-                        window.location.href = "../minigame/flappybird.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                     } else if (marioCode && cleanInput === marioCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("🎩 รหัสถูกต้อง! กำลังเข้าสู่เกม Mario");
-                        window.location.href = "../minigame/mario.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                     } else if (fighterCode && cleanInput === fighterCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("👊 รหัสถูกต้อง! กำลังเข้าสู่เกม Streetfighter");
-                        window.location.href = "../minigame/streetfighter.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                     } else if (pokemonCode && cleanInput === pokemonCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("⚡ รหัสถูกต้อง! กำลังเข้าสู่เกม pokemon");
-                        window.location.href = "../minigame/pokemon.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                      } else if (terrariaCode && cleanInput === terrariaCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("🪓 รหัสถูกต้อง! กำลังเข้าสู่เกม terraria");
-                        window.location.href = "../minigame/terraria.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                     } else if (nfsCode && cleanInput === nfsCode) { 
-                        // 👈 2. เพิ่มเงื่อนไขตรวจสอบรหัส Flappy Bird
-                        alert("🏎️ รหัสถูกต้อง! กำลังเข้าสู่ Need For Speed JDM...");
-                        window.location.href = "../minigame/nfs.html"; // เปลี่ยน Path ตามตำแหน่งไฟล์จริงของคุณ
-
-                    } else {
-                        alert("❌ รหัสผ่านไม่ถูกต้อง!");
-                    }
-                } else {
-                    alert("⚠️ ไม่พบข้อมูลรหัสลับในระบบ Firestore");
+            // แสดง Pop-up เลือกเกม
+            const { value: selectedGame } = await Swal.fire({
+                title: '🎮 เลือกมินิเกมที่ต้องการเล่น',
+                html: `
+                    <div style="text-align: left; font-family: 'Kanit', 'Segoe UI Emoji', sans-serif;">
+                        <label style="font-size: 13px; color: #bbb;">เลือกเกมจากรายการด้านล่าง:</label>
+                        <select id="swal-game-select" class="swal2-input" style="width: 100%; margin: 10px 0 5px 0; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; padding: 10px; font-size: 14px; font-family: inherit;">
+                            <option value="snake" style="background: #222; color: #fff;">🐍 Snake Game</option>
+                            <option value="dino" style="background: #222; color: #fff;">🦖 Dino Runner</option>
+                            <option value="flappy" style="background: #222; color: #fff;">🐦 Flappy Bird</option>
+                            <option value="mario" style="background: #222; color: #fff;">🎩 Super Mario</option>
+                            <option value="fighter" style="background: #222; color: #fff;">👊 Street Fighter</option>
+                            <option value="pokemon" style="background: #222; color: #fff;">⚡ Pokémon</option>
+                            <option value="terraria" style="background: #222; color: #fff;">🪓 Terraria Mini</option>
+                            <option value="nfs" style="background: #222; color: #fff;">🏎️ Need For Speed JDM</option>
+                            <option value="bloxfruits" style="background: #222; color: #fff;">⚔️ Blox Fruits 3D</option>
+                            <option value="spiderman" style="background: #222; color: #fff;">🕷️ Spiderman</option>
+                             <option value="amongus" style="background: #222; color: #fff;">🤨 Amongus</option>
+                        </select>
+                    </div>
+                `,
+                background: '#1a1515',
+                color: '#ffffff',
+                confirmButtonColor: '#ff1a1a',
+                cancelButtonColor: '#333333',
+                confirmButtonText: '🚀 เข้าเล่นเกม',
+                cancelButtonText: 'ยกเลิก',
+                showCancelButton: true,
+                focusConfirm: false,
+                preConfirm: () => {
+                    return document.getElementById('swal-game-select').value;
                 }
-            } catch (error) {
-                console.error("Error fetching secret code:", error);
-                alert("เกิดข้อผิดพลาดในการตรวจสอบรหัสลับ");
+            });
+
+            // ถ้าผู้ใช้กดเลือกเกมและกดยืนยัน
+            if (selectedGame) {
+                const gameConfigs = {
+                    snake: { name: "Snake", url: "../minigame/minigame.html", icon: "🐍" },
+                    dino: { name: "Dino Runner", url: "../minigame/dinosour.html", icon: "🦖" },
+                    flappy: { name: "Flappy Bird", url: "../minigame/flappybird.html", icon: "🐦" },
+                    mario: { name: "Super Mario", url: "../minigame/mario.html", icon: "🎩" },
+                    fighter: { name: "Street Fighter", url: "../minigame/streetfighter.html", icon: "👊" },
+                    pokemon: { name: "Pokémon", url: "../minigame/pokemon.html", icon: "⚡" },
+                    terraria: { name: "Terraria Mini", url: "../minigame/terraria.html", icon: "🪓" },
+                    nfs: { name: "Need For Speed JDM", url: "../minigame/nfs.html", icon: "🏎️" },
+                    amongus: { name: "Amongus", url: "../minigame/amongus2d.html", icon: "🤨" },
+                    spiderman: { name: "spiderman", url: "../minigame/spiderman.html", icon: "🤨" },
+                    bloxfruits: { name: "Blox Fruits 3D", url: "../minigame/bloxfruits.html", icon: "⚔️" }
+                };
+
+                const targetGame = gameConfigs[selectedGame];
+
+                if (targetGame) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: `${targetGame.icon} กำลังเข้าสู่เกม!`,
+                        text: `พาคุณไปยังเกม ${targetGame.name}...`,
+                        background: '#1a1515',
+                        color: '#fff',
+                        timer: 1000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = targetGame.url;
+                    });
+                }
             }
         }
     });

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARVEL SPIDER-MAN 3D: COMBAT & SWINGING</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+        }
+
+        #gameCanvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+
+        /* Back to Dashboard Button */
+        .dashboard-back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            padding: 10px 18px;
+            background: rgba(15, 23, 42, 0.85);
+            color: #ffffff;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .dashboard-back-btn:hover {
+            background-color: #ef4444;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+        }
+
+        /* Crosshair Target */
+        #crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: all 0.15s ease;
+            z-index: 10;
+        }
+
+        #crosshair.active {
+            width: 20px;
+            height: 20px;
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 10px #ef4444;
+        }
+
+        /* Controls Panel */
+        #ui-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 13px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            z-index: 10;
+            max-width: 320px;
+        }
+
+        #ui-panel h2 {
+            font-size: 16px;
+            color: #ef4444;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #ui-panel ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        #ui-panel li {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #cbd5e1;
+        }
+
+        .key-badge {
+            background: rgba(255,255,255,0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #fff;
+            font-size: 11px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Player Health & Web Meter Bar */
+        #player-hud {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 260px;
+        }
+
+        .hud-bar-container {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 8px;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .hud-label {
+            color: #94a3b8;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #hp-fill {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444, #f87171);
+            transition: width 0.2s ease;
+        }
+
+        #web-fill {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transition: width 0.2s ease;
+        }
+
+        /* Speedometer & Combo */
+        #speedometer {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 800;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        #combo-counter {
+            position: absolute;
+            top: 30%;
+            right: 40px;
+            color: #facc15;
+            font-size: 36px;
+            font-weight: 900;
+            font-style: italic;
+            text-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.15s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        #combo-counter.show {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- ปุ่มย้อนกลับ Super Admin Dashboard -->
+    <button id="btn-back-dashboard" class="dashboard-back-btn">
+        ⬅️ กลับหน้า Super Admin Dashboard
+    </button>
+
+    <div id="crosshair"></div>
+
+    <div id="ui-panel">
+        <h2>🕷️ Spider-Man 3D</h2>
+        <ul>
+            <li><span class="key-badge">คลิกจอ</span> ล็อคเมาส์เพื่อเล่น</li>
+            <li><span class="key-badge">คลิกซ้าย (ค้าง)</span> ยิงโหนใยสวิง (Swing)</li>
+            <li><span class="key-badge">คลิกขวา</span> ยิงใยตรึงศัตรู (Web Shooter)</li>
+            <li><span class="key-badge">F</span> โจมตี/ต่อยคอมโบ (Attack Punch)</li>
+            <li><span class="key-badge">E</span> ยิงใยดึงศัตรู / Web Strike</li>
+            <li><span class="key-badge">Spacebar</span> กระโดด / ปลดใยพุ่งตัว (Boost)</li>
+            <li><span class="key-badge">Shift</span> Fast Zip พุ่งตัวไปข้างหน้า</li>
+            <li><span class="key-badge">W, A, S, D</span> เคลื่อนที่ / ปรับแรงเหวี่ยงสวิง</li>
+        </ul>
+    </div>
+
+    <div id="player-hud">
+        <div class="hud-bar-container">
+            <div class="hud-label"><span>HEALTH</span><span id="hp-val">100 HP</span></div>
+            <div class="bar-bg"><div id="hp-fill"></div></div>
+        </div>
+        <div class="hud-bar-container">
+            <div class="hud-label"><span>WEB FLUID</span><span id="web-val">100%</span></div>
+            <div class="bar-bg"><div id="web-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="combo-counter">0 HIT!</div>
+    <div id="speedometer"><span id="speedVal">0</span> KM/H</div>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <script src="spiderman.js"></script>
+    <script>
+        // Event สั่งย้อนกลับหน้า Super Admin Dashboard
+        const backBtn = document.getElementById('btn-back-dashboard');
+        if (backBtn) {
+            backBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // ป้องกันคลิกทะลุไปกด Pointer Lock ในเกม
+                
+                // ปลดล็อกเมาส์ก่อนย้ายหน้า
+                if (document.exitPointerLock) {
+                    document.exitPointerLock();
+                }
+
+                // Redirect กลับหน้า Super Admin Dashboard
+                window.location.href = '../html/superadmin-dashboard.html'; // หรือเปลี่ยนเป็น Path/URL Dashboard ของคุณ
+            });
+        }
+    </script>
+</body>
+</html>

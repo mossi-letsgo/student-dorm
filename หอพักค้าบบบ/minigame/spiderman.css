@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+/* Canvas ขยายเต็มจอ 100% */
+#gameCanvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+/* Crosshair ตรงกลางจอ */
+#crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+    transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+#crosshair.active {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.3);
+    transform: translate(-50%, -50%) scale(1.3);
+}
+
+/* UI HUD มุมซ้ายบน */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    z-index: 10;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #ef4444;
+}
+
+#hud h1 {
+    font-size: 18px;
+    color: #ef4444;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+#hud p {
+    font-size: 13px;
+    color: #d1d5db;
+    margin: 3px 0;
+}
+
+/* Speedometer มุมขวาล่าง */
+#speedometer {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    z-index: 10;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blox Fruits 3D Extended - Dash & Energy System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="bloxfruits.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <div class="superadmin-game-card">
+        <div class="card-header">
+            <h2>⚔️ BLOX FRUITS 3D: ADVANCED EFFECTS</h2>
+            <p>WASD: เดิน | Space: กระโดด | Q: Dash | Click: โจมตี | Z/X/C: สกิล | J: เกราะ | K: สังเกต</p>
+        </div>
+
+        <div class="screen-wrapper">
+            <div id="toastContainer" class="toast-container"></div>
+            <div id="safezoneBadge" class="safezone-badge" style="display: none;">🛡️ SAFE ZONE</div>
+
+            <!-- HUD Top -->
+            <div class="hud-top">
+                <div class="hud-stat">❤️ HP: <span id="hpText">100/100</span></div>
+                <div class="hud-stat">⭐ Lv. <strong id="levelText">1</strong></div>
+                <div class="hud-stat">💰 Gold: <span id="goldText">0</span></div>
+            </div>
+
+            <!-- Haki & Stamina Bar -->
+            <div class="haki-status-bar">
+                <span id="armHakiBadge" class="haki-badge disabled">J: ฮาคิเกราะ</span>
+                <span id="obsHakiBadge" class="haki-badge disabled">K: ฮาคิสังเกต</span>
+            </div>
+
+            <!-- Stamina Bar -->
+            <div class="stamina-bar-container">
+                <div id="staminaFill" class="stamina-fill"></div>
+                <span id="staminaText" class="stamina-text">⚡ Stamina: 100/100</span>
+            </div>
+
+            <!-- EXP Bar -->
+            <div class="exp-bar-container">
+                <div id="expFill" class="exp-fill"></div>
+                <span id="expText" class="exp-text">EXP: 0/100</span>
+            </div>
+
+            <!-- Skill Cooldown Tracker -->
+            <div class="skill-container">
+                <div class="skill-box" id="skillZ">
+                    <span class="skill-key">Z</span>
+                    <span class="skill-name" id="nameZ">Skill Z</span>
+                    <div class="cd-overlay" id="cdZ"></div>
+                </div>
+                <div class="skill-box" id="skillX">
+                    <span class="skill-key">X</span>
+                    <span class="skill-name" id="nameX">Skill X</span>
+                    <div class="cd-overlay" id="cdX"></div>
+                </div>
+                <div class="skill-box" id="skillC">
+                    <span class="skill-key">C</span>
+                    <span class="skill-name" id="nameC">Skill C</span>
+                    <div class="cd-overlay" id="cdC"></div>
+                </div>
+            </div>
+
+            <!-- Quest Tracker -->
+            <div id="questTracker" class="quest-tracker" style="display: none;">
+                <div class="quest-title">📜 เควสปัจจุบัน:</div>
+                <div id="questDesc" class="quest-desc">-</div>
+                <div id="questReward" class="quest-reward">-</div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div id="canvasContainer"></div>
+
+            <!-- Hotbar -->
+            <div class="hotbar">
+                <div class="hotbar-slot active" id="slot1" onclick="selectWeapon('Combat')">
+                    <span class="slot-key">1</span> 👊 หมัด
+                </div>
+                <div class="hotbar-slot" id="slot2" onclick="selectWeapon('Sword')">
+                    <span class="slot-key">2</span> 🗡️ ดาบ
+                </div>
+                <div class="hotbar-slot" id="slot3" onclick="selectWeapon('Fruit')">
+                    <span class="slot-key">3</span> 🍈 ผลไม้
+                </div>
+            </div>
+
+            <button id="actionBtn" class="action-btn" style="display: none;">💬 คุยกับ NPC</button>
+
+            <!-- Stat Menu -->
+            <div id="statMenu" class="stat-menu">
+                <div class="stat-header">
+                    📊 Points: <strong id="statPointsText">0</strong>
+                    <button class="close-stat-btn" onclick="toggleStatMenu()">❌</button>
+                </div>
+                <div class="stat-row"><span>⚔️ Melee (+Stamina): <strong id="meleeLv">1</strong></span><button onclick="addStat('melee')">+</button></div>
+                <div class="stat-row"><span>🗡️ Sword: <strong id="swordLv">1</strong></span><button onclick="addStat('sword')">+</button></div>
+                <div class="stat-row"><span>🍈 Fruit: <strong id="fruitLv">1</strong></span><button onclick="addStat('fruit')">+</button></div>
+                <div class="stat-row"><span>🛡️ Defense (+HP): <strong id="defLv">1</strong></span><button onclick="addStat('def')">+</button></div>
+            </div>
+
+            <button class="open-stat-btn" onclick="toggleStatMenu()">📊 สเตตัส</button>
+        </div>
+
+        <div class="controls">
+            <button id="resetDataBtn" class="btn reset-btn" style="width: 100%;">🔄 รีเซ็ตข้อมูลเซฟ</button>
+        </div>
+
+        <a href="../html/superadmin-dashboard.html" class="back-dashboard-btn">⬅ กลับหน้าหลัก</a>
+    </div>
+
+    <script src="bloxfruits.js"></script>
+</body>
+</html>
