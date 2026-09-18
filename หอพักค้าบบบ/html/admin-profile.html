@@ -2,459 +2,166 @@
 <html lang="th">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรไฟล์เจ้าของหอ</title>
 
+    <!-- CSS หลัก และ CSS สำหรับปรับแต่งสีธีม -->
+    <link rel="stylesheet" href="../css/dashboard.css">
 
-    <!-- ================= CSS ================= -->
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link
-        rel="stylesheet"
-        href="../css/dashboard.css">
-
-
-    <!-- ================= GOOGLE FONT ================= -->
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-
-    <!-- ================= FONT AWESOME ================= -->
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     MOBILE MENU BUTTON
-===================================================== -->
-
-<button
-    id="menuToggle"
-    class="menu-toggle"
-    type="button"
-    aria-label="เปิดเมนู"
-    aria-expanded="false">
-
+<!-- MOBILE MENU BUTTON -->
+<button id="menuToggle" class="menu-toggle" type="button" aria-label="เปิดเมนู" aria-expanded="false">
     <i class="fa-solid fa-bars"></i>
-
 </button>
 
+<!-- SIDEBAR OVERLAY -->
+<div id="sidebarOverlay" class="sidebar-overlay"></div>
 
-<!-- =====================================================
-     SIDEBAR OVERLAY
-===================================================== -->
-
-<div
-    id="sidebarOverlay"
-    class="sidebar-overlay">
-</div>
-
-
-<!-- =====================================================
-     SIDEBAR
-===================================================== -->
-
+<!-- SIDEBAR -->
 <div class="sidebar">
-
-
-    <!-- LOGO -->
-
-    <div class="logo">
-
-        🏢 OWNER PANEL
-
-    </div>
-
-
-    <!-- MENU -->
-
+    <div class="logo">🏢 OWNER PANEL</div>
     <ul>
-
-
-        <!-- Dashboard -->
-
         <li>
-
             <a href="admin-dashboard.html">
-
                 <i class="fa-solid fa-house"></i>
-
-                <span>
-                    Dashboard
-                </span>
-
+                <span>Dashboard</span>
             </a>
-
         </li>
-
-
-        <!-- Booking -->
-
         <li>
-
             <a href="admin-bookings.html">
-
                 <i class="fa-solid fa-calendar-check"></i>
-
-                <span>
-                    คำขอจองห้อง
-                </span>
-
+                <span>คำขอจองห้อง</span>
             </a>
-
         </li>
-
-
-        <!-- Leave -->
-
         <li>
-
             <a href="admin-leave.html">
-
                 <i class="fa-solid fa-person-walking-arrow-right"></i>
-
-                <span>
-                    คำขอเลิกเช่า
-                </span>
-
+                <span>คำขอเลิกเช่า</span>
             </a>
-
         </li>
-
-
-        <!-- Repair -->
-
         <li>
-
             <a href="admin-repair.html">
-
                 <i class="fa-solid fa-screwdriver-wrench"></i>
-
-                <span>
-                    แจ้งซ่อม
-                </span>
-
+                <span>แจ้งซ่อม</span>
             </a>
-
         </li>
-
-          <li class="active">
-
-            <a href="owner-cpayment.html">
-
-                <i class="fa-solid fa-file-invoice-dollar"></i>
-
-                <span>
-                    สร้างบิลค่าเช่า
-                </span>
-
-            </a>
-
-        </li>
-
-
-        <!-- Profile -->
-
-        <li class="active">
-
-            <a href="admin-profile.html">
-
-                <i class="fa-solid fa-user"></i>
-
-                <span>
-                    โปรไฟล์
-                </span>
-
-            </a>
-
-        </li>
-
-
-        <!-- Logout -->
-
         <li>
-
-            <a
-                href="#"
-                id="logoutBtn">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                <span>
-                    ออกจากระบบ
-                </span>
-
+            <a href="owner-cpayment.html">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>สร้างบิลค่าเช่า</span>
             </a>
-
         </li>
-
-
+        <li class="active">
+            <a href="admin-profile.html">
+                <i class="fa-solid fa-user"></i>
+                <span>โปรไฟล์</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>ออกจากระบบ</span>
+            </a>
+        </li>
     </ul>
-
 </div>
 
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
+<!-- MAIN -->
 <div class="main">
 
-
-    <!-- =================================================
-         TOPBAR
-    ================================================= -->
-
+    <!-- TOPBAR -->
     <div class="topbar">
-
         <div>
-
-            <h2>
-                โปรไฟล์เจ้าของหอ
-            </h2>
-
-            <p id="adminName">
-                กำลังโหลดข้อมูล...
-            </p>
-
+            <h2>โปรไฟล์เจ้าของหอ</h2>
+            <p id="adminName">กำลังโหลดข้อมูล...</p>
         </div>
-
     </div>
 
-
-
-    <!-- =================================================
-         PROFILE IMAGE
-    ================================================= -->
-
+    <!-- PROFILE IMAGE -->
     <div class="profile-header">
-
-
-        <img
-            id="profileImage"
-            class="profile-image"
-            src="../images/default-avatar.png"
-            alt="รูปโปรไฟล์">
-
-
-        <input
-            type="file"
-            id="profileFile"
-            accept="image/*"
-            hidden>
-
-
-        <button
-            class="btn"
-            id="uploadBtn"
-            type="button">
-
+        <img id="profileImage" class="profile-image" src="../images/default-avatar.png" alt="รูปโปรไฟล์">
+        <input type="file" id="profileFile" accept="image/*" hidden>
+        <button class="btn" id="uploadBtn" type="button">
             <i class="fa-solid fa-camera"></i>
-
             เปลี่ยนรูปโปรไฟล์
-
         </button>
-
-
     </div>
 
-
-
-    <!-- =================================================
-         PROFILE INFORMATION
-    ================================================= -->
-
+    <!-- PROFILE INFORMATION -->
     <div class="welcome">
-
-
         <h2>
-
             <i class="fa-solid fa-user-gear"></i>
-
             ข้อมูลส่วนตัว
-
         </h2>
-
 
         <div class="profile-box">
 
-
             <!-- ชื่อ -->
-
             <div class="input-group">
-
-                <label>
-                    ชื่อ - นามสกุล
-                </label>
-
-                <input
-                    type="text"
-                    id="fullname">
-
+                <label>ชื่อ - นามสกุล</label>
+                <input type="text" id="fullname">
             </div>
-
-
 
             <!-- Email -->
-
             <div class="input-group">
-
-                <label>
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    disabled>
-
+                <label>Email</label>
+                <input type="email" id="email" disabled>
             </div>
-
-
 
             <!-- ชื่อหอ -->
-
             <div class="input-group">
-
-                <label>
-                    ชื่อหอพัก
-                </label>
-
-                <input
-                    type="text"
-                    id="dormName">
-
+                <label>ชื่อหอพัก</label>
+                <input type="text" id="dormName">
             </div>
-
-
 
             <!-- เบอร์ -->
-
             <div class="input-group">
-
-                <label>
-                    เบอร์โทร
-                </label>
-
-                <input
-                    type="text"
-                    id="phone">
-
+                <label>เบอร์โทร</label>
+                <input type="text" id="phone">
             </div>
-
-
 
             <!-- ที่อยู่ -->
-
             <div class="input-group">
-
-                <label>
-                    ที่อยู่
-                </label>
-
-                <textarea
-                    id="address"
-                    rows="4"></textarea>
-
+                <label>ที่อยู่</label>
+                <textarea id="address" rows="4"></textarea>
             </div>
 
-
-
-            <!-- Theme -->
-
+            <!-- Theme Picker -->
             <div class="input-group">
-
-                <label>
-                    สีธีมระบบ
-                </label>
-
-                <input
-                    type="color"
-                    id="themeColor"
-                    value="#b30000">
-
+                <label for="themeColor">สีธีมระบบ</label>
+                <div class="color-picker-wrapper">
+                    <input type="color" id="themeColor" value="#b30000">
+                    <span id="themeColorCode">#B30000</span>
+                </div>
             </div>
-
-
 
             <!-- Save -->
-
-            <button
-                class="btn"
-                id="saveBtn"
-                type="button">
-
+            <button class="btn" id="saveBtn" type="button">
                 <i class="fa-solid fa-floppy-disk"></i>
-
                 บันทึกข้อมูล
-
             </button>
 
-
         </div>
-
     </div>
-
 
 </div>
 
-
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
-
-
-<script
-    type="module"
-    src="../js/admin-profile.js">
-</script>
-
-
-<script
-    type="module"
-    src="../js/admin-dashboard.js">
-</script>
-
-
-<script
-    type="module"
-    src="../js/theme.js">
-</script>
-
-
-<script
-    type="module"
-    src="../js/owner-notification.js">
-</script>
-
-
-<!-- MOBILE SIDEBAR -->
-
-<script
-    src="../js/mobile-menu.js">
-</script>
-
-<script
-    type="module"
-    src="../js/auto-logger.js">
-</script>
+<!-- JAVASCRIPT -->
+<script type="module" src="../js/admin-profile.js"></script>
+<script type="module" src="../js/admin-dashboard.js"></script>
+<script type="module" src="../js/theme.js"></script>
+<script type="module" src="../js/owner-notification.js"></script>
+<script src="../js/mobile-menu.js"></script>
+<script type="module" src="../js/auto-logger.js"></script>
 
 </body>
-
 </html>

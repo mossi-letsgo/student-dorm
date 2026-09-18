@@ -135,13 +135,15 @@ body {
 }
 
 
+/* จากเดิม color: #ffffff; เปลี่ยนเป็น var(--text) */
 .sidebar li.active a {
-    color: #ffffff;
-
+    color: var(--text);
     background: var(--theme);
+    box-shadow: 0 6px 18px var(--theme-shadow);
+}
 
-    box-shadow:
-        0 6px 18px var(--theme-shadow);
+.sidebar li.active a i {
+    color: var(--text);
 }
 
 
@@ -467,21 +469,21 @@ body {
    PRIMARY BUTTON
 ===================================================== */
 
+/* จากเดิม color: #ffffff; เปลี่ยนเป็น var(--text) */
 .btn-primary {
     width: 100%;
-
     background: var(--theme);
-
-    color: #ffffff;
-
-    box-shadow:
-        0 6px 18px var(--theme-shadow);
+    color: var(--text);
+    box-shadow: 0 6px 18px var(--theme-shadow);
 }
 
+.btn-primary i {
+    color: var(--text);
+}
 
 .btn-primary:hover {
     background: var(--theme-hover);
-
+    color: var(--text);
     transform: translateY(-2px);
 }
 
@@ -1025,39 +1027,22 @@ body {
 }
 
 
-/* =====================================================
-   MOBILE MENU
-===================================================== */
-
+/* จากเดิม color: #ffffff; เปลี่ยนเป็น var(--text) */
 .menu-toggle {
     display: none;
-
     position: fixed;
-
     top: 15px;
-
     left: 15px;
-
     z-index: 1200;
-
     width: 45px;
-
     height: 45px;
-
     border: none;
-
     border-radius: 10px;
-
     background: var(--theme);
-
-    color: #ffffff;
-
+    color: var(--text);
     font-size: 20px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 6px 18px var(--theme-shadow);
+    box-shadow: 0 6px 18px var(--theme-shadow);
 }
 
 
@@ -1256,4 +1241,18 @@ body {
         font-size: 14px;
     }
 
+}
+
+/* บังคับแสดง Modal เมื่อมี class active */
+#utilityModal.active {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
 }
